@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<th>Role_ID</th>
+			<th>Name</th>
+			<th>Content</th>
+			<th>ImgUrl</th>
+			<th>Detail</th>
+			<th>Delete</th>
+			<th>Edit</th>
+		</tr>
+		<tr th:each="slider : ${listSlider}">
+			<td th:utext="${slider.slider_id}"></td>
+			<td th:utext="${slider.name}"></td>
+			<td th:utext="${slider.content}"></td>
+			<td th:utext="${slider.imgUrl}"></td>
+			
+			<td><a th:href="@{|/slider-view/${slider.slider_id}|}"> Detail</a></td>
+			<td><a th:href="@{|/sliderDelete/${slider.slider_id}|}"> Delete</a></td>
+			<td><a th:href="@{|/sliderUpdate/${slider.slider_id}|}"> Edit</a></td>
+		</tr>
+	</table>
+	<a th:href="@{|/slider-save|}">ADD SLIDER</a>
+</body>
+</html>

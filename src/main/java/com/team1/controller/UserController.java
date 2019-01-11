@@ -9,12 +9,15 @@
 
 package com.team1.controller;
 
+import org.springframework.stereotype.Controller;
+
 /*
  * @author Sanero.
  * Created date: Jan 11, 2019
  * Created time: 8:49:43 AM
  * Description: TODO - 
  */
+@Controller
 public class UserController {
 
 }
