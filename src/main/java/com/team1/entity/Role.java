@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name="role")
@@ -16,6 +17,7 @@ public class Role {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int roleId;
 	@Column(name="name", length=50, nullable=false)
+	@NotEmpty(message="the name filed can't empty")
 	private String name;
 	@Column(name="description", length=255)
 	private String desc;
