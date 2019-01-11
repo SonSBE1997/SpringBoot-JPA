@@ -1,10 +1,14 @@
 package com.team1.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -21,6 +25,9 @@ public class Role {
 	private String name;
 	@Column(name="description", length=255)
 	private String desc;
+	
+	@OneToMany(mappedBy = "role", cascade=CascadeType.ALL)
+	private List<MenuRole> menuRole;
 	
 	public Role() {
 		
@@ -50,7 +57,14 @@ public class Role {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
-	
+	public List<MenuRole> getMenuRole() {
+		return menuRole;
+	}
+
+	public void setMenuRole(List<MenuRole> menuRole) {
+		this.menuRole = menuRole;
+	}
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub

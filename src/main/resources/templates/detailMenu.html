@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td>Menu_Id: </td>
+			<td th:text="${menu.menuId}"></td>
+		</tr>
+		<tr>
+			<td>Name: </td>
+			<td th:text="${menu.name}"></td>
+		</tr>
+		<tr>
+			<td>Description: </td>
+			<td th:text="${menu.desc}"></td>
+		</tr>
+		<tr>
+			<td>Controller</td>
+			<td th:text="${menu.controller}"></td>
+		</tr>
+		<tr>
+			<td>Function: </td>
+			<td th:text="${menu.function}"></td>
+		</tr>
+	</table>
+</body>
+</html>

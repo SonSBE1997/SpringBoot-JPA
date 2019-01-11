@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1 style="margin-left: 4%">ADD MENU</h1>
+	<form th:action="@{/add-menu}" method="post" th:object="${menu}">
+		<table>
+			<tr>
+				<td>Name: </td>
+				<td><input type="text" th:field="*{name}" /></td>
+			</tr>
+			<tr>
+				<td>Description: </td>
+				<td><input type="text" th:field="*{desc}" /></td>
+			</tr>
+			<tr>
+				<td>Controller: </td>
+				<td><input type="text" th:field="*{controller}" /></td>
+			</tr>
+			<tr>
+				<td>Function: </td>
+				<td><input type="text" th:field="*{function}" /></td>
+			</tr>
+
+			<tr>
+				<td></td>
+				<td><input type="submit" value="OK" /><input type="reset" name="Reset" style="margin-left: 5px;"/></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

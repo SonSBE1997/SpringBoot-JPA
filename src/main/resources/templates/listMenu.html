@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<th>Menu_ID</th>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Controller</th>
+			<th>Function</th>
+			
+			<th>Detail</th>
+			<th>Delete</th>
+			<th>Edit</th>
+		</tr>
+		<tr th:each="menu : ${listMenu}">
+			<td th:utext="${menu.menuId}"></td>
+			<td th:utext="${menu.name}"></td>
+			<td th:utext="${menu.desc}"></td>
+			<td th:utext="${menu.controller}"></td>
+			<td th:utext="${menu.function}"></td>
+			
+			<td><a th:href="@{|/detail-menu/${menu.menuId}|}"> Detail</a></td>
+			<td><a th:href="@{|/delete-menu/${menu.menuId}|}"> Delete</a></td>
+			<td><a th:href="@{|/update-menu/${menu.menuId}|}"> Edit</a></td>
+		</tr>
+	</table>
+	<a th:href="@{|/add-menu|}">ADD ROLE</a>
+</body>
+</html>

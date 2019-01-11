@@ -1,10 +1,14 @@
 package com.team1.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -13,32 +17,35 @@ public class Menu {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="menu_id")
+	@Column(name="menu_id", length=10, nullable=false)
 	private int menuId;
 	
-	@Column(name="name")
+	@Column(name="menu_name", length=25, nullable=false)
 	private String name;
 	
-	@Column(name="description")
+	@Column(name="description", length=255)
 	private String desc;
 	
-	@Column(name="controller")
+	@Column(name="controller", length=25)
 	private String controller;
 	
-	@Column(name="action", nullable=false)
-	private String action;
+	@Column(name="functions",length=50, nullable=false)
+	private String function;
+	
+	@OneToMany(mappedBy = "menu", cascade=CascadeType.ALL)
+	private List<MenuRole> menuRole;
 
 	public Menu() {
 		
 	}
 	
-	public Menu(int menuId, String name, String desc, String controller, String action) {
+	public Menu(int menuId, String name, String desc, String controller, String function) {
 		super();
 		this.menuId = menuId;
 		this.name = name;
 		this.desc = desc;
 		this.controller = controller;
-		this.action = action;
+		this.function = function;
 	}
 
 	public int getMenuId() {
@@ -73,12 +80,20 @@ public class Menu {
 		this.controller = controller;
 	}
 
-	public String getAction() {
-		return action;
+	public String getFunction() {
+		return function;
 	}
 
-	public void setAction(String action) {
-		this.action = action;
+	public void setFunction(String function) {
+		this.function = function;
+	}
+
+	public List<MenuRole> getMenuRole() {
+		return menuRole;
+	}
+
+	public void setMenuRole(List<MenuRole> menuRole) {
+		this.menuRole = menuRole;
 	}
 	
 }
