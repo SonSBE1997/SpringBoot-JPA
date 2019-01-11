@@ -17,7 +17,7 @@ public class Role {
 	private int roleId;
 	@Column(name="name", length=50, nullable=false)
 	private String name;
-	@Column(name="desc", length=255)
+	@Column(name="description", length=255)
 	private String desc;
 	
 	public Role() {

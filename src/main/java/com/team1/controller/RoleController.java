@@ -14,13 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.team1.entity.Role;
 import com.team1.service.RoleService;
 
-/*
- * @author CHai.
- * Created date: Jan 11, 2019
- * Created time: 8:49:43 AM
- * Description: TODO - 
- */
-
 @Controller
 @RequestMapping
 public class RoleController {
@@ -35,14 +28,6 @@ public class RoleController {
 		List<Role> listRole = roleService.getAll();
 		modelMap.addAttribute("listRole", listRole);
 		return "listRole";
-	}
-	
-	//.....getOne
-	@GetMapping(value="/detail-role/{roleId}")
-	public String GetOne(@PathVariable String roleId, ModelMap modelMap) {
-		Role role = roleService.getOne(Integer.parseInt(roleId));
-		modelMap.addAttribute("role", role);
-		return "detailRole";
 	}
 	
 	//.....insert
@@ -60,16 +45,16 @@ public class RoleController {
 	}
 	
 	//.....delete
-	@GetMapping("/delete-role/{roleId}")
-	public String delete(@PathVariable String roleId) {
-		roleService.delete(Integer.parseInt(roleId));
+	@GetMapping("/delete-role/{id}")
+	public String delete(@PathVariable String id) {
+		roleService.delete(Integer.parseInt(id));
 		return "redirect:/list-role";
 	}
 	
 	//.....update
-	@GetMapping("/update-role/{roleId}")
-	public String roleUpdate(ModelMap modelMap, @PathVariable String roleId) {
-		Role role = roleService.getOne(Integer.parseInt(roleId));
+	@GetMapping("/update-role/{id}")
+	public String roleUpdate(ModelMap modelMap, @PathVariable String id) {
+		Role role = roleService.getOne(Integer.parseInt(id));
 		modelMap.addAttribute("role", role);
 		return "updateRole";
 	}
