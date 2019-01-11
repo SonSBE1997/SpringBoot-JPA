@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container">
+		<div class="col-md-5">
+			<div class="form-area">
+				<form role="form"  th:action="@{/add-menu}"  th:object="${menu}" method="post">
+					<br style="clear: both">
+					<h3 style="margin-bottom: 25px; text-align: center;">Add Menu</h3>
+					<div class="form-group">
+						<input type="text" class="form-control" id="name" th:field="*{name}"
+							placeholder="Name" required>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" id="controller"
+							th:field="*{controller}" placeholder="Controller" required>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" id="action" th:field="*{action}"
+							placeholder="Function" required>
+					</div>
+					
+					<div class="form-group">
+						<textarea class="form-control" type="textarea" id="message" th:field="*{description}"
+							placeholder="Description" maxlength="140" rows="7"></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary pull-right">Create Menu</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h4>MENU INFO</h4>
+				<div class="table-responsive">
+					<table id="mytable" class="table table-bordred table-striped">
+
+						<tr>
+							<th>TT</th>
+							<th>Name</th>
+							<th>Desc</th>
+							<th>Controller</th>
+							<th>Funcition</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+						<tbody th:with="total=0">
+							<tr th:each="Menu : ${list}">
+								<div th:with="total=${total +1}"></div>
+								<td th:utext="${total}"></td>
+								<td th:utext="${Menu.name}"></td>
+								<td th:utext="${Menu.description}"></td>
+								<td th:utext="${Menu.controller}"></td>
+								<td th:utext="${Menu.action}"></td>
+								<td><p data-placement="top" data-toggle="tooltip"
+										title="Edit">
+										<button class="btn btn-primary btn-xs" data-title="Edit"
+											data-toggle="modal" data-target="#edit">
+											<span class="glyphicon glyphicon-pencil"></span>
+										</button>
+									</p></td>
+								<td><p data-placement="top" data-toggle="tooltip"
+										title="Delete">
+										<button class="btn btn-danger btn-xs" data-title="Delete"
+											data-toggle="modal" data-target="#delete">
+											<span class="glyphicon glyphicon-trash"></span>
+										</button>
+									</p></td>
+
+
+								<div class="modal fade" id="edit" tabindex="-1"
+									role="dialog" aria-labelledby="edit" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-hidden="true">
+													<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+												</button>
+												<h4 class="modal-title custom_align" id="Heading">Edit
+													Your Detail</h4>
+											</div>
+											<form action="#" method="post">
+												<div class="modal-body">
+													<input name="id" type="text" th:value="${Menu.menu_id}"
+													hidden>
+													<div class="form-group">
+														Name<input class="form-control " name="name" id="iname"
+															type="text" th:value="${Menu.name}">
+													</div>
+													<div class="form-group">
+														Desc <input class="form-control " name="desc" id="iDesc"
+															type="text" th:value="${Menu.description}">
+													</div>
+													<div class="form-group">
+														Controller<input class="form-control " name="controller"
+															id="icontroller" type="text"
+															th:value="${Menu.controller}">
+													</div>
+													<div class="form-group">
+														Function<input class="form-control " name="function"
+															id="ifunction" type="text" th:value="${Menu.action}">
+													</div>
+												</div>
+												<div class="modal-footer ">
+													<button type="submit" class="btn btn-warning btn-lg"
+														id="btn-update<%=i %>" style="width: 100%;">
+														<span class="glyphicon glyphicon-ok-sign"></span> Update
+													</button>
+													<br> <b class="error" style="color: red" id="note"></b>
+												</div>
+											</form>
+										</div>
+										<!-- /.modal-content -->
+									</div>
+									<!-- /.modal-dialog -->
+								</div>
+
+
+
+								<!-- /.modal-dialog delete -->
+								<div class="modal fade" id="delete" tabindex="-1" role="dialog"
+									aria-labelledby="edit" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-hidden="true">
+													<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+												</button>
+												<h4 class="modal-title custom_align" id="Heading">
+													Delete this entry</h4>
+											</div>
+											<div class="modal-body">
+												<div class="alert alert-danger">
+													<span class="glyphicon glyphicon-warning-sign"></span> Are
+													you sure you want to delete this Record?
+												</div>
+											</div>
+											<div class="modal-footer ">
+												<a th:href="@{|/delete-menu/${Menu.menu_id}|}">
+													<button type="submit" class="btn btn-success">
+														<span class="glyphicon glyphicon-ok-sign"></span> Yes
+													</button>
+												</a>
+												<button type="button" class="btn btn-default"
+													data-dismiss="modal">
+													<span class="glyphicon glyphicon-remove"></span> No
+												</button>
+											</div>
+										</div>
+									</div>
+									<!-- /.modal-dialog -->
+								</div>
+
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="clearfix"></div>
+					<ul class="pagination pull-right">
+						<li class="disabled"><a href="#"><span
+								class="glyphicon glyphicon-chevron-left"></span></a></li>
+						<li class="active"><a href="#">1</a></li>
+						<li class="disabled"><a href="#"><span
+								class="glyphicon glyphicon-chevron-right"></span></a></li>
+					</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+</body>
+</html>
