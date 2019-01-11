@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1 style="margin-left: 4%">ADD ROLE</h1>
+	<form th:action="@{/add-menuRole}" method="post" th:object="${menuRole}">
+		<table>
+			<tr>
+				<td>Status: </td>
+				<td><input type="text" th:field="*{status}" /></td>
+			</tr>
+			<tr>
+				<td>Menu_Id: </td>
+				<td><input type="text" th:field="*{menu}" /></td>
+			</tr>
+			<tr>
+				<td>Role_Id: </td>
+				<td><input type="text" th:field="*{role}" /></td>
+			</tr>
+
+			<tr>
+				<td></td>
+				<td><input type="submit" value="OK" /><input type="reset" name="Reset" style="margin-left: 5px;"/></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

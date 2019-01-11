@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td>Status: </td>
+			<td th:text="${menuRole.status}"></td>
+		</tr>
+		<tr>
+			<td>Menu_ID: </td>
+			<td th:text="${menuRole.menu.menuId}"></td>
+		</tr>
+		<tr>
+			<td>Role_ID: </td>
+			<td th:text="${menuRole.role.roleId}"></td>
+		</tr>
+	</table>
+</body>
+</html>
