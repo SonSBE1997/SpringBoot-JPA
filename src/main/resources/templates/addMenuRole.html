@@ -9,6 +9,10 @@
 	<form th:action="@{/add-menuRole}" method="post" th:object="${menuRole}">
 		<table>
 			<tr>
+				<td></td>
+				<td><span style="color: red;" th:text="${mess}"></span></td>
+			</tr>
+			<tr>
 				<td>Status: </td>
 				<td><input type="text" th:field="*{status}" /></td>
 			</tr>

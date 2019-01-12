@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.team1.entity.Menu;
 import com.team1.service.MenuService;
+import com.team1.utils.Constant;
 
 @Controller
 @RequestMapping
@@ -22,50 +23,50 @@ public class MenuController {
 	@Autowired
 	MenuService menuService;
 	
-	@GetMapping("/list-menu")
+	@GetMapping("/"+Constant.Menu_URL.URL_LIST_MENU)
 	public String getAll(ModelMap modelMap) {
 		List<Menu> listMenu = menuService.getAll();
 		modelMap.addAttribute("listMenu", listMenu);
 		return "listMenu";
 	}
 	
-	@GetMapping("/detail-menu/{id}")
+	@GetMapping("/" + Constant.Menu_URL.URL_DETAIL_MENU + "/{id}")
 	public String getOne(@PathVariable String id ,ModelMap modelMap) {
 		Menu menu = menuService.getOne(Integer.parseInt(id));
 		modelMap.addAttribute("menu", menu);
 		return "detailMenu";
 	}
 	
-	@GetMapping("/add-menu")
+	@GetMapping("/" + Constant.Menu_URL.URL_ADD_MENU)
 	public String menuAdd(ModelMap modelMap) {
 		Menu menu = new Menu();
 		modelMap.addAttribute("menu", menu);
 		return "addMenu";
 	}
 	
-	@PostMapping("/add-menu")
+	@PostMapping("/" + Constant.Menu_URL.URL_ADD_MENU)
 	public String addMenu(@ModelAttribute Menu menu) {
 		menuService.insert(menu);
-		return "redirect:/list-menu";
+		return "redirect:/" + Constant.Menu_URL.URL_LIST_MENU;
 	}
 	
-	@GetMapping("/update-menu/{menu_id}")
+	@GetMapping("/" + Constant.Menu_URL.URL_UPDATE_MENU  + "/{menu_id}")
 	public String menuUpdate(@PathVariable String menu_id, ModelMap modelMap) {
 		Menu menu = menuService.getOne(Integer.parseInt(menu_id));
 		modelMap.addAttribute("menu", menu);
 		return "updateMenu";
 	}
 	
-	@PostMapping("/update-menu")
+	@PostMapping("/" + Constant.Menu_URL.URL_UPDATE_MENU)
 	public String updateMenu(@ModelAttribute Menu menu) {
 		menuService.update(menu);
-		return "redirect:/list-menu";
+		return "redirect:/" + Constant.Menu_URL.URL_LIST_MENU;
 	}
 	
-	@GetMapping("/delete-menu/{id}")
+	@GetMapping("/" + Constant.Menu_URL.URL_DELETE_MENU + "/{id}")
 	public String deleteMenu(@PathVariable String id) {
 		menuService.delete(Integer.parseInt(id));
-		return "redirect:/list-menu";
+		return "redirect:/" + Constant.Menu_URL.URL_LIST_MENU;
 	}
 	
 }

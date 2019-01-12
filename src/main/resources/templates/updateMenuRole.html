@@ -7,6 +7,7 @@
 <body>
 	<h1 style="margin-left: 4%">UPDATE MENU_ROLE</h1>
 	<form th:action="@{/update-menuRole}" method="post" th:object="${menuRole}">
+		<input type="hidden" th:field="*{id}" />
 		<table>
 			<tr>
 				<td>Status: </td>

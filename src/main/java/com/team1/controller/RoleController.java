@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.team1.entity.Role;
 import com.team1.service.RoleService;
+import com.team1.utils.Constant;
 
 @Controller
 @RequestMapping
@@ -22,7 +23,7 @@ public class RoleController {
 	RoleService roleService;
 	
 	//....getAll
-	@GetMapping("/list-role")
+	@GetMapping("/" + Constant.Role_URL.URL_LIST_ROLE)
 	public String getAll(ModelMap modelMap) {
 		
 		List<Role> listRole = roleService.getAll();
@@ -30,38 +31,45 @@ public class RoleController {
 		return "listRole";
 	}
 	
+	@GetMapping("/" + Constant.Role_URL.URL_DETAIL_ROLE + "/{id}")
+	public String getOne(@PathVariable String id, ModelMap modelMap) {
+		Role role = roleService.getOne(Integer.parseInt(id));
+		modelMap.addAttribute("role", role);
+		return "detailRole";
+	}
+	
 	//.....insert
-	@GetMapping("/add-role")
+	@GetMapping("/" + Constant.Role_URL.URL_ADD_ROLE)
 	public String roleInsert(ModelMap modelMap) {
 		Role role = new Role();
 		modelMap.addAttribute("role", role);
 		return "addRole";
 	}
 	
-	@PostMapping("/add-role")
+	@PostMapping("/" + Constant.Role_URL.URL_ADD_ROLE)
 	public String insertRole(@ModelAttribute Role role) {
 		roleService.insert(role);
-		return "redirect:/list-role";
+		return "redirect:/"+Constant.Role_URL.URL_LIST_ROLE;
 	}
 	
 	//.....delete
-	@GetMapping("/delete-role/{id}")
+	@GetMapping("/" + Constant.Role_URL.URL_DELETE_ROLE +"/{id}")
 	public String delete(@PathVariable String id) {
 		roleService.delete(Integer.parseInt(id));
-		return "redirect:/list-role";
+		return "redirect:/"+Constant.Role_URL.URL_LIST_ROLE;
 	}
 	
 	//.....update
-	@GetMapping("/update-role/{id}")
+	@GetMapping("/" + Constant.Role_URL.URL_UPDATE_ROLE + "/{id}")
 	public String roleUpdate(ModelMap modelMap, @PathVariable String id) {
 		Role role = roleService.getOne(Integer.parseInt(id));
 		modelMap.addAttribute("role", role);
 		return "updateRole";
 	}
 	
-	@PostMapping("/update-role")
+	@PostMapping("/" + Constant.Role_URL.URL_UPDATE_ROLE)
 	public String updateRole(@ModelAttribute Role role) {
 		roleService.update(role);
-		return "redirect:/list-role";
+		return "redirect:/"+Constant.Role_URL.URL_LIST_ROLE;
 	}
 }
