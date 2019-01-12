@@ -25,7 +25,8 @@
 </head>
 <body>
 <div class="container1">
-		<form th:action="@{/add-user}" method="post" th:object="${user}">
+		<form th:action="@{/edit-user}" method="post" th:object="${user}">
+		<input type="hidden" th:field="*{userId}"/>
 			<div class="form-group">
 				<label for="exampleInputEmail1">Email</label> <input
 					class="form-control" type="text" th:field="*{email}"

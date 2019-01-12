@@ -9,12 +9,24 @@
 
 package com.team1.service;
 
+import java.util.List;
+
+import com.team1.entity.User;
+
 /*
  * @author Sanero.
  * Created date: Jan 11, 2019
  * Created time: 8:50:30 AM
  * Description: TODO - 
  */
-public class UserService {
+public interface UserService {
+	public List<User> getAllUser();
 
+	public void deleteUser(int userId);
+
+	public User findUser(int userId);
+
+	public void addUser(User user);
+
+	public void updateUser(User user);
 }

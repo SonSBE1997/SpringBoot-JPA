@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css" />
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+</head>
+<body xmlns:th="http://www.thymeleaf.org">
+
+	<div class="container">
+	
+	<form th:action="@{/search}" th:object="${email}">
+	<input type="text" name="email" id="email"/>
+	<input type="submit" value="Search"/>
+	</form>
+		<h3>
+			<a th:href="@{/add-user}">Create User</a>
+		</h3>
+		<table class="table">
+			<thead class="table table-bordered">
+				<tr class="bg-danger">
+					<th>ID</th>
+					<th>Email</th>
+					<th>Mobile</th>
+					<th>FullName</th>
+					<th>Status</th>
+					<th>Chon</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+
+				<tr th:each="user : ${list}">
+					<td th:text="${user.userId}"></td>
+					<td th:text="${user.email}"></td>
+					<td th:text="${user.mobile}"></td>
+					<td th:text="${user.fullName}"></td>
+					<td th:text="${user.status}"></td>
+					<td th:text="${user.password}"></td>
+
+					<td class="glyphicon glyphicon-ok-sign"><a
+						th:href="@{|/detail-user/${user.userId}|}"> Detail</a></td>
+					<td class="glyphicon glyphicon-trash"><a
+						th:href="@{|/delete-user/${user.userId}|}"> Delete</a></td>
+					<td class="glyphicon glyphicon-pencil"><a
+						th:href="@{|/edit-user/${user.userId}|}"> Edit</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+</body>
+</html>
+
+
