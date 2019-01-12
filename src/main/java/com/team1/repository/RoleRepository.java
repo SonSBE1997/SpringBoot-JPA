@@ -12,7 +12,7 @@ import com.team1.entity.Role;
  * Description: TODO - 
  */
 
-@Repository
+@Repository(value="roleRepository")
 public interface RoleRepository extends JpaRepository<Role, Integer>{
 
 }

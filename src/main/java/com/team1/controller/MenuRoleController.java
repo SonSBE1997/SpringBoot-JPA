@@ -11,25 +11,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import org.slf4j.Logger;
+
 import com.team1.entity.MenuRole;
 import com.team1.service.MenuRoleService;
 import com.team1.service.MenuService;
-
 
 /**
  * Project name: Team1-SpringBoot-JPA
  * Package name: com.team1.controller
  * File name: ABCZ.java
- * Author: ...
+ * Author: ...Hai95
  * Created date: Jan 11, 2019
  * Created time: 8:49:43 AM
  */
-
 @Controller
 @RequestMapping
 public class MenuRoleController {
 	
-	
+	private static final Logger log = org.slf4j.LoggerFactory.getLogger(MenuRoleController.class);
 	
 	@Autowired
 	MenuRoleService menuRoleService;
@@ -38,7 +38,14 @@ public class MenuRoleController {
 	MenuService menuService;
 	
 	
-	//......getAll
+	/**
+	 * Create by: Hai - CMC
+	 * Create date: Jan 12, 2019
+	 * Modifier: Hai
+	 * Modified date: 2019
+	 * Description: ....
+	 * Version 1.0
+	 */
 	@GetMapping("/list-menuRole")
 	public String getAll(ModelMap modelMap) {
 		List<MenuRole> list = menuRoleService.getAll();
@@ -46,7 +53,14 @@ public class MenuRoleController {
 		return "listMenuRole";
 	}
 	
-	//......getOne
+	/**
+	 * Create by: Hai - CMC
+	 * Create date: Jan 12, 2019
+	 * Modifier: Hai
+	 * Modified date: 2019
+	 * Description: ....
+	 * Version 1.0
+	 */
 	@GetMapping("/detail-menuRole/{id}")
 	public String getOne(@PathVariable String id, ModelMap modelMap) {
 		MenuRole menuRole = menuRoleService.getOne(Integer.parseInt(id));
@@ -54,7 +68,14 @@ public class MenuRoleController {
 		return "detailMenuRole";
 	}
 	
-	//......add
+	/**
+	 * Create by: Hai - CMC
+	 * Create date: Jan 12, 2019
+	 * Modifier: Hai
+	 * Modified date: 2019
+	 * Description: ....
+	 * Version 1.0
+	 */
 	@GetMapping("/add-menuRole")
 	public String menuRoleinsert(ModelMap modelMap) {
 		MenuRole menuRole = new MenuRole();
@@ -62,20 +83,41 @@ public class MenuRoleController {
 		return "addMenuRole";
 	}
 	
+	/**
+	 * Create by: Hai - CMC
+	 * Create date: Jan 12, 2019
+	 * Modifier: Hai
+	 * Modified date: 2019
+	 * Description: ....
+	 * Version 1.0
+	 */
 	@PostMapping("/add-menuRole")
 	public String insertMenuRole(@ModelAttribute MenuRole menuRole, ModelMap modelMap) {
-		if(menuRole.getMenu() == null || menuRole.getRole() == null) {
-			String mess = "no matching foreignKey";
-			modelMap.addAttribute("mess", mess);
-			return "addMenuRole";
-			
-		}else {
+		try {
+			if(menuRole.getMenu() == null || menuRole.getRole() == null) {
+				String mess = "no matching foreignKey";
+				modelMap.addAttribute("mess", mess);
+				log.error(mess);
+				return "addMenuRole";	
+			}
 			menuRoleService.insert(menuRole);
+		} catch (Exception e) {
+			String s = String.valueOf(e);
+			log.info(s);
+			modelMap.addAttribute("mess", "there're some error");
+			return "addMenuRole";
 		}
 		return "redirect:/list-menuRole";
 	}
 	
-	//.....update
+	/**
+	 * Create by: Hai - CMC
+	 * Create date: Jan 12, 2019
+	 * Modifier: Hai
+	 * Modified date: 2019
+	 * Description: ....
+	 * Version 1.0
+	 */
 	@GetMapping("/update-menuRole/{id}")
 	public String menuRoleUpdate(@PathVariable String id, ModelMap modelMap) {
 		MenuRole menuRole = menuRoleService.getOne(Integer.parseInt(id));
@@ -83,20 +125,41 @@ public class MenuRoleController {
 		return "updateMenuRole";
 	}
 	
+	/**
+	 * Create by: Hai - CMC
+	 * Create date: Jan 12, 2019
+	 * Modifier: Hai
+	 * Modified date: 2019
+	 * Description: ....
+	 * Version 1.0
+	 */
 	@PostMapping("/update-menuRole")
 	public String updateMenuRole(@ModelAttribute MenuRole menuRole, ModelMap modelMap) {
-		if(menuRole.getMenu() == null || menuRole.getRole() == null) {
-			String mess = "no matching foreignKey";
-			modelMap.addAttribute("mess", mess);
-			return "updateMenuRole";
-			
-		}else {
+		try {
+			if(menuRole.getMenu() == null || menuRole.getRole() == null) {
+				String mess = "no matching foreignKey";
+				modelMap.addAttribute("mess", mess);
+				log.error(mess);
+				return "updateMenuRole";
+			}
 			menuRoleService.update(menuRole);
+		} catch (Exception e) {
+			String s = String.valueOf(e);
+			log.info(s);
+			modelMap.addAttribute("mess", "there're some error");
+			return "updateMenuRole";
 		}
 		return "redirect:/list-menuRole";
 	}
 	
-	//.....delete
+	/**
+	 * Create by: Hai - CMC
+	 * Create date: Jan 12, 2019
+	 * Modifier: Hai
+	 * Modified date: 2019
+	 * Description: ....
+	 * Version 1.0
+	 */
 	@GetMapping("/delete-menuRole/{id}")
 	public String insertMenuRole(@PathVariable String id) {
 		menuRoleService.delete(Integer.parseInt(id));

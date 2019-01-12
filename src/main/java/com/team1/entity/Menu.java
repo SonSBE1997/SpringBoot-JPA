@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="menu")
@@ -20,7 +22,9 @@ public class Menu {
 	@Column(name="menu_id", length=10, nullable=false)
 	private int menuId;
 	
-	@Column(name="menu_name", length=25, nullable=false)
+	@NotNull
+	@Size(max=3)
+	@Column(name="menu_name", length=25)
 	private String name;
 	
 	@Column(name="description", length=255)

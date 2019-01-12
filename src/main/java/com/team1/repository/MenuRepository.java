@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.team1.entity.Menu;
 
-@Repository
+@Repository(value="menuRepository")
 public interface MenuRepository extends JpaRepository<Menu, Integer>{
 	
 }

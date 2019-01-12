@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.team1.entity.MenuRole;
 
-@Repository
+@Repository(value="menuRoleRepository")
 public interface MenuRoleRepository extends JpaRepository<MenuRole, Integer> {
 	
 }
