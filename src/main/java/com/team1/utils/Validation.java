@@ -4,13 +4,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Create by: Hai - CMC
- * Create date: Jan 12, 2019
- * Modifier: Hai
- * Modified date: 2019
- * Description: ....
- * Version 1.0
- * @return
+ * Project name: Team1-SpringBoot-JPA
+ * Package name: com.team1.controller
+ * File name: ABCZ.java
+ * Author: ...Hai95
+ * Created date: Jan 11, 2019
+ * Created time: 8:49:43 AM
  */
 public class Validation {
 	private Pattern pattern1;  //... pattern2, pattern3;

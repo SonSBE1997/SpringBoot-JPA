@@ -41,7 +41,7 @@ public class RoleController {
 	 * Description: ....
 	 * Version 1.0
 	 */
-	@GetMapping("/" + Constant.Role_URL.URL_LIST_ROLE)
+	@GetMapping(Constant.Role_URL.URL_LIST_ROLE)
 	public String getAll(ModelMap modelMap) {
 		
 		List<Role> listRole = roleService.getAll();
@@ -57,7 +57,7 @@ public class RoleController {
 	 * Description: ....
 	 * Version 1.0
 	 */
-	@GetMapping("/" + Constant.Role_URL.URL_DETAIL_ROLE + "/{id}")
+	@GetMapping(Constant.Role_URL.URL_DETAIL_ROLE + "/{id}")
 	public String getOne(@PathVariable String id, ModelMap modelMap) {
 		Role role = roleService.getOne(Integer.parseInt(id));
 		modelMap.addAttribute("role", role);
@@ -72,7 +72,7 @@ public class RoleController {
 	 * Description: ....
 	 * Version 1.0
 	 */
-	@GetMapping("/" + Constant.Role_URL.URL_ADD_ROLE)
+	@GetMapping(Constant.Role_URL.URL_ADD_ROLE)
 	public String roleInsert(ModelMap modelMap) {
 		Role role = new Role();
 		modelMap.addAttribute("role", role);
@@ -87,7 +87,7 @@ public class RoleController {
 	 * Description: ....
 	 * Version 1.0
 	 */
-	@PostMapping("/" + Constant.Role_URL.URL_ADD_ROLE)
+	@PostMapping(Constant.Role_URL.URL_ADD_ROLE)
 	public String insertRole(@ModelAttribute Role role, ModelMap modelMap) {
 		while(!val.validateRolename(role.getName()))
 		{
@@ -107,7 +107,7 @@ public class RoleController {
 	 * Description: ....
 	 * Version 1.0
 	 */
-	@GetMapping("/" + Constant.Role_URL.URL_DELETE_ROLE +"/{id}")
+	@GetMapping(Constant.Role_URL.URL_DELETE_ROLE +"/{id}")
 	public String delete(@PathVariable String id) {
 		roleService.delete(Integer.parseInt(id));
 		return "redirect:/"+Constant.Role_URL.URL_LIST_ROLE;
@@ -121,7 +121,7 @@ public class RoleController {
 	 * Description: ....
 	 * Version 1.0
 	 */
-	@GetMapping("/" + Constant.Role_URL.URL_UPDATE_ROLE + "/{id}")
+	@GetMapping(Constant.Role_URL.URL_UPDATE_ROLE + "/{id}")
 	public String roleUpdate(ModelMap modelMap, @PathVariable String id) {
 		Role role = roleService.getOne(Integer.parseInt(id));
 		modelMap.addAttribute("role", role);
@@ -136,7 +136,7 @@ public class RoleController {
 	 * Description: ....
 	 * Version 1.0
 	 */
-	@PostMapping("/" + Constant.Role_URL.URL_UPDATE_ROLE)
+	@PostMapping(Constant.Role_URL.URL_UPDATE_ROLE)
 	public String updateRole(@ModelAttribute Role role, ModelMap modelMap) {
 		while(!val.validateRolename(role.getName()))
 		{

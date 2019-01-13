@@ -27,9 +27,8 @@ public interface MenuRepository extends JpaRepository<Menu, Integer>{
 	 * Description: retrieved menu_name and function field by any letter in name's functions from menu_role
 	 * @return
 	 */
-	@Async
-	@Query("SELECT m.menu_name, m.functions FROM menu m where m.functions like %:functions%")
-	Future<List<Menu>> findNameByFunction(@Param("functions") String functions);
+//	@Query("SELECT m.menu_name, m.functions FROM menu m where m.functions like '%:functions%'")
+//	Future<List<Menu>> findNameByFunction(@Param("functions") String functions);
 	
 	@Async
 	Future<List<Menu>> findByController(String s);

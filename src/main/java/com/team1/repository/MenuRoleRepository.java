@@ -27,17 +27,17 @@ public interface MenuRoleRepository extends JpaRepository<MenuRole, Integer> {
 	 * Description: retrieved role_id and status field by role_id from menu_role
 	 * @return
 	 */
-	@Query("SELECT ml.role_id, ml.status FROM menu_role ml where ml.role_id = :role_id")
-	MenuRole findStatusByRole(@Param("role_id") int role_id);
+	//@Query("SELECT ml.status FROM menu_role ml where ml.role_id = :role_id")
+	String findStatusByRole(@Param("role_id") int role_id);
 	
 	/**
 	 * @param menu_id
 	 * Description: retrieved menu_id and status field by menu_id from menu_role
 	 * @return
 	 */
-	@Query("SELECT ml.menu_id, ml.status FROM menu_role ml where ml.menu_id = :menu_id")
-	MenuRole findStatusByMenu(@Param("menu_id") int menu_id);
+//	@Query("SELECT ml.menu_id, ml.status FROM menu_role ml where ml.menu_id = :menu_id")
+//	MenuRole findStatusByMenu(@Param("menu_id") int menu_id);
 	
 	@Async
-	Future<List<String>> findByStatus();
+	Future<List<String>> findByStatus(String status);
 }
