@@ -12,6 +12,7 @@ package com.team1.service;
 import java.util.List;
 
 import com.team1.entity.User;
+import com.team1.entity.UserRole;
 
 /*
  * @author Sanero.
@@ -29,4 +30,5 @@ public interface UserService {
 	public void addUser(User user);
 
 	public void updateUser(User user);
+	
 }

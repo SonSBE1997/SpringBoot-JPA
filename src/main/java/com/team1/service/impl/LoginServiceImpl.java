@@ -23,19 +23,28 @@ public class LoginServiceImpl implements UserDetailsService {
 	UserRepository userRepository;
 
 	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		User user = userRepository.findByEmail(email);
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		User user = userRepository.findByEmail(username);
 		if (user == null) {
 			throw new UsernameNotFoundException("not user");
 		}
 		List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
 		
 		for (UserRole userRole : user.getUserRoles()) {
-			authorities.add(new SimpleGrantedAuthority(userRole.getRole().getName()));
-			System.out.println(userRole.getRole().getName());
+			if(userRole.getRole().getName().contains(",")){
+				String[] roles=userRole.getRole().getName().split(",");
+				for (String role : roles) {
+					authorities.add(new SimpleGrantedAuthority(role));
+					System.out.println(userRole.getRole().getName());
+				}
+			}else{
+				authorities.add(new SimpleGrantedAuthority(userRole.getRole().getName()));
+				System.out.println(userRole.getRole().getName());
+			}
+			
 			
 		}
-		UserDetails details = new org.springframework.security.core.userdetails.User(email, user.getPassword(),
+		UserDetails details = new org.springframework.security.core.userdetails.User(username, user.getPassword(),
 				authorities);
 		return details;
 	}

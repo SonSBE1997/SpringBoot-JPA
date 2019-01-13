@@ -18,47 +18,114 @@
 <body xmlns:th="http://www.thymeleaf.org">
 
 	<div class="container">
-	
-	<form th:action="@{/search}" th:object="${email}">
-	<input type="text" name="email" id="email"/>
-	<input type="submit" value="Search"/>
-	</form>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Dang Xuat" />
+		</form>
+		<p th:text="${'Welcome to ' + name}"></p>
+		<form th:action="@{/admin/search}" th:object="${email}">
+			<input type="text" name="email" id="email" /> <input type="submit"
+				value="Search" />
+		</form>
 		<h3>
-			<a th:href="@{/add-user}">Create User</a>
+			<a th:href="@{/admin/add-user}">Create User</a>
 		</h3>
 		<table class="table">
 			<thead class="table table-bordered">
 				<tr class="bg-danger">
+					<th><input type="checkbox" th:id="selectAllUsers" />SelectAllUsers</th>
 					<th>ID</th>
 					<th>Email</th>
 					<th>Mobile</th>
 					<th>FullName</th>
 					<th>Status</th>
+					<th>Role</th>
 					<th>Chon</th>
+
 				</tr>
 			</thead>
 			<tbody>
-				
-
 				<tr th:each="user : ${list}">
+					<td><input hidden="hidden" name="id" th:value="${user.userId}" />
+						<input type="checkbox" th:id="'selected'+${user.userId}"
+						class="checkboxUser" /></td>
 					<td th:text="${user.userId}"></td>
 					<td th:text="${user.email}"></td>
 					<td th:text="${user.mobile}"></td>
 					<td th:text="${user.fullName}"></td>
 					<td th:text="${user.status}"></td>
-					<td th:text="${user.password}"></td>
+					<td>
+						<span th:each="userRole: ${user.userRoles}"
+							th:text="${userRole.role.name}"></span>
+					</td>
+					<td><a th:href="@{|/admin/detail-user/${user.userId}|}"> Detail</a>|
+						<a th:href="@{|/admin/delete-user/${user.userId}|}" onclick="return confirm('Are you sure delete ?')"> Delete</a>| <a
+						th:href="@{|/admin/edit-user/${user.userId}|}"> Edit</a></td>
 
-					<td class="glyphicon glyphicon-ok-sign"><a
-						th:href="@{|/detail-user/${user.userId}|}"> Detail</a></td>
-					<td class="glyphicon glyphicon-trash"><a
-						th:href="@{|/delete-user/${user.userId}|}"> Delete</a></td>
-					<td class="glyphicon glyphicon-pencil"><a
-						th:href="@{|/edit-user/${user.userId}|}"> Edit</a></td>
 				</tr>
 			</tbody>
 		</table>
-
+<button th:id="deleteSelected" class="btn btn-primary ">Delete All</button>
 	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.delete-user').on('click', function() {
+				/*<![CDATA[*/
+				var path = /*[[@{/}]]*/'delete';
+				/*]]>*/
+
+				var id = $(this).attr('id');
+
+				$.post(path, {
+					'userId' : id
+				}, function(res) {
+					location.reload();
+				});
+			});
+
+			$('#deleteSelected').click(function() {
+				var idList = $('.checkboxUser');
+				var bookIdList = [];
+				for (var i = 0; i < idList.length; i++) {
+					if (idList[i].checked == true) {
+						bookIdList.push(idList[i]['id'])
+					}
+				}
+
+				console.log(bookIdList);
+
+				/*<![CDATA[*/
+				var path = /*[[@{/}]]*/'deleteList';
+				/*]]>*/
+
+				var x = confirm("Are you sure you want to delete?");
+				if (x) {
+					$.ajax({
+						type : 'POST',
+						url : path,
+						data : JSON.stringify(bookIdList),
+						contentType : "application/json",
+						success : function(res) {
+							console.log(res);
+							location.reload()
+						},
+						error : function(res) {
+							console.log(res);
+							location.reload();
+						}
+					});
+				}
+
+			});
+
+			$("#selectAllUsers").click(function() {
+				if ($(this).prop("checked") == true) {
+					$(".checkboxUser").prop("checked", true);
+				} else if ($(this).prop("checked") == false) {
+					$(".checkboxUser").prop("checked", false);
+				}
+			});
+		});
+	</script>
 </body>
 </html>
 

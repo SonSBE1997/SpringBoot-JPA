@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,10 +23,10 @@ import com.team1.service.UserService;
 public class UserServiceImpl implements UserService {
 	@Autowired
 	UserRepository userRepository;
-    @Autowired
-    EntityManager entityManager;
-    @Autowired
-    private BCryptPasswordEncoder encoder;
+	@PersistenceContext
+	EntityManager entityManager;
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 	@Override
 	public List<User> getAllUser() {
 
@@ -41,17 +42,21 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User findUser(int userId) {
 
-		return userRepository.getOne(userId);
+		return userRepository.findById(userId).get();
 	}
 
 	@Override
 	public void addUser(User user) {
+		User findByEmail = userRepository.findByEmail(user.getEmail());
+		if (findByEmail != null) {
+			user.setStatus("That Bại");
+			return;
+		}
 		user.setPassword(encoder.encode(user.getPassword()));
-		List<UserRole> userRoles=new ArrayList<>();
-		UserRole userRole=new UserRole();
+		List<UserRole> userRoles = new ArrayList<>();
+		UserRole userRole = new UserRole();
 		userRole.setCreatedDate(new Date());
-		Role role=new Role();
-		role.setDesc("abcd");
+		Role role = new Role();
 		userRole.setRole(role);
 		userRole.setUser(user);
 		userRoles.add(userRole);
@@ -62,8 +67,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void updateUser(User user) {
-		entityManager.merge(user);
 		
+		entityManager.merge(user);
+
+
 	}
+
+	
 
 }

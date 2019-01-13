@@ -40,7 +40,7 @@ public class User implements Serializable {
 	@Column(name = "full_name")
 	private String fullName;
 	private String mobile;
-	@OneToMany(mappedBy="user",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="user",fetch = FetchType.EAGER,cascade=CascadeType.ALL)
 	private List<UserRole> userRoles;
 	public int getUserId() {
 		return userId;
