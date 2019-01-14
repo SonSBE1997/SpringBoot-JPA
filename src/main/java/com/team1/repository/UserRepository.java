@@ -1,20 +1,23 @@
 /**
- * Project name: Team1-SpringBoot-JPA
- * Package name: com.team1.repository
+ * Project name: News
+ * Package name: dev.sanero.repository
  * File name: UserRepository.java
  * Author: Sanero.
- * Created date: Jan 11, 2019
- * Created time: 8:50:11 AM
+ * Created date: Jan 10, 2019
+ * Created time: 5:10:18 PM
  */
 
 package com.team1.repository;
 
+import com.team1.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 /*
  * @author Sanero.
- * Created date: Jan 11, 2019
- * Created time: 8:50:11 AM
- * Description: TODO - 
+ * Created date: Jan 10, 2019
+ * Created time: 5:10:18 PM
+ * Description: TODO - user repository.
  */
-public interface UserRepository {
-
+public interface UserRepository extends JpaRepository<User, Integer> {
+  public User findUserByEmailAndPassword(String email, String password);
 }

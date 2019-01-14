@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Theme Admin</title>
+<th:block th:insert="import_head.html :: import"></th:block>
+</head>
+
+<body>
+	<!-- wrapper -->
+	<div id="wrapper">
+		<!-- Navigation -->
+		<th:block th:insert="navigation.html :: navigation"></th:block>
+
+		<!-- Content -->
+		<div id="page-wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">Dashboard</h1>
+				</div>
+			</div>
+		</div>
+		<!-- /#page-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+
+	<th:block th:insert="import_script.html :: import"></th:block>
+</body>
+</html>
