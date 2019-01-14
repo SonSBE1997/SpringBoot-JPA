@@ -34,11 +34,11 @@ public class SliderService {
    * Created date: Jan 14, 2019
    * Created time: 8:55:22 AM
    * Description: TODO - .
-   * @param slider_id - slide id.
+   * @param sliderId - slide id.
    * @return
    */
-  public Slider getOne(int slider_id) {
-    return entityManager.find(Slider.class, slider_id);
+  public Slider getOne(int sliderId) {
+    return entityManager.find(Slider.class, sliderId);
   }
 
   /**
@@ -68,9 +68,9 @@ public class SliderService {
    * Created date: Jan 14, 2019
    * Created time: 8:55:36 AM
    * Description: TODO - .
-   * @param slider_id - slider.
+   * @param sliderId - slider.
    */
-  public void delete(int slider_id) {
-    sliderRepository.deleteById(slider_id);
+  public void delete(int sliderId) {
+    sliderRepository.deleteById(sliderId);
   }
 }

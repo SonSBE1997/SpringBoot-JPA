@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.team1.entity.Slider;
 import com.team1.service.SliderService;
 
-/**
+/*
  * @author ntmduyen
  * Created date: Jan 12, 2019
  * Created time: 1:31:25 AM
@@ -25,7 +25,7 @@ public class SliderController {
   @Autowired
   SliderService sliderService;
 
-  /**
+  /*
    * Author: ntmduyen
    * Created date: Jan 14, 2019
    * Created time: 9:55:40 AM
@@ -41,7 +41,7 @@ public class SliderController {
     return "slider/listSlider";
   }
 
-  /**
+  /*
    * Author: ntmduyen
    * Created date: Jan 14, 2019
    * Created time: 9:55:52 AM
@@ -57,7 +57,7 @@ public class SliderController {
     return "slider/detailSlider";
   }
 
-  /**
+  /*
    * Author: ntmduyen
    * Created date: Jan 14, 2019
    * Created time: 9:56:21 AM
@@ -72,7 +72,7 @@ public class SliderController {
     return "slider/addSlider";
   }
 
-  /**
+  /*
    * Author: ntmduyen
    * Created date: Jan 14, 2019
    * Created time: 9:56:37 AM
@@ -86,7 +86,7 @@ public class SliderController {
     return "redirect:/list-slider";
   }
 
-  /**
+  /*
    * Author: ntmduyen
    * Created date: Jan 14, 2019
    * Created time: 9:57:02 AM
@@ -100,7 +100,7 @@ public class SliderController {
     return "redirect:/list-slider";
   }
 
-  /**
+  /*
    * Author: ntmduyen
    * Created date: Jan 14, 2019
    * Created time: 9:57:20 AM
@@ -117,7 +117,7 @@ public class SliderController {
     return "slider/updateSlider";
   }
 
-  /**
+  /*
    * Author: ntmduyen
    * Created date: Jan 14, 2019
    * Created time: 9:57:34 AM

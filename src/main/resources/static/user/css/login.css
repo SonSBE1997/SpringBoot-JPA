@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.login-wrapper {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .8);
+}
+
+#loginForm {
+    min-width: 300px;
+    min-height: 350px;
+    padding: 40px 20px;
+    top: 50%;
+    left: 50%;
+    background-color: rgba(255, 255, 255, .7);
+    box-shadow: 0px 0px 1px 5px #fff;
+    border-radius: 3%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+#loginForm h2 {
+    text-align: center;
+    font-weight: bold;
+}
+
+#loginForm>div {
+    margin-top: 30px;
+}
+
+
+#loginForm .input-wrapper {
+    position: relative;
+}
+
+#loginForm .input-wrapper input{
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #000;
+    background: transparent;
+}
+
+#loginForm .input-wrapper input:focus~label, #loginForm .input-wrapper input:valid~label {
+    top: -20px;
+    color: red;
+}
+
+#loginForm .input-wrapper label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: .5s;
+    font-weight: bold;
+}
+
+#loginForm .submit-wrapper {
+    text-align: center;
+    margin-top: 15px;
+}

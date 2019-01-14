@@ -46,11 +46,6 @@ public class UserController {
   @Autowired
   UserRepository userRepository;
 
-  @GetMapping(value = "/")
-  public String login() {
-    return "index";
-  }
-
   /**
    * Author: Sanero.
    * Created date: Jan 14, 2019
