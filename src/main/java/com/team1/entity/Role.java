@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 
 @Entity
@@ -22,8 +24,8 @@ public class Role {
 	private int roleId;
 	
 	@Column(name="name", length=50, nullable=false)
-//	@NotEmpty(message="the name field can't be empty")
-//	@NotBlank(message = "the name field can't contain a space")
+	@NotEmpty(message="the name field can't be empty")
+	@NotBlank(message = "the name field can't contain a space")
 	private String name;
 	
 	@Column(name="description", length=255)

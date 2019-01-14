@@ -40,4 +40,8 @@ public class MenuService {
 	public void delete(int id) {
 		menuRepository.deleteById(id);
 	}
+	
+	public List<Menu> filterName(String name) {
+		return menuRepository.findByName(name);
+	}
 }

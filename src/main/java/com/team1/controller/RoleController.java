@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.team1.entity.Role;
 import com.team1.service.RoleService;
@@ -45,6 +46,13 @@ public class RoleController {
 	public String getAll(ModelMap modelMap) {
 		
 		List<Role> listRole = roleService.getAll();
+		modelMap.addAttribute("listRole", listRole);
+		return "listRole";
+	}
+	
+	@PostMapping(Constant.Role_URL.URL_LIST_ROLE)
+	public String filterByName(@RequestParam String name, ModelMap modelMap) {
+		List<Role> listRole = roleService.filterByName(name);
 		modelMap.addAttribute("listRole", listRole);
 		return "listRole";
 	}
@@ -96,7 +104,7 @@ public class RoleController {
 			return "addRole";
 		}
 		roleService.insert(role);
-		return "redirect:/"+Constant.Role_URL.URL_LIST_ROLE;
+		return "redirect:"+Constant.Role_URL.URL_LIST_ROLE;
 	}
 	
 	/**
@@ -110,7 +118,7 @@ public class RoleController {
 	@GetMapping(Constant.Role_URL.URL_DELETE_ROLE +"/{id}")
 	public String delete(@PathVariable String id) {
 		roleService.delete(Integer.parseInt(id));
-		return "redirect:/"+Constant.Role_URL.URL_LIST_ROLE;
+		return "redirect:"+Constant.Role_URL.URL_LIST_ROLE;
 	}
 	
 	/**
@@ -145,6 +153,6 @@ public class RoleController {
 			return "updateRole";
 		}
 		roleService.update(role);
-		return "redirect:/"+Constant.Role_URL.URL_LIST_ROLE;
+		return "redirect:"+Constant.Role_URL.URL_LIST_ROLE;
 	}
 }

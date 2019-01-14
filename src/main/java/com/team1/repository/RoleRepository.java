@@ -1,10 +1,10 @@
 package com.team1.repository;
 
 import java.util.List;
-import java.util.concurrent.Future;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.scheduling.annotation.Async;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.team1.entity.Role;
@@ -20,9 +20,6 @@ import com.team1.entity.Role;
 @Repository(value="roleRepository")
 public interface RoleRepository extends JpaRepository<Role, Integer>{
 	
-	@Async
-	Future<List<Role>> findByName(String name);
-	
-	@Async
-	Future<List<Role>> findByDesc(String desc);
+	@Query("select r from Role r where r.name like :name%")
+	List<Role> findByName(@Param("name") String name);
 }

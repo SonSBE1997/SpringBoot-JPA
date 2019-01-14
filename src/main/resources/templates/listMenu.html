@@ -5,6 +5,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<form th:action="@{/list-menu}" method="post">
+		Filter Name: <input style="width: 100px" type="text" name = "filter" /><br/>
+	</form>
 	<table border="1">
 		<tr>
 			<th>Menu_ID</th>

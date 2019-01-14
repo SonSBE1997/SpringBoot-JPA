@@ -23,8 +23,8 @@ public class Menu {
 	private int menuId;
 	
 	@NotNull
-	@Size(max=3)
-	@Column(name="menu_name", length=25)
+	@Size(max=5)
+	@Column(name="name", length=25)
 	private String name;
 	
 	@Column(name="description", length=255)
@@ -33,7 +33,7 @@ public class Menu {
 	@Column(name="controller", length=25)
 	private String controller;
 	
-	@Column(name="functions",length=50, nullable=false)
+	@Column(name="action",length=50, nullable=false)
 	private String function;
 	
 	@OneToMany(mappedBy = "menu", cascade=CascadeType.ALL)

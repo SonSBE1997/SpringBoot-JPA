@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.team1.entity.Menu;
 import com.team1.entity.MenuRole;
 import com.team1.repository.MenuRoleRepository;
 
@@ -25,10 +26,10 @@ public class MenuRoleService {
 		return menuRoleRepository.findAll();
 	}
 	
-	public MenuRole getOne(int id) {
-		return entityManager.find(MenuRole.class, id);
+	public MenuRole getOne(Menu menu) {
+		return menuRoleRepository.findByMenuId(menu);
 	}
-	
+
 	public void insert(MenuRole menuRole) {
 		entityManager.persist(menuRole);
 	}
@@ -41,5 +42,7 @@ public class MenuRoleService {
 		menuRoleRepository.deleteById(id);
 	}
 	
-	
+	public List<MenuRole> filterStatus(String stus) {
+		return menuRoleRepository.findByStatus(stus);
+	}
 }

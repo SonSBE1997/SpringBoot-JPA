@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.slf4j.Logger;
 
+import com.team1.entity.Menu;
 import com.team1.entity.MenuRole;
 import com.team1.service.MenuRoleService;
 import com.team1.service.MenuService;
@@ -61,9 +62,9 @@ public class MenuRoleController {
 	 * Description: ....
 	 * Version 1.0
 	 */
-	@GetMapping("/detail-menuRole/{id}")
-	public String getOne(@PathVariable String id, ModelMap modelMap) {
-		MenuRole menuRole = menuRoleService.getOne(Integer.parseInt(id));
+	@GetMapping("/detail-menuRole/{menu}")
+	public String getOne(@PathVariable Menu menu, ModelMap modelMap) {
+		MenuRole menuRole = menuRoleService.getOne(menu);
 		modelMap.addAttribute("menuRole", menuRole);
 		return "detailMenuRole";
 	}
@@ -118,9 +119,9 @@ public class MenuRoleController {
 	 * Description: ....
 	 * Version 1.0
 	 */
-	@GetMapping("/update-menuRole/{id}")
-	public String menuRoleUpdate(@PathVariable String id, ModelMap modelMap) {
-		MenuRole menuRole = menuRoleService.getOne(Integer.parseInt(id));
+	@GetMapping("/update-menuRole/{menu}")
+	public String menuRoleUpdate(@PathVariable Menu menu, ModelMap modelMap) {
+		MenuRole menuRole = menuRoleService.getOne(menu);
 		modelMap.addAttribute("menuRole", menuRole);
 		return "updateMenuRole";
 	}
@@ -160,9 +161,9 @@ public class MenuRoleController {
 	 * Description: ....
 	 * Version 1.0
 	 */
-	@GetMapping("/delete-menuRole/{id}")
-	public String insertMenuRole(@PathVariable String id) {
-		menuRoleService.delete(Integer.parseInt(id));
+	@GetMapping("/delete-menuRole/{menuId}")
+	public String insertMenuRole(@PathVariable String menuId) {
+		menuRoleService.delete(Integer.parseInt(menuId));
 		return "redirect:/list-menuRole";
 	}
 	

@@ -1,14 +1,14 @@
 package com.team1.repository;
 
+
 import java.util.List;
-import java.util.concurrent.Future;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Repository;
 
+import com.team1.entity.Menu;
 import com.team1.entity.MenuRole;
 
 /**
@@ -22,22 +22,12 @@ import com.team1.entity.MenuRole;
 @Repository(value="menuRoleRepository")
 public interface MenuRoleRepository extends JpaRepository<MenuRole, Integer> {
 	
-	/**
-	 * @param role_id
-	 * Description: retrieved role_id and status field by role_id from menu_role
-	 * @return
-	 */
-	//@Query("SELECT ml.status FROM menu_role ml where ml.role_id = :role_id")
-	String findStatusByRole(@Param("role_id") int role_id);
+	@Query("select ml from MenuRole ml where ml.menu = :menu")
+	MenuRole findByMenuId(@Param("menu") Menu menu);
 	
-	/**
-	 * @param menu_id
-	 * Description: retrieved menu_id and status field by menu_id from menu_role
-	 * @return
-	 */
-//	@Query("SELECT ml.menu_id, ml.status FROM menu_role ml where ml.menu_id = :menu_id")
-//	MenuRole findStatusByMenu(@Param("menu_id") int menu_id);
+	@Query("select ml from MenuRole ml where ml.status like :stus%")
+	List<MenuRole> findByStatus(@Param("stus") String stus);
 	
-	@Async
-	Future<List<String>> findByStatus(String status);
+//	@Query("select ml from MenuRole ml where ml.id = :id")
+//	MenuRole findById(@Param("id") int id);
 }

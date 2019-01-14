@@ -1,12 +1,10 @@
 package com.team1.repository;
 
 import java.util.List;
-import java.util.concurrent.Future;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Repository;
 
 import com.team1.entity.Menu;
@@ -22,20 +20,6 @@ import com.team1.entity.Menu;
 @Repository(value="menuRepository")
 public interface MenuRepository extends JpaRepository<Menu, Integer>{
 	
-	/**
-	 * @param functions
-	 * Description: retrieved menu_name and function field by any letter in name's functions from menu_role
-	 * @return
-	 */
-//	@Query("SELECT m.menu_name, m.functions FROM menu m where m.functions like '%:functions%'")
-//	Future<List<Menu>> findNameByFunction(@Param("functions") String functions);
-	
-	@Async
-	Future<List<Menu>> findByController(String s);
-	
-	@Async
-	Future<List<String>> findByName(String name);
-	
-	@Async
-    Future<List<Menu>> findByFunction(String function);
+	@Query("select m from Menu m where m.name like :name%")
+	List<Menu> findByName(@Param("name") String name);
 }

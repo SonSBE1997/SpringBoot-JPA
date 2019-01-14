@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -53,6 +54,13 @@ public class MenuController implements WebMvcConfigurer{
 	@GetMapping(Constant.Menu_URL.URL_LIST_MENU)
 	public String getAll(ModelMap modelMap) {
 		List<Menu> listMenu = menuService.getAll();
+		modelMap.addAttribute("listMenu", listMenu);
+		return "listMenu";
+	}
+	
+	@PostMapping(Constant.Menu_URL.URL_LIST_MENU)
+	public String filterName(@RequestParam String filter, ModelMap modelMap) {
+		List<Menu> listMenu = menuService.filterName(filter);
 		modelMap.addAttribute("listMenu", listMenu);
 		return "listMenu";
 	}
@@ -101,7 +109,7 @@ public class MenuController implements WebMvcConfigurer{
 			return "addMenu";
 		}
 		menuService.insert(menu);
-		return "redirect:/" + Constant.Menu_URL.URL_LIST_MENU;
+		return "redirect:" + Constant.Menu_URL.URL_LIST_MENU;
 	}
 	
 	/**
@@ -130,7 +138,7 @@ public class MenuController implements WebMvcConfigurer{
 	@PostMapping(Constant.Menu_URL.URL_UPDATE_MENU)
 	public String updateMenu(@ModelAttribute Menu menu) {
 		menuService.update(menu);
-		return "redirect:/" + Constant.Menu_URL.URL_LIST_MENU;
+		return "redirect:" + Constant.Menu_URL.URL_LIST_MENU;
 	}
 	
 	/**
@@ -144,7 +152,6 @@ public class MenuController implements WebMvcConfigurer{
 	@GetMapping(Constant.Menu_URL.URL_DELETE_MENU + "/{id}")
 	public String deleteMenu(@PathVariable String id) {
 		menuService.delete(Integer.parseInt(id));
-		return "redirect:/" + Constant.Menu_URL.URL_LIST_MENU;
+		return "redirect:" + Constant.Menu_URL.URL_LIST_MENU;
 	}
-	
 }
