@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
 <title>List news</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<th:block th:insert="/import_head.html :: import"></th:block>
 <style type="text/css">
 .search-area {
 	display: inline-block;
@@ -13,69 +10,78 @@
 </style>
 </head>
 <body>
-	<h2 class="text-center text-danger">List news</h2>
-	<div>
-		<div class="col-md-2 col-sm-2 col-xs-12 form-group">
-			<a class="btn btn-primary" th:href="@{/admin/news/add-new}">Add
-				new</a>
-		</div>
+	<!-- wrapper -->
+	<div id="wrapper">
+		<!-- Navigation -->
+		<th:block th:insert="navigation.html :: navigation"></th:block>
 
-		<div
-			class="col-md-10 col-sm-10 col-xs-12 form-group pull-right top_search">
-			<div class="input-group">
-				<input type="text" class="form-control" name="searchString"
-					placeholder="Search"> <span class="input-group-btn">
-					<button type="submit" class="btn btn-default">Search</button>
-				</span>
+		<!-- Content -->
+		<div id="page-wrapper">
+			<div class="row">
+				<h2 class="text-center text-danger">List news</h2>
+				<div>
+					<div class="col-md-2 col-sm-2 col-xs-12 form-group">
+						<a class="btn btn-primary" th:href="@{/admin/news/add-new}">Add
+							new</a>
+					</div>
+
+					<div
+						class="col-md-10 col-sm-10 col-xs-12 form-group pull-right top_search">
+						<div class="input-group">
+							<input type="text" class="form-control" name="searchString"
+								placeholder="Search"> <span class="input-group-btn">
+								<button type="submit" class="btn btn-default">Search</button>
+							</span>
+						</div>
+					</div>
+				</div>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th class="text-center">Title</th>
+							<th class="text-center">Description</th>
+							<th class="text-center">Is Hot</th>
+							<th class="text-center">User</th>
+							<th class="text-center">Status</th>
+							<th class="text-center">Approver</th>
+							<th class="text-center">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<th:block th:each="news : ${listNews}">
+							<tr th:id="'row' + ${news.newsId}">
+								<td th:text="${news.title}"></td>
+								<td th:text="${news.description}"></td>
+								<td><a th:text="${news.hot}? 'hot news' : 'normal'"
+									th:id="hot + ${news.newsId}" th:attr="data-id=${news.newsId}"
+									class="btn-hot"></a></td>
+								<td th:text="${news.user.fullName}"></td>
+								<td><a th:text="${news.status}"
+									th:id="status + ${news.newsId}"
+									th:attr="data-id=${news.newsId}" class="btn-status"></a></td>
+								<td
+									th:text="${news.approver!= null}? ${news.approver.fullName} : ''"
+									th:id="approver + ${news.newsId}"></td>
+								<td style="width: 20%" class="text-center"><a
+									class="btn btn-info"
+									th:href="@{/admin/news/detail/} + ${news.newsId}">Detail</a> <a
+									class="btn btn-warning"
+									th:href="@{/admin/news/edit/} + ${news.newsId}">Edit</a> <a
+									class="btn btn-danger btn-delete"
+									th:attr="data-id=${news.newsId}">Delete</a></td>
+							</tr>
+						</th:block>
+					</tbody>
+				</table>
 			</div>
 		</div>
+		<!-- /#page-wrapper -->
+
 	</div>
-	<table class="table table-striped table-hover">
-		<thead>
-			<tr>
-				<th class="text-center">Title</th>
-				<th class="text-center">Description</th>
-				<th class="text-center">Is Hot</th>
-				<th class="text-center">User</th>
-				<th class="text-center">Status</th>
-				<th class="text-center">Approver</th>
-				<th class="text-center">Action</th>
-			</tr>
-		</thead>
-		<tbody>
-			<th:block th:each="news : ${listNews}">
-				<tr th:id="'row' + ${news.newsId}">
-					<td th:text="${news.title}"></td>
-					<td th:text="${news.description}"></td>
-					<td><a th:text="${news.hot}? 'hot news' : 'normal'"
-						th:id="hot + ${news.newsId}" th:attr="data-id=${news.newsId}"
-						class="btn-hot"></a></td>
-					<td th:text="${news.user.fullName}"></td>
-					<td><a th:text="${news.status}"
-						th:id="status + ${news.newsId}" th:attr="data-id=${news.newsId}"
-						class="btn-status"></a></td>
-					<td
-						th:text="${news.approver!= null}? ${news.approver.fullName} : ''"
-						th:id="approver + ${news.newsId}"></td>
-					<td style="width: 20%" class="text-center"><a
-						class="btn btn-info"
-						th:href="@{/admin/news/detail/} + ${news.newsId}">Detail</a> <a
-						class="btn btn-warning"
-						th:href="@{/admin/news/edit/} + ${news.newsId}">Edit</a> <a
-						class="btn btn-danger"
-						th:href="@{/admin/news/delete/} + ${news.newsId}">Delete</a></td>
-				</tr>
-			</th:block>
-		</tbody>
-	</table>
-	<!-- jQuery library -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- /#wrapper -->
 
-	<!-- Latest compiled JavaScript -->
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+	<!-- Import Footer -->
+	<th:block th:insert="/import_script.html :: import"></th:block>
 	<script type="text/javascript">
 		$('.btn-hot').off('click').on('click', function(e) {
 			e.preventDefault();
@@ -94,24 +100,54 @@
 			});
 		});
 
-		$('.btn-status').off('click').on('click', function(e) {
+		$('.btn-status')
+				.off('click')
+				.on(
+						'click',
+						function(e) {
+							e.preventDefault();
+							var btn = $(this);
+							var id = btn.data('id');
+							var text = $(this).text();
+							if (text == "chua phe duyet") {
+								var result = confirm("Ban co chac phe duyet ban tin nay khong?");
+								if (result) {
+									$.ajax({
+										url : "/admin/news/approve",
+										data : {
+											id : id
+										},
+										type : "POST",
+										success : function(response) {
+											console.log(response);
+											$('#approver' + id).text(response);
+											$('#status' + id).text(
+													"da phe duyet");
+										}
+									});
+								}
+							}
+						});
+
+		$('.btn-delete').off('click').on('click', function(e) {
 			e.preventDefault();
 			var btn = $(this);
 			var id = btn.data('id');
-			var text = $(this).text();
-			if (text == "chua phe duyet")
+			var result = confirm("Ban co chac xoa ban tin nay khong?");
+			if (result) {
 				$.ajax({
-					url : "/admin/news/approve",
+					url : "/admin/news/delete",
 					data : {
 						id : id
 					},
 					type : "POST",
 					success : function(response) {
-						console.log(response);
-						$('#approver' + id).text(response);
-						$('#status' + id).text("da phe duyet");
+						if (response == "success") {
+							$('#row' + id).remove();
+						}
 					}
 				});
+			}
 		});
 	</script>
 </body>

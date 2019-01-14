@@ -16,5 +16,13 @@ package com.team1.utils;
  * Description: TODO - interface for constant purpose.
  */
 public interface Constant {
-
+  /*
+   * @author Sanero.
+   * Created date: Jan 14, 2019
+   * Created time: 2:17:43 PM
+   * Description: TODO - constant for news.
+   */
+  interface News {
+    public static final int PAGE_SIZE = 1;
+  }
 }

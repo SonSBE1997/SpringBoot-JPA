@@ -3,9 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Add news</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<th:block th:insert="/import_head.html :: import"></th:block>
 <style>
 label.title {
 	margin-top: 0.5%;
@@ -17,76 +15,99 @@ label.title {
 </style>
 </head>
 <body>
-	<h2 class="text-center text-danger">Add news</h2>
-	<div class="align-center">
-		<form th:action="@{/admin/news/edit}" method="post"
-			th:object="${news}">
-			<input name="newsId" class="hidden" th:value="${news.newsId}"
-				type="text" /> <input name="userId" class="hidden"
-				th:value="${news.user.userId}" type="text" /> <input
-				name="approverId" class="hidden"
-				th:value="${news.approver!= null}? ${news.approver.userId} : ''"
-				type="text" /> <input name="createdAt" class="hidden"
-				th:value="${news.createdAt}" type="date" />
-			<th:block th:if="${news.approvedAt != null}">
-				<input name="approvedAt" class="hidden"
-					th:value="${news.approvedAt}" type="date" />
-			</th:block>
-			<div class="form-group">
-				<label class="col-sm-2 control-label title">URL</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control mb5" name="url"
-						placeholder="url" th:value="${news.url}" />
+	<!-- wrapper -->
+	<div id="wrapper">
+		<!-- Navigation -->
+		<th:block th:insert="navigation.html :: navigation"></th:block>
+
+		<!-- Content -->
+		<div id="page-wrapper">
+			<div class="row">
+				<h2 class="text-center text-danger">Add news</h2>
+				<div class="align-center">
+					<form th:action="@{/admin/news/edit}" method="post"
+						th:object="${news}">
+						<input name="newsId" class="hidden" th:value="${news.newsId}"
+							type="text" /> <input name="userId" class="hidden"
+							th:value="${news.user.userId}" type="text" /> <input
+							name="approverId" class="hidden"
+							th:value="${news.approver!= null}? ${news.approver.userId} : ''"
+							type="text" /> <input name="createdAt" class="hidden"
+							th:value="${news.createdAt}" type="date" />
+						<th:block th:if="${news.approvedAt != null}">
+							<input name="approvedAt" class="hidden"
+								th:value="${news.approvedAt}" type="date" />
+						</th:block>
+						<div class="form-group">
+							<label class="col-sm-2 control-label title">URL</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control mb5" name="url" th:field="*{url}"
+									placeholder="url" th:value="${news.url}" />
+								<p style="color: red" class="mb5">
+									<span th:if="${#fields.hasErrors('url')}" th:errors="*{url}">..</span>
+								</p>
+							</div>
+						</div>
+			
+						<div class="form-group">
+							<label class="col-sm-2 control-label title">Title</label>
+							<div class="col-sm-10">
+								<textarea class="form-control" rows="3" name="title" th:field="*{title}"
+									th:text="${news.title}"></textarea>
+								<p style="color: red" class="mb5">
+									<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">..</span>
+								</p>
+							</div>
+						</div>
+			
+						<div class="form-group">
+							<label class="col-sm-2 control-label title">Description</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" name="description" th:field="*{description}"
+									placeholder="description" th:value="${news.description}" />
+								<p style="color: red" class="mb5">
+									<span th:if="${#fields.hasErrors('description')}"
+										th:errors="*{description}">..</span>
+								</p>
+							</div>
+						</div>
+			
+						<div class="form-group">
+							<label class="col-sm-2 control-label title">Content</label>
+							<div class="col-sm-10">
+								<textarea class="form-control" rows="10" name="content" th:field="*{content}"
+									th:text="${news.content}"></textarea>
+								<p style="color: red" class="mb5">
+									<span th:if="${#fields.hasErrors('content')}"
+										th:errors="*{content}">..</span>
+								</p>
+							</div>
+						</div>
+			
+						<div class="form-group">
+							<label class="col-sm-2 control-label title">Is Hot</label>
+							<div class="col-sm-10">
+								<input type="checkbox" name="hot" th:checked="${news.hot}" />
+							</div>
+						</div>
+			
+						<div class="clearfix"></div>
+			
+						<div class="form-group">
+							<div class="col-md-offset-2 col-md-10">
+								<a th:href="@{/admin/news}" class="btn btn-default">Cancel</a> <input
+									type="submit" value="Update" class="btn btn-primary" />
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
+		</div>
+		<!-- /#page-wrapper -->
 
-			<div class="form-group">
-				<label class="col-sm-2 control-label title">Title</label>
-				<div class="col-sm-10">
-					<textarea class="form-control mb5 " rows="3" name="title"
-						th:text="${news.title}"></textarea>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label class="col-sm-2 control-label title">Description</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control mb5 " name="description"
-						placeholder="description" th:value="${news.description}" />
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label class="col-sm-2 control-label title">Content</label>
-				<div class="col-sm-10">
-					<textarea class="form-control mb5 " rows="10" name="content"
-						th:text="${news.content}"></textarea>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label class="col-sm-2 control-label title">Is Hot</label>
-				<div class="col-sm-10">
-					<input type="checkbox" name="hot" th:checked="${news.hot}" />
-				</div>
-			</div>
-
-			<div class="clearfix"></div>
-
-			<div class="form-group">
-				<div class="col-md-offset-2 col-md-10">
-					<a th:href="@{/admin/news}" class="btn btn-default">Cancel</a> <input
-						type="submit" value="Update" class="btn btn-primary" />
-				</div>
-			</div>
-		</form>
 	</div>
-	<!-- jQuery library -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-	<!-- Latest compiled JavaScript -->
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- /#wrapper -->
+	
+	<th:block th:insert="/import_script.html :: import"></th:block>
 </body>
 </html>
