@@ -244,4 +244,26 @@ public class NewsController {
     LOGGER.warn("approve news has key: " + id);
     return user.getFullName();
   }
+
+  /**
+   * Author: Sanero.
+   * Created date: Jan 14, 2019
+   * Created time: 5:09:53 PM
+   * Description: TODO - .
+   * @param page - current page
+   * @return
+   */
+  @GetMapping("/filter/{filter}/{page}")
+  public String filterByPaging(@PathVariable int page,
+      @PathVariable String filter, ModelMap model) {
+    int pageSize = Constant.News.PAGE_SIZE;
+    List<News> listNews = newsService.filterByPaging(page, pageSize, filter);
+    model.addAttribute("listNews", listNews);
+    model.addAttribute("current", page);
+    long total = newsService.filterCount(filter);
+    int maxPage = (int) Math.ceil(((double) total) / pageSize);
+    model.addAttribute("total", maxPage);
+    model.addAttribute("searchStr", filter);
+    return "news/showpaging";
+  }
 }

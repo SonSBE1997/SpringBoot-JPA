@@ -11,6 +11,8 @@ package com.team1.service;
 
 import com.team1.entity.News;
 import com.team1.repository.NewsRepository;
+import com.team1.utils.Constant;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -153,5 +155,58 @@ public class NewsService {
    */
   public void deleteById(int id) {
     newsRepository.deleteById(id);
+  }
+
+  /**
+   * Author: Sanero.
+   * Created date: Jan 14, 2019
+   * Created time: 4:59:38 PM
+   * Description: TODO - .
+   * @param page - current page.
+   * @param pageSize - page size.
+   * @param charSequence - char sequence filter.
+   * @return
+   */
+  @SuppressWarnings("unchecked")
+  public List<News> filterByPaging(int page, int pageSize,
+      String charSequence) {
+    charSequence = "%" + charSequence + "%";
+    Query query = entityManager.createQuery(Constant.News.QUERY_FILTER);
+    query.setParameter("filter1", charSequence);
+    query.setParameter("filter2", charSequence);
+    query.setParameter("filter3", charSequence);
+    query.setParameter("filter4", charSequence);
+    query.setParameter("filter5", charSequence);
+    query.setFirstResult((page - 1) * pageSize);
+    query.setMaxResults(pageSize);
+    List<News> listNews = new ArrayList<News>();
+    listNews = query.getResultList();
+    return listNews;
+  }
+
+  /**
+   * Author: Sanero.
+   * Created date: Jan 14, 2019
+   * Created time: 5:05:27 PM
+   * Description: TODO - .
+   * @param charSequence - char sequence to filter.
+   * @return
+   */
+  public long filterCount(String charSequence) {
+    charSequence = "%" + charSequence + "%";
+    Query query = entityManager
+        .createQuery("select count(news_id) " + Constant.News.QUERY_FILTER);
+    query.setParameter("filter1", charSequence);
+    query.setParameter("filter2", charSequence);
+    query.setParameter("filter3", charSequence);
+    query.setParameter("filter4", charSequence);
+    query.setParameter("filter5", charSequence);
+    long result = 0;
+    try {
+      result = (Long) query.getSingleResult();
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+    return result;
   }
 }

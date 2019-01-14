@@ -29,8 +29,9 @@
 						class="col-md-10 col-sm-10 col-xs-12 form-group pull-right top_search">
 						<div class="input-group">
 							<input type="text" class="form-control" name="searchString"
-								placeholder="Search"> <span class="input-group-btn">
-								<button type="submit" class="btn btn-default">Search</button>
+								th:value="${searchStr}" id="iSearch" placeholder="Search">
+							<span class="input-group-btn">
+								<button id="btn-search" type="submit" class="btn btn-default">Search</button>
 							</span>
 						</div>
 					</div>
@@ -73,13 +74,21 @@
 						</th:block>
 					</tbody>
 				</table>
-				<ul class="pagination" th:each="i : ${#numbers.sequence(1,total)}">
-					<li th:class="${i==current}?'active':''"><a th:href="@{${i}}"
-						th:text="${i}"></a></li>
-				</ul>
-				<div class="text-center">
-					<p th:text="${current} + ' / ' + ${total}"></p>
-				</div>
+				<th:block th:if="${total >= current}">
+					<ul class="pagination" th:each="i : ${#numbers.sequence(1,total)}">
+						<li th:class="${i==current}?'active':''"><a th:href="@{${i}}"
+							th:text="${i}"></a></li>
+					</ul>
+					<div class="text-center">
+						<p th:text="${current} + ' / ' + ${total}"></p>
+					</div>
+				</th:block>
+				<th:block th:unless="${total >= current}">
+					<div class="text-center">
+						<p>No entity</p>
+						<p th:text="'0 / ' + ${total}"></p>
+					</div>
+				</th:block>
 			</div>
 		</div>
 		<!-- /#page-wrapper -->
@@ -155,6 +164,16 @@
 					}
 				});
 			}
+		});
+
+		$('#btn-search').off('click').on('click', function(e) {
+			e.preventDefault();
+			var searchStr = $('#iSearch').val();
+			if (searchStr == "") {
+				window.location.href = "/admin/news/1";
+				return;
+			}
+			window.location.href = "/admin/news/filter/" + searchStr + "/1";
 		});
 	</script>
 </body>

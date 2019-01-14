@@ -24,5 +24,8 @@ public interface Constant {
    */
   interface News {
     public static final int PAGE_SIZE = 1;
+    public static final String QUERY_FILTER = "from news where title like :filter1 "
+        + "or url like :filter2 or content like :filter3 "
+        + "or description like :filter4 or status  like :filter5";
   }
 }

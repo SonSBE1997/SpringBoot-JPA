@@ -209,8 +209,21 @@
 						<li><a th:href="@{/list-role}">Show all</a></li>
 						<li><a th:href="@{/add-role}">Add new</a></li>
 					</ul> <!-- /.nav-second-level --></li>
-				<li><a th:href="@{/menu}"><i class="fa fa-files-o fa-fw"></i> Menu</a></li>
+				<li><a th:href="@{/menu}"><i class="fa fa-files-o fa-fw"></i>
+						Menu</a></li>
 				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>User<span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a th:href="@{/admin/list-user}">Show all</a></li>
+						<li><a th:href="@{/admin/add-user}">Add new</a></li>
+					</ul> <!-- /.nav-second-level --></li>
+				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>User Role<span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a th:href="@{/admin/list-user}">Show all</a></li>
+						<li><a th:href="@{/admin/add-user}">Add new</a></li>
+					</ul> <!-- /.nav-second-level --></li>
+				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>Menu Role<span
 						class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a th:href="@{/admin/list-user}">Show all</a></li>
