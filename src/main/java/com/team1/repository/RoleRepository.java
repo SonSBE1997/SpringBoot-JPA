@@ -13,6 +13,6 @@ import com.team1.entity.Role;
  */
 
 @Repository
-public interface RoleRepository extends JpaRepository<Role, Integer>{
+public interface RoleRepository extends JpaRepository<Role, Integer> {
 
 }
