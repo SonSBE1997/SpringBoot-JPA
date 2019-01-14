@@ -26,8 +26,8 @@ public class LoginServiceImpl implements UserDetailsService {
 	@Autowired
 	UserService userService;
 	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		User user = userRepository.findByEmail(email);
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		User user = userRepository.findByEmail(username);
 		if (user == null) {
 			throw new UsernameNotFoundException("not user");
 		}
@@ -41,7 +41,7 @@ public class LoginServiceImpl implements UserDetailsService {
 	            }
 	        }
 	 
-	        UserDetails details = new org.springframework.security.core.userdetails.User(email, user.getPassword(),
+	        UserDetails details = new org.springframework.security.core.userdetails.User(username, user.getPassword(),
 					authorities);
 	 
 	        return details;

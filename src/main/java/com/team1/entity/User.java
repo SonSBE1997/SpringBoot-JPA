@@ -20,6 +20,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 /*
  * @author Sanero.
@@ -36,12 +37,14 @@ public class User implements Serializable {
 	private int userId;
 	private String email;
 	private String password;
+	@Column(name = "status")
 	private String status;
 	@Column(name = "full_name")
 	private String fullName;
 	private String mobile;
-	@OneToMany(mappedBy="user",fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<UserRole> userRoles;
+
 	public int getUserId() {
 		return userId;
 	}
@@ -97,5 +100,5 @@ public class User implements Serializable {
 	public void setUserRoles(List<UserRole> userRoles) {
 		this.userRoles = userRoles;
 	}
-   
+
 }

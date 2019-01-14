@@ -106,11 +106,13 @@ public class UserController {
 		if (bindingResult.hasErrors()) {
 			return "user/addUser";
 		}
-		user.setStatus("Thanh cong");
+		
 		userService.addUser(user);
-		if (user.getStatus().equals("That Bại")) {
-			model.addAttribute("Msg", "Email đã tồn tại");
-			return "user/addUser";
+		if (user.getStatus() != null) {
+			if (user.getStatus().equals("That Bại")) {
+				model.addAttribute("Msg", "Email đã tồn tại");
+				return "user/addUser";
+			}
 		}
 		return "redirect:/admin/list-user";
 
@@ -118,40 +120,39 @@ public class UserController {
 
 	@GetMapping(value = "/admin/edit-user/{id}")
 	public String editUser(ModelMap model, @PathVariable("id") String id) {
-
 		model.addAttribute("user", userService.findUser(Integer.parseInt(id)));
-		List<Role> roles=new ArrayList<Role>();
-		Role role=new Role();
-		role.setName("ROLE_USER");
-		role.setName("ROLE_ADMIN");
-		roles.add(role);
-		model.addAttribute("list", roles);
+		List<String> role=userService.getRoleName(Integer.parseInt(id));
+		String join = String.join(",",role );
+		System.out.println(join);
+		List<String> roles = new ArrayList<String>();
+		roles.add("ROLE_ADMIN");
+		roles.add("ROLE_USER");
+		roles.add("ROLE_DELETE");
+		model.addAttribute("list",roles);
+		model.addAttribute("join",join);
 		return "user/editUser";
 	}
 
 	@PostMapping(value = "/admin/edit-user")
 	public String editUser(ModelMap model, @ModelAttribute("user") User user, BindingResult bindingResult,
-			@RequestParam(value = "userRoles", required = false) List<String> lstRole) {
+			@RequestParam(value = "role", required = false) List<String> lstRole) {
 		User findUser = userService.findUser(user.getUserId());
 		findUser.setEmail(user.getEmail());
 		findUser.setFullName(user.getFullName());
 		findUser.setMobile(user.getMobile());
 		findUser.setPassword(user.getPassword());
-		/*
-		 * List<UserRole> userRoles = userService.getUserRoleName(user.getUserId()); for
-		 * (UserRole userRole : userRoles) { userRole.getRole().setName("");
-		 * 
-		 * }
-		 */
-		
-		List<UserRole> lst = new ArrayList<UserRole>();
-		UserRole ur = new UserRole();
-		Role r = new Role();
+		List<UserRole> lst = findUser.getUserRoles();
+		UserRole ur = lst.get(0);
+		Role r = ur.getRole();
 		r.setName(String.join(",", lstRole).trim());
 		ur.setRole(r);
 		ur.setUser(findUser);
 		lst.add(ur);
-		findUser.getUserRoles().addAll(lst);
+		findUser.setUserRoles(lst);
+		userValidator.validate(user, bindingResult);
+		if (bindingResult.hasErrors()) {
+			return "user/addUser";
+		}
 		userService.updateUser(findUser);
 		return "redirect:/admin/list-user";
 

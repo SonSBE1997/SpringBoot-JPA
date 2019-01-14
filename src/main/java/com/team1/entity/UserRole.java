@@ -1,6 +1,5 @@
 package com.team1.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -14,22 +13,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "User_Role")
-@IdClass(UserRole.class)
-public class UserRole implements Serializable {
+@Table(name = "user_role")
+@IdClass(FkIdUser.class)
+public class UserRole {
 
-	private static final long serialVersionUID = 1L;
 	private String status;
 	@Column(name="created_at")
 	private Date createdDate;
 	@Column(name="updated_at")
 	private Date updatedDate;
 	@Id
-	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL,optional=false)
 	@JoinColumn(name = "role_id")
 	private Role role;
 	@Id
-	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL,optional=false)
 	@JoinColumn(name = "user_id")
 	private User user;
 
