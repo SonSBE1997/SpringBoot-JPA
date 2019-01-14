@@ -37,7 +37,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Created time: 8:49:43 AM
  * Description: TODO - 
  */
-
 @Controller
 public class UserController {
   @Autowired

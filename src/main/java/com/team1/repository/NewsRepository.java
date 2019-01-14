@@ -19,5 +19,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Description: TODO - news repository
  */
 public interface NewsRepository extends JpaRepository<News, Integer> {
-
 }

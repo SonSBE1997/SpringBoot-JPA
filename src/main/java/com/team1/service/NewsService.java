@@ -11,7 +11,6 @@ package com.team1.service;
 
 import com.team1.entity.News;
 import com.team1.repository.NewsRepository;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +18,7 @@ import java.util.Optional;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
@@ -67,7 +67,7 @@ public class NewsService {
     listNews = query.getResultList();
     return listNews;
   }
-  
+
   /**
    * Author: Sanero.
    * Created date: Jan 14, 2019

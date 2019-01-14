@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body xmlns:th="http://www.thymeleaf.org">
+<!-- 	<h3 th:text="${role.roleId}"></h3><br/> -->
+<!-- 	<h3 th:text="${role.name}"></h3><br/> -->
+<!-- 	<h3 th:text="${role.desc}"></h3><br/> -->
+	
+	<table border="1">
+		<tr>
+			<td>Id: </td>
+			<td th:text="${slider.slider_id}"></td>
+		</tr>
+		<tr>
+			<td>Name: </td>
+			<td th:text="${slider.name}"></td>
+		</tr>
+		<tr>
+			<td>Content: </td>
+			<td th:text="${slider.content}"></td>
+		</tr>
+		<tr>
+			<td>UrlIMG: </td>
+			<td th:text="${slider.imgUrl}"></td>
+		</tr>
+	</table>
+</body>
+</html>

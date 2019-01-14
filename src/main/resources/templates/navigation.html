@@ -207,8 +207,12 @@
 						<li><a th:href="@{/admin/news/1}">Show all</a></li>
 						<li><a th:href="@{/admin/news/add-new}">Add new</a></li>
 					</ul> <!-- /.nav-second-level --></li>
-				<li><a href="tables.html"><i class="fa fa-table fa-fw"></i>
-						Tables</a></li>
+				<li><a th:href="@{/admin/news/1}"><i
+						class="fa fa-bar-chart-o fa-fw"></i> Slider<span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a th:href="@{/admin/list-slider}">Show all</a></li>
+						<li><a th:href="@{/admin/add-slider}">Add new</a></li>
+					</ul> <!-- /.nav-second-level --></li>
 				<li><a href="forms.html"><i class="fa fa-edit fa-fw"></i>
 						Forms</a></li>
 				<li><a href="#"><i class="fa fa-wrench fa-fw"></i> UI
