@@ -2,6 +2,8 @@ package com.team1.service;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +22,8 @@ import com.team1.repository.MenuRepository;
 public class MenuService {
   @Autowired
   MenuRepository menuResposiory;
-
+  @Autowired
+  private EntityManager entityManager;
   /**
    * Author: Hung.
    * Created date: Jan 11, 2019
@@ -94,16 +97,20 @@ public class MenuService {
    * @param menu
    * @return
    */
-  public boolean updateMenu(Menu menu) {
-    boolean isSuccess = false;
-
-    Menu updatedMenu = menuResposiory.save(menu);
-
-    if (updatedMenu != null) {
-      isSuccess = true;
-    } else {
-      isSuccess = false;
-    }
-    return isSuccess;
+  public void updateMenu(Menu menu) {
+    entityManager.merge(menu);
+  }
+  
+  
+ /**
+ * Author: Hung.
+ * Created date: Jan 14, 2019
+ * Created time: 11:22:04 AM
+ * Description: TODO - .
+ * @param Name
+ * @return
+ */
+public List<Menu> findNameContaining(String Name){
+    return  menuResposiory.findByNameContaining(Name);
   }
 }

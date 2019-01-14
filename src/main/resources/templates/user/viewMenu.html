@@ -9,8 +9,12 @@
 <!------ Include the above in your HEAD tag ---------->
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 <head>
+<style>
+.error {
+	color: red;
+}
+</style>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
@@ -18,7 +22,7 @@
 	<div class="container">
 		<div class="col-md-5">
 			<div class="form-area">
-				<form role="form"  th:action="@{/add-menu}"  th:object="${menu}" method="post">
+				<form role="form"  th:action="@{/menu/add}"  th:object="${menu}" method="post">
 					<br style="clear: both">
 					<h3 style="margin-bottom: 25px; text-align: center;">Add Menu</h3>
 					<div class="form-group">
@@ -35,12 +39,20 @@
 					</div>
 					
 					<div class="form-group">
-						<textarea class="form-control" type="textarea" id="message" th:field="*{description}"
+						<textarea class="form-control" type="textarea" id="desc" th:field="*{description}"
 							placeholder="Description" maxlength="140" rows="7"></textarea>
 					</div>
-					<button type="submit" class="btn btn-primary pull-right">Create Menu</button>
+					<button type="submit" id="addBtn" class="btn btn-primary pull-right">Create Menu</button>
+					<b class="error"  id="note"></b>
 				</form>
 			</div>
+			<form th:action="@{/menu}" th:object="${menu}" method="post" >
+				<div class="form-group" style="float: right;margin-right: -600px">
+					  <i class="fas fa-search" aria-hidden="true"></i>
+					  	<input style="width:350px " class="form-control " th:field="*{name}" type="text" placeholder="Search" aria-label="Search">
+				</div>
+				<button type="submit" style="margin-right: -680px" class="btn btn-primary pull-right">Search</button>
+			</form>
 		</div>
 	</div>
 
@@ -60,10 +72,9 @@
 							<th>Edit</th>
 							<th>Delete</th>
 						</tr>
-						<tbody th:with="total=0">
+						<tbody>
 							<tr th:each="Menu : ${list}">
-								<div th:with="total=${total +1}"></div>
-								<td th:utext="${total}"></td>
+								<td th:utext="${Menu.menu_id}"></td>
 								<td th:utext="${Menu.name}"></td>
 								<td th:utext="${Menu.description}"></td>
 								<td th:utext="${Menu.controller}"></td>
@@ -71,71 +82,69 @@
 								<td><p data-placement="top" data-toggle="tooltip"
 										title="Edit">
 										<button class="btn btn-primary btn-xs" data-title="Edit"
-											data-toggle="modal" data-target="#edit">
+											data-toggle="modal" th:data-target="@{|#edit${Menu.menu_id}|}">
 											<span class="glyphicon glyphicon-pencil"></span>
 										</button>
 									</p></td>
 								<td><p data-placement="top" data-toggle="tooltip"
 										title="Delete">
 										<button class="btn btn-danger btn-xs" data-title="Delete"
-											data-toggle="modal" data-target="#delete">
+											data-toggle="modal" th:data-target="@{|#delete${Menu.menu_id}|}">
 											<span class="glyphicon glyphicon-trash"></span>
 										</button>
 									</p></td>
 
-
-								<div class="modal fade" id="edit" tabindex="-1"
+								<!-- .modal-edit -->
+								<div class="modal fade" th:id="@{|edit${Menu.menu_id}|}" tabindex="-1"
 									role="dialog" aria-labelledby="edit" aria-hidden="true">
 									<div class="modal-dialog">
 										<div class="modal-content">
 											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal"
-													aria-hidden="true">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 													<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 												</button>
 												<h4 class="modal-title custom_align" id="Heading">Edit
 													Your Detail</h4>
 											</div>
-											<form action="#" method="post">
+											<form  th:action="@{/menu/edit}"  method="post">
 												<div class="modal-body">
-													<input name="id" type="text" th:value="${Menu.menu_id}"
-													hidden>
+													<input name="id" type="text"  required th:value="${Menu.menu_id}" hidden>
 													<div class="form-group">
-														Name<input class="form-control " name="name" id="iname"
+														Name<input class="form-control " name="name" id="iname" required
 															type="text" th:value="${Menu.name}">
 													</div>
 													<div class="form-group">
-														Desc <input class="form-control " name="desc" id="iDesc"
+														Desc <input class="form-control "  id="iDesc" name="desc" required
 															type="text" th:value="${Menu.description}">
 													</div>
 													<div class="form-group">
-														Controller<input class="form-control " name="controller"
+														Controller<input class="form-control "  name="controll" required
 															id="icontroller" type="text"
 															th:value="${Menu.controller}">
 													</div>
 													<div class="form-group">
-														Function<input class="form-control " name="function"
-															id="ifunction" type="text" th:value="${Menu.action}">
+														Function<input class="form-control " name="function"  required
+															id="ifunction" type="text"  th:value="${Menu.action}">
 													</div>
 												</div>
 												<div class="modal-footer ">
 													<button type="submit" class="btn btn-warning btn-lg"
-														id="btn-update<%=i %>" style="width: 100%;">
+														id="btn-update<%=i %>" style="width: 40%;">
 														<span class="glyphicon glyphicon-ok-sign"></span> Update
 													</button>
-													<br> <b class="error" style="color: red" id="note"></b>
+												<button type="button" class="btn btn-default btn-lg" style="width: 40%;" data-dismiss="modal">
+													<span class="glyphicon glyphicon-remove"></span> Cancel
+												</button>
 												</div>
 											</form>
 										</div>
 										<!-- /.modal-content -->
 									</div>
-									<!-- /.modal-dialog -->
+									<!-- /.modal-edit -->
 								</div>
 
-
-
 								<!-- /.modal-dialog delete -->
-								<div class="modal fade" id="delete" tabindex="-1" role="dialog"
+								<div class="modal fade" th:id="@{|delete${Menu.menu_id}|}" tabindex="-1" role="dialog"
 									aria-labelledby="edit" aria-hidden="true">
 									<div class="modal-dialog">
 										<div class="modal-content">
@@ -154,11 +163,12 @@
 												</div>
 											</div>
 											<div class="modal-footer ">
-												<a th:href="@{|/delete-menu/${Menu.menu_id}|}">
+												<a th:href="@{|/menu/delete/${Menu.menu_id}|}">
 													<button type="submit" class="btn btn-success">
 														<span class="glyphicon glyphicon-ok-sign"></span> Yes
 													</button>
 												</a>
+												
 												<button type="button" class="btn btn-default"
 													data-dismiss="modal">
 													<span class="glyphicon glyphicon-remove"></span> No
@@ -166,14 +176,17 @@
 											</div>
 										</div>
 									</div>
-									<!-- /.modal-dialog -->
 								</div>
+								<!-- /.modal-delete -->
 
 							</tr>
 						</tbody>
 					</table>
-
-					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+		<div class="phantrang">
+				<div class="clearfix"></div>
 					<ul class="pagination pull-right">
 						<li class="disabled"><a href="#"><span
 								class="glyphicon glyphicon-chevron-left"></span></a></li>
@@ -181,13 +194,38 @@
 						<li class="disabled"><a href="#"><span
 								class="glyphicon glyphicon-chevron-right"></span></a></li>
 					</ul>
-
-				</div>
-			</div>
 		</div>
 	</div>
-
-
-
+	
+	<script>
+	$(document).ready(function() {
+		var iName = $("#name");
+		var iDesc = $("#desc");
+		var iController = $("#controller");
+		var iAction = $("#action");
+		$('#addBtn').click(function() {
+			if (iName.val() == "") {
+				$("#note").html("Name can't be blank");
+				$("#name").focus();
+				return false;
+			}else if (iController.val() == "") {
+				$("#note").html("Controller can't be blank");
+				$("#controller").focus();
+				return false;
+			}  else if (iAction.val() == "") {
+				$("#note").html("Function can't be blank");
+				$("#action").focus();
+				return false;
+			}else if (iDesc.val() == "") {
+				$("#note").html("Drescription not null");
+				$("#desc").focus();
+				return false;
+			} else {
+				return true;
+			}
+		});
+	});
+	
+	</script>
 </body>
 </html>
