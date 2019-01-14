@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -27,6 +28,7 @@ public class UserServiceImpl implements UserService {
 	EntityManager entityManager;
 	@Autowired
 	private BCryptPasswordEncoder encoder;
+
 	@Override
 	public List<User> getAllUser() {
 
@@ -65,14 +67,20 @@ public class UserServiceImpl implements UserService {
 
 	}
 
-	@Override
 	public void updateUser(User user) {
-		
 		entityManager.merge(user);
-
 
 	}
 
-	
+	@Override
+	public List<String> getRoleName(int id) {
+		String sql = "Select ur.role.name from " + UserRole.class.getName() + " ur " //
+				+ " where ur.user.userId = :userId ";
 
+		Query query = this.entityManager.createQuery(sql, String.class);
+		query.setParameter("userId", id);
+		return query.getResultList();
+	}
+
+	
 }

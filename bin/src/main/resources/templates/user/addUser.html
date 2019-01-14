@@ -25,9 +25,9 @@
 </head>
 <body>
 <div class="container1">
-		<form th:action="@{/admin/edit-user}" method="post" th:object="${user}">
-		<input type="hidden" th:field="*{userId}"/>
+		<form th:action="@{/admin/add-user}" method="post" th:object="${user}">
 			<div class="form-group">
+				<p th:text="${Msg}" style="color: red"></p>
 				<label for="exampleInputEmail1">Email</label> <input
 					class="form-control" type="text" th:field="*{email}"
 					placeholder="email" />
@@ -35,6 +35,7 @@
 					<span th:if="${#fields.hasErrors('email')}"
 						th:errors="*{email}">..</span>
 				</p>
+				
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1">FullName</label> <input
@@ -63,10 +64,6 @@
 					<span th:if="${#fields.hasErrors('password')}"
 						th:errors="*{password}">..</span>
 				</p>
-			</div>
-			<div class="form-group" th:each="role: ${list}">
-				<input type="checkbox" th:value="${role.name}"/><label 
-                th:text="${role.name}"></label>
 			</div>
 			<input type="submit" value="Submit" class="btn btn-primary" />
 		</form>

@@ -16,13 +16,13 @@ import javax.persistence.OneToMany;
 public class Role implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="role_id")
 	private int roleId;
-	private String name="ROLE_ADMIN";
+	private String name="ROLE_USER";
 	@Column(name="description")
 	private String desc;
-	@OneToMany(mappedBy="role",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="role",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	private List<UserRole> userRoles;
 	/*@OneToMany(mappedBy="role")
 	private List<MenuRole> menuRoles;*/

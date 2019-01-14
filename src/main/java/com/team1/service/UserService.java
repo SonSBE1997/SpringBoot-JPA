@@ -31,4 +31,7 @@ public interface UserService {
 
 	public void updateUser(User user);
 	
+	public List<String> getRoleName(int id);
+	
+	
 }

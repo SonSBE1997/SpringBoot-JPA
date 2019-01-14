@@ -1,4 +1,4 @@
-      
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,18 +28,23 @@
 					<th>Email</th>
 					<th>FullName</th>
 					<th>Mobile</th>
-					<th>Status</th>
 					<th>Detail</th>
+					<th>RoleId</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="user : ${list}">
-					<td th:text="${user.userId}"></td>
-					<td th:text="${user.email}"></td>
-					<td th:text="${user.mobile}"></td>
-					<td th:text="${user.fullName}"></td>
-					<td th:text="${user.status}"></td>
-					
+				<tr>
+					<td th:utext="${user.userId}"></td>
+					<td th:utext="${user.email}"></td>
+					<td th:utext="${user.fullName}"></td>
+					<td th:utext="${user.mobile}"></td>
+					<td class="glyphicon glyphicon-trash"><a
+						th:href="@{|/delete-user/${user.userId}|}"> Delete</a></td>
+					<td class="glyphicon glyphicon-pencil"><a
+						th:href="@{|/edit-user/${user.userId}|}"> Edit</a></td>
+					<td th:each="userRole: ${user.userRoles}">
+						<a th:text="${'RoleId' + userRole.role.roleId}"></a>
+					</td>
 				</tr>
 			</tbody>
 		</table>
@@ -47,4 +52,3 @@
 </body>
 </html>
 
-              

@@ -39,7 +39,10 @@
 					<td th:text="${user.mobile}"></td>
 					<td th:text="${user.fullName}"></td>
 					<td th:text="${user.status}"></td>
-					
+					<td class="glyphicon glyphicon-trash"><a
+						th:href="@{|/delete-user/${user.userId}|}"> Delete</a></td>
+					<td class="glyphicon glyphicon-pencil"><a
+						th:href="@{|/edit-user/${user.userId}|}"> Edit</a></td>
 				</tr>
 			</tbody>
 		</table>

@@ -10,7 +10,9 @@
 package com.team1.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -117,31 +119,13 @@ public class UserController {
 	@GetMapping(value = "/admin/edit-user/{id}")
 	public String editUser(ModelMap model, @PathVariable("id") String id) {
 
-		List<UserRole> lst = new ArrayList<UserRole>();
-		UserRole ur1 = new UserRole();
-		Role r1 = new Role();
-		r1.setName("ROLE_ADMIN");
-		ur1.setRole(r1);
-		ur1.setUser(userService.findUser(Integer.parseInt(id)));
-		UserRole ur2 = new UserRole();
-		Role r2 = new Role();
-		r2.setName("ROLE_USER");
-		ur2.setRole(r2);
-		ur2.setUser(userService.findUser(Integer.parseInt(id)));
-		UserRole ur3 = new UserRole();
-		Role r3 = new Role();
-		r3.setName("ROLE_DELETE");
-		ur3.setRole(r3);
-		ur3.setUser(userService.findUser(Integer.parseInt(id)));
-		lst.add(ur1);
-		lst.add(ur2);
-		lst.add(ur3);
-		List<String> collect = userService.findUser(Integer.parseInt(id)).getUserRoles().stream()
-				.map(item -> item.getRole().getName()).collect(Collectors.toList());
-
 		model.addAttribute("user", userService.findUser(Integer.parseInt(id)));
-		model.addAttribute("urs", lst);
-		model.addAttribute("abc", collect.toString());
+		List<Role> roles=new ArrayList<Role>();
+		Role role=new Role();
+		role.setName("ROLE_USER");
+		role.setName("ROLE_ADMIN");
+		roles.add(role);
+		model.addAttribute("list", roles);
 		return "user/editUser";
 	}
 
@@ -153,11 +137,13 @@ public class UserController {
 		findUser.setFullName(user.getFullName());
 		findUser.setMobile(user.getMobile());
 		findUser.setPassword(user.getPassword());
-		List<UserRole> userRoles = findUser.getUserRoles();
-		for (UserRole userRole : userRoles) {
-			userRole.getRole().setName("");
-
-		}
+		/*
+		 * List<UserRole> userRoles = userService.getUserRoleName(user.getUserId()); for
+		 * (UserRole userRole : userRoles) { userRole.getRole().setName("");
+		 * 
+		 * }
+		 */
+		
 		List<UserRole> lst = new ArrayList<UserRole>();
 		UserRole ur = new UserRole();
 		Role r = new Role();
@@ -166,11 +152,6 @@ public class UserController {
 		ur.setUser(findUser);
 		lst.add(ur);
 		findUser.getUserRoles().addAll(lst);
-		/*userValidator.validate(findUser, bindingResult);
-		if (bindingResult.hasErrors()) {
-			return "user/editUser";
-		}*/
-
 		userService.updateUser(findUser);
 		return "redirect:/admin/list-user";
 
