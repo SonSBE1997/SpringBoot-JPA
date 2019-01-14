@@ -5,9 +5,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 style="margin-left: 4%">UPDATE SLIDER</h1>
-	<form th:action="@{/slider-update}" method="post" th:object="${slider}">
-		<input type="hidden" th:field="*{slider_id}" />
+	<h1 style="margin-left: 4%">ADD SLIDER</h1>
+	<form th:action="@{/add-slider}" method="post" th:object="${slider}">
 		<table>
 			<tr>
 				<td>Name: </td>
@@ -21,6 +20,7 @@
 				<td>ImgUrl: </td>
 				<td><input type="text" th:field="*{imgUrl}" /></td>
 			</tr>
+
 			<tr>
 				<td></td>
 				<td><input type="submit" value="OK" /><input type="reset" name="Reset" style="margin-left: 5px;"/></td>

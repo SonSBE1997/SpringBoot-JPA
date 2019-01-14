@@ -1,11 +1,15 @@
 package com.team1.controller;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.team1.entity.Slider;
 import com.team1.service.SliderService;
 
@@ -16,106 +20,112 @@ import com.team1.service.SliderService;
  * Description: TODO -
  */
 @Controller
+@RequestMapping
 public class SliderController {
 	@Autowired
-	private SliderService sliderService;
-
+	SliderService sliderService;
+	
 	/**
 	 * Author: ntmduyen
-	 * Created date: Jan 12, 2019
-	 * Created time: 1:31:16 AM
-	 * Description: TODO - .
-	 * @param model
+	 * Created date: Jan 14, 2019
+	 * Created time: 9:55:40 AM
+	 * Description: TODO - View list.
+	 * @param modelMap
 	 * @return
 	 */
-	@RequestMapping(value = { "/slider-list" })
-	public String listSlider(Model model) {
-		model.addAttribute("listSlider", sliderService.findAll());
-		return "slider/slider-list";
+	@GetMapping("/list-slider")
+	public String getAll(ModelMap modelMap) {
+		
+		List<Slider> listSlider = sliderService.getAll();
+		modelMap.addAttribute("listSlider", listSlider);
+		return "slider/listSlider";
 	}
-
+	
 	/**
 	 * Author: ntmduyen
-	 * Created date: Jan 12, 2019
-	 * Created time: 1:31:12 AM
-	 * Description: TODO - .
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping("/slider-save")
-	public String insertSlider(Model model) {
-		model.addAttribute("slider", new Slider());
-		return "slider/slider-save";
-	}
-
-	/**
-	 * Author: ntmduyen
-	 * Created date: Jan 12, 2019
-	 * Created time: 1:31:08 AM
-	 * Description: TODO - .
+	 * Created date: Jan 14, 2019
+	 * Created time: 9:55:52 AM
+	 * Description: TODO - get detail infomation of slider
 	 * @param slider_id
-	 * @param model
+	 * @param modelMap
 	 * @return
 	 */
-	@RequestMapping("/slider-view/{slider_id}")
-	public String viewSlider(@PathVariable Long slider_id, Model model) {
-		Slider slider = sliderService.findById(slider_id);
-		model.addAttribute("slider", slider);
-		return "slider/slider-view";
+	@GetMapping(value="/detail-slider/{slider_id}")
+	public String GetOne(@PathVariable String slider_id, ModelMap modelMap) {
+		Slider slider = sliderService.getOne(Integer.parseInt(slider_id));
+		modelMap.addAttribute("slider", slider);
+		return "slider/detailSlider";
 	}
-
+	
 	/**
 	 * Author: ntmduyen
-	 * Created date: Jan 12, 2019
-	 * Created time: 1:31:04 AM
-	 * Description: TODO - .
+	 * Created date: Jan 14, 2019
+	 * Created time: 9:56:21 AM
+	 * Description: TODO - insert a slider.
+	 * @param modelMap
+	 * @return
+	 */
+	@GetMapping("/add-slider")
+	public String sliderInsert(ModelMap modelMap) {
+		Slider slider  = new Slider();
+		modelMap.addAttribute("slider", slider);
+		return "slider/addSlider";
+	}
+	/**
+	 * Author: ntmduyen
+	 * Created date: Jan 14, 2019
+	 * Created time: 9:56:37 AM
+	 * Description: TODO - insert a slider and redirect to list.
+	 * @param slider
+	 * @return
+	 */
+	@PostMapping("/add-slider")
+	public String insertSlider(@ModelAttribute Slider slider) {
+		sliderService.insert(slider);
+		return "redirect:/list-slider";
+	}
+	
+	/**
+	 * Author: ntmduyen
+	 * Created date: Jan 14, 2019
+	 * Created time: 9:57:02 AM
+	 * Description: TODO - Delete a slider by ID.
 	 * @param slider_id
-	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/slider-update/{slider_id}")
-	public String updateSlider(@PathVariable Long slider_id, Model model) {
-		Slider slider = sliderService.findById(slider_id);
-		model.addAttribute("slider", slider);
-		return "slider/slider-update";
+	@GetMapping("/delete-slider/{slider_id}")
+	public String delete(@PathVariable String slider_id) {
+		sliderService.delete(Integer.parseInt(slider_id));
+		return "redirect:/list-slider";
 	}
-
-	@RequestMapping("/saveSlider")
-	public String doSaveSlider(@ModelAttribute("Slider") Slider slider, Model model) {
-		sliderService.save(slider);
-		model.addAttribute("listSlider", sliderService.findAll());
-		return "slider/slider-list";
-	}
-
+	
 	/**
 	 * Author: ntmduyen
-	 * Created date: Jan 12, 2019
-	 * Created time: 1:31:00 AM
+	 * Created date: Jan 14, 2019
+	 * Created time: 9:57:20 AM
+	 * Description: TODO - Edit a slider.
+	 * @param modelMap
+	 * @param slider_id
+	 * @return
+	 */
+	@GetMapping("/update-slider/{slider_id}")
+	public String sliderUpdate(ModelMap modelMap, @PathVariable String slider_id) {
+		Slider slider = sliderService.getOne(Integer.parseInt(slider_id));
+		modelMap.addAttribute("slider", slider);
+		return "slider/updateSlider";
+	}
+	
+	/**
+	 * Author: ntmduyen
+	 * Created date: Jan 14, 2019
+	 * Created time: 9:57:34 AM
 	 * Description: TODO - .
 	 * @param slider
-	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/updateSlider")
-	public String doUpdateSlider(@ModelAttribute("Slider") Slider slider, Model model) {
+	@PostMapping("/update-slider")
+	public String updateSlider(@ModelAttribute Slider slider) {
 		sliderService.update(slider);
-		model.addAttribute("listSlider", sliderService.findAll());
-		return "slider/slider-list";
-	}
-
-	/**
-	 * Author: ntmduyen
-	 * Created date: Jan 12, 2019
-	 * Created time: 1:30:56 AM
-	 * Description: TODO - .
-	 * @param slider_id
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping("/sliderDelete/{slider_id}")
-	public String doDeleteSlider(@PathVariable Long slider_id, Model model) {
-		sliderService.delete(slider_id);
-		model.addAttribute("listCustomer", sliderService.findAll());
-		return "slider/slider-list";
+		return "redirect:/list-slider";
 	}
 }

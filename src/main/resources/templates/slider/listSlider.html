@@ -7,10 +7,11 @@
 <body>
 	<table border="1">
 		<tr>
-			<th>Role_ID</th>
+			<th>Slider_ID</th>
 			<th>Name</th>
 			<th>Content</th>
 			<th>ImgUrl</th>
+
 			<th>Detail</th>
 			<th>Delete</th>
 			<th>Edit</th>
@@ -20,12 +21,12 @@
 			<td th:utext="${slider.name}"></td>
 			<td th:utext="${slider.content}"></td>
 			<td th:utext="${slider.imgUrl}"></td>
-			
-			<td><a th:href="@{|/slider-view/${slider.slider_id}|}"> Detail</a></td>
-			<td><a th:href="@{|/sliderDelete/${slider.slider_id}|}"> Delete</a></td>
-			<td><a th:href="@{|/sliderUpdate/${slider.slider_id}|}"> Edit</a></td>
+
+			<td><a th:href="@{|/detail-slider/${slider.slider_id}|}"> Detail</a></td>
+			<td><a th:href="@{|/delete-slider/${slider.slider_id}|}"> Delete</a></td>
+			<td><a th:href="@{|/update-slider/${slider.slider_id}|}"> Edit</a></td>
 		</tr>
 	</table>
-	<a th:href="@{|/slider-save|}">ADD SLIDER</a>
+	<a th:href="@{|/add-slider|}">ADD SLIDER</a>
 </body>
 </html>

@@ -16,7 +16,7 @@ public class Slider {
 	@Id
 	@Column(name = "slider_id", length = 10)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long slider_id;
+	private int slider_id;
 	@Column(name = "name", length = 50)
 	private String name;
 	@Column(name = "content", length = 50)
@@ -38,7 +38,7 @@ public class Slider {
 	 * @param content
 	 * @param imgUrl
 	 */
-	public Slider(Long slider_id, String name, String content, String imgUrl) {
+	public Slider(int slider_id, String name, String content, String imgUrl) {
 		super();
 		this.slider_id = slider_id;
 		this.name = name;
@@ -53,7 +53,7 @@ public class Slider {
 	 * Description: TODO - .
 	 * @return
 	 */
-	public Long getSlider_id() {
+	public int getSlider_id() {
 		return slider_id;
 	}
 
@@ -64,7 +64,7 @@ public class Slider {
 	 * Description: TODO - .
 	 * @param slider_id
 	 */
-	public void setSlider_id(Long slider_id) {
+	public void setSlider_id(int slider_id) {
 		this.slider_id = slider_id;
 	}
 
@@ -94,7 +94,7 @@ public class Slider {
 	 * Author: ntmduyen
 	 * Created date: Jan 12, 2019
 	 * Created time: 12:57:32 AM
-	 * Description: TODO - .
+	 * Description: TODO - get the content.
 	 * @return
 	 */
 	public String getContent() {
@@ -105,7 +105,7 @@ public class Slider {
 	 * Author: ntmduyen
 	 * Created date: Jan 12, 2019
 	 * Created time: 12:57:36 AM
-	 * Description: TODO - .
+	 * Description: TODO - set the content.
 	 * @param content
 	 */
 	public void setContent(String content) {
@@ -116,7 +116,7 @@ public class Slider {
 	 * Author: ntmduyen
 	 * Created date: Jan 12, 2019
 	 * Created time: 12:57:40 AM
-	 * Description: TODO - .
+	 * Description: TODO - get an img url .
 	 * @return
 	 */
 	public String getImgUrl() {
@@ -127,7 +127,7 @@ public class Slider {
 	 * Author: ntmduyen
 	 * Created date: Jan 12, 2019
 	 * Created time: 12:57:45 AM
-	 * Description: TODO - .
+	 * Description: TODO - set a image url .
 	 * @param imgUrl
 	 */
 	public void setImgUrl(String imgUrl) {

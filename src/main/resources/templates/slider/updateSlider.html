@@ -5,22 +5,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 style="margin-left: 4%">ADD ROLE</h1>
-	<form th:action="@{/saveSlider}" method="post" th:object="${slider}">
+	<h1 style="margin-left: 4%">UPDATE ROLE</h1>
+	<form th:action="@{/update-slider}" method="post" th:object="${slider}">
+		<input type="hidden" th:field="*{slider_id}" />
 		<table>
 			<tr>
 				<td>Name: </td>
 				<td><input type="text" th:field="*{name}" /></td>
 			</tr>
 			<tr>
-				<td>Description: </td>
+				<td>Content: </td>
 				<td><input type="text" th:field="*{content}" /></td>
 			</tr>
 			<tr>
-				<td>Description: </td>
+				<td>imgUrl: </td>
 				<td><input type="text" th:field="*{imgUrl}" /></td>
 			</tr>
-
 			<tr>
 				<td></td>
 				<td><input type="submit" value="OK" /><input type="reset" name="Reset" style="margin-left: 5px;"/></td>
