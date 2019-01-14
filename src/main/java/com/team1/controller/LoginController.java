@@ -10,7 +10,7 @@
 package com.team1.controller;
 
 import com.team1.entity.User;
-import com.team1.service.UserService;
+import com.team1.service.impl.UserServiceImpl;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,7 @@ import org.springframework.web.servlet.view.RedirectView;
 @SessionAttributes("userLogin")
 public class LoginController {
   @Autowired
-  UserService userService;
+  UserServiceImpl userService;
 
   /**
    * Author: Sanero.

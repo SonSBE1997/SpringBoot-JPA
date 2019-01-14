@@ -139,7 +139,7 @@ public class NewsController {
       return "news/create";
     }
     LOGGER.info("add news");
-    return "redirect:/admin/news";
+    return "redirect:/admin/news/1";
   }
 
   /**
@@ -179,7 +179,7 @@ public class NewsController {
       return "news/edit";
     }
     LOGGER.warn("update news has key: " + news.getNewsId());
-    return "redirect:/admin/news";
+    return "redirect:/admin/news/1";
   }
 
   /**

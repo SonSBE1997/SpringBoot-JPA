@@ -1,5 +1,7 @@
 package com.team1.controller;
 
+import com.team1.entity.Role;
+import com.team1.service.RoleService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.team1.entity.Role;
-import com.team1.service.RoleService;
 
 /*
  * @author CHai.
@@ -28,7 +27,14 @@ public class RoleController {
   @Autowired
   RoleService roleService;
 
-  // ....getAll
+  /**
+   * Author: Sanero.
+   * Created date: Jan 14, 2019
+   * Created time: 2:57:36 PM
+   * Description: TODO - .
+   * @param modelMap - model map.
+   * @return
+   */
   @GetMapping("/list-role")
   public String getAll(ModelMap modelMap) {
 
@@ -37,15 +43,30 @@ public class RoleController {
     return "listRole";
   }
 
-  // .....getOne
+  /**
+   * Author: Sanero.
+   * Created date: Jan 14, 2019
+   * Created time: 2:57:44 PM
+   * Description: TODO - .
+   * @param roleId - role id.
+   * @param modelMap - model map.
+   * @return
+   */
   @GetMapping(value = "/detail-role/{roleId}")
-  public String GetOne(@PathVariable String roleId, ModelMap modelMap) {
+  public String getOne(@PathVariable String roleId, ModelMap modelMap) {
     Role role = roleService.getOne(Integer.parseInt(roleId));
     modelMap.addAttribute("role", role);
     return "detailRole";
   }
 
-  // .....insert
+  /**
+   * Author: Sanero.
+   * Created date: Jan 14, 2019
+   * Created time: 2:58:35 PM
+   * Description: TODO - .
+   * @param modelMap - model map.
+   * @return
+   */
   @GetMapping("/add-role")
   public String roleInsert(ModelMap modelMap) {
     Role role = new Role();
@@ -67,6 +88,15 @@ public class RoleController {
   }
 
   // .....update
+  /**
+   * Author: Sanero.
+   * Created date: Jan 14, 2019
+   * Created time: 2:58:24 PM
+   * Description: TODO - .
+   * @param modelMap - model map.
+   * @param roleId - role id.
+   * @return
+   */
   @GetMapping("/update-role/{roleId}")
   public String roleUpdate(ModelMap modelMap, @PathVariable String roleId) {
     Role role = roleService.getOne(Integer.parseInt(roleId));

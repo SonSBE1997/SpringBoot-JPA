@@ -1,9 +1,8 @@
 package com.team1.repository;
 
+import com.team1.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import com.team1.entity.Role;
 
 /*
  * @author Hai95.

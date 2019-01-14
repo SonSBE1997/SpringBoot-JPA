@@ -9,11 +9,16 @@
 
 package com.team1.entity;
 
+import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /*
@@ -24,7 +29,8 @@ import javax.persistence.Table;
  */
 @Entity(name = "user")
 @Table(name = "user")
-public class User {
+public class User implements Serializable {
+  private static final long serialVersionUID = 1L;
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "user_id")
@@ -39,11 +45,22 @@ public class User {
   @Column(name = "mobile", length = 11)
   private String mobile;
 
-  @Column(name = "password", length = 20)
+  @Column(name = "password", length = 255)
   private String password;
 
   @Column(name = "status", length = 50)
   private String status;
+
+  @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+  private List<UserRole> userRoles;
+
+  public List<UserRole> getUserRoles() {
+    return userRoles;
+  }
+
+  public void setUserRoles(List<UserRole> userRoles) {
+    this.userRoles = userRoles;
+  }
 
   /*
    * Author: Sanero.

@@ -10,13 +10,8 @@
 package com.team1.service;
 
 import com.team1.entity.User;
-import com.team1.repository.UserRepository;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 /*
  * @author Sanero.
@@ -24,21 +19,16 @@ import org.springframework.stereotype.Service;
  * Created time: 8:50:30 AM
  * Description: TODO - 
  */
-@Service
-@Transactional
-public class UserService {
-  @Autowired
-  UserRepository userRepository;
+public interface UserService {
+  public List<User> getAllUser();
 
-  public List<User> findAll() {
-    return userRepository.findAll();
-  }
+  public void deleteUser(int userId);
 
-  public User findUserByEmailAndPassword(String email, String password) {
-    return userRepository.findUserByEmailAndPassword(email, password);
-  }
+  public User findUser(int userId);
 
-  public User findUser(int id) {
-    return userRepository.findById(id).get();
-  }
+  public void addUser(User user);
+
+  public void updateUser(User user);
+
+  public List<String> getRoleName(int id);
 }

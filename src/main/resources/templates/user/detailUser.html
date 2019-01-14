@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css" />
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+</head>
+<body xmlns:th="http://www.thymeleaf.org">
+	<div class="container">
+		<h3>
+			<a th:href="@{/add-user}">Create User</a>
+		</h3>
+		<table class="table">
+			<thead class="table table-bordered">
+				<tr>
+					<th>ID</th>
+					<th>Email</th>
+					<th>FullName</th>
+					<th>Mobile</th>
+					<th>Detail</th>
+					<th>RoleId</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td th:utext="${user.userId}"></td>
+					<td th:utext="${user.email}"></td>
+					<td th:utext="${user.fullName}"></td>
+					<td th:utext="${user.mobile}"></td>
+					
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
+

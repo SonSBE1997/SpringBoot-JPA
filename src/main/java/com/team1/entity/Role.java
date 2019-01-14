@@ -1,35 +1,31 @@
 package com.team1.entity;
 
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
 
 @Entity
-@Table(name="role")
-public class Role {
-
+public class Role implements Serializable {
+	private static final long serialVersionUID = 1L;
 	@Id
-	@Column(name="role_id", length=10)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="role_id")
 	private int roleId;
-	@Column(name="name", length=50, nullable=false)
-	private String name;
-	@Column(name="desc", length=255)
+	private String name="ROLE_USER";
+	@Column(name="description")
 	private String desc;
-	
-	public Role() {
-		
-	}
-	
-	public Role(int role_id, String name, String desc) {
-		super();
-		this.roleId = role_id;
-		this.name = name;
-		this.desc = desc;
-	}
+	@OneToMany(mappedBy="role",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+	private List<UserRole> userRoles;
+	/*@OneToMany(mappedBy="role")
+	private List<MenuRole> menuRoles;*/
 	public int getRoleId() {
 		return roleId;
 	}
@@ -48,10 +44,17 @@ public class Role {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
-	
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
+	public List<UserRole> getUserRoles() {
+		return userRoles;
 	}
+	public void setUserRoles(List<UserRole> userRoles) {
+		this.userRoles = userRoles;
+	}
+	/*public List<MenuRole> getMenuRoles() {
+		return menuRoles;
+	}
+	public void setMenuRoles(List<MenuRole> menuRoles) {
+		this.menuRoles = menuRoles;
+	}*/
+	
 }
