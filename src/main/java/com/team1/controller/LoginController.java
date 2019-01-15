@@ -11,6 +11,7 @@ package com.team1.controller;
 
 import com.team1.entity.User;
 import com.team1.service.impl.UserServiceImpl;
+import com.team1.utils.Encryptor;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -82,8 +83,9 @@ public class LoginController {
   @PostMapping
   public RedirectView handleLogin(@ModelAttribute User user, ModelMap model,
       RedirectAttributes attributes, HttpServletResponse response) {
+    String password = Encryptor.getMd5(user.getPassword());
     User userLogin = userService.findUserByEmailAndPassword(user.getEmail(),
-        user.getPassword());
+        password);
 
     if (userLogin == null) {
       attributes.addFlashAttribute("mess", "Email or password incorrect");
@@ -91,7 +93,7 @@ public class LoginController {
     }
 
     Cookie cookieEmail = new Cookie("email", userLogin.getEmail());
-    Cookie cookiePassword = new Cookie("password", userLogin.getPassword());
+    Cookie cookiePassword = new Cookie("password", user.getPassword());
     cookieEmail.setMaxAge(24 * 60 * 60);
     cookiePassword.setMaxAge(24 * 60 * 60);
     response.addCookie(cookieEmail);
