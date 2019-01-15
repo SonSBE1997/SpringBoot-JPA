@@ -5,6 +5,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<form th:action="@{/list-slider}" method="post">
+		Filter Name: <input style="width: 150px; margin-bottom: 10px;" type="text" name = "name" />
+	</form>
 	<table border="1">
 		<tr>
 			<th>Slider_ID</th>
@@ -22,11 +25,11 @@
 			<td th:utext="${slider.content}"></td>
 			<td th:utext="${slider.imgUrl}"></td>
 
-			<td><a th:href="@{|/detail-slider/${slider.slider_id}|}"> Detail</a></td>
-			<td><a th:href="@{|/delete-slider/${slider.slider_id}|}"> Delete</a></td>
-			<td><a th:href="@{|/update-slider/${slider.slider_id}|}"> Edit</a></td>
+			<td><a th:href="@{|admin/detail-slider/${slider.slider_id}|}"> Detail</a></td>
+			<td><a th:href="@{|admin/delete-slider/${slider.slider_id}|}"> Delete</a></td>
+			<td><a th:href="@{|admin/update-slider/${slider.slider_id}|}"> Edit</a></td>
 		</tr>
 	</table>
-	<a th:href="@{|/add-slider|}">ADD SLIDER</a>
+	<a th:href="@{|/admin/add-slider|}">ADD SLIDER</a>
 </body>
 </html>
