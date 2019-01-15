@@ -1,7 +1,5 @@
 package com.team1.service;
 
-import com.team1.entity.Role;
-import com.team1.repository.RoleRepository;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -9,6 +7,9 @@ import javax.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.team1.entity.Role;
+import com.team1.repository.RoleRepository;
 
 /*
  * @author Hai95.
@@ -20,29 +21,34 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class RoleService {
-
-  @Autowired
-  RoleRepository roleRepository;
-  @Autowired
-  EntityManager entityManager;
-
-  public List<Role> getAll() {
-    return roleRepository.findAll();
-  }
-
-  public Role getOne(int id) {
-    return entityManager.find(Role.class, id);
-  }
-
-  public void insert(Role role) {
-    entityManager.persist(role);
-  }
-
-  public void update(Role role) {
-    entityManager.merge(role);
-  }
-
-  public void delete(int id) {
-    roleRepository.deleteById(id);
-  }
+	
+	@Autowired
+	RoleRepository roleRepository;
+	@Autowired
+	EntityManager entityManager;
+	
+	
+	public List<Role> getAll() {
+		return roleRepository.findAll();
+	}
+	
+	public Role getOne(int id) {
+		return entityManager.find(Role.class, id);
+	}
+	
+	public void insert(Role role) {
+		entityManager.persist(role);
+	}
+	
+	public void update(Role role) {
+		entityManager.merge(role);
+	}
+	
+	public void delete(int id) {
+		roleRepository.deleteById(id);
+	}
+	
+	public List<Role> filterByName(String name) {
+		return roleRepository.findByName(name);
+	}
 }

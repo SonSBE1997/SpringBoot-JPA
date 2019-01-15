@@ -5,6 +5,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<form th:action="@{/list-role}" method="post">
+		Filter Name: <input style="width: 150px; margin-bottom: 10px;" type="text" name = "name" />
+	</form>
 	<table border="1">
 		<tr>
 			<th>Role_ID</th>

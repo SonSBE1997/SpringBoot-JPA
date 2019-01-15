@@ -6,6 +6,8 @@ import com.team1.service.UserService;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class LoginServiceImpl implements UserDetailsService {
+  Logger logger = LoggerFactory.getLogger(LoginServiceImpl.class);
   @Autowired
   UserRepository userRepository;
   @Autowired
