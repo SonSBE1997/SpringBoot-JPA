@@ -166,14 +166,16 @@ public class UserController {
    */
   @GetMapping(value = "/admin/edit-user/{id}")
   public String editUser(ModelMap model, @PathVariable("id") String id) {
-
     model.addAttribute("user", userService.findUser(Integer.parseInt(id)));
-    List<Role> roles = new ArrayList<Role>();
-    Role role = new Role();
-    role.setName("ROLE_USER");
-    role.setName("ROLE_ADMIN");
-    roles.add(role);
+    List<String> role = userService.getRoleName(Integer.parseInt(id));
+    String join = String.join(",", role);
+    System.out.println(join);
+    List<String> roles = new ArrayList<String>();
+    roles.add("ROLE_ADMIN");
+    roles.add("ROLE_USER");
+    roles.add("ROLE_DELETE");
     model.addAttribute("list", roles);
+    model.addAttribute("join", join);
     return "user/editUser";
   }
 
@@ -197,21 +199,18 @@ public class UserController {
     findUser.setFullName(user.getFullName());
     findUser.setMobile(user.getMobile());
     findUser.setPassword(user.getPassword());
-    /*
-     * List<UserRole> userRoles = userService.getUserRoleName(user.getUserId()); for
-     * (UserRole userRole : userRoles) { userRole.getRole().setName("");
-     * 
-     * }
-     */
-
-    UserRole ur = new UserRole();
-    Role r = new Role();
+    List<UserRole> lst = findUser.getUserRoles();
+    UserRole ur = lst.get(0);
+    Role r = ur.getRole();
     r.setName(String.join(",", lstRole).trim());
     ur.setRole(r);
     ur.setUser(findUser);
-    List<UserRole> lst = new ArrayList<UserRole>();
     lst.add(ur);
-    findUser.getUserRoles().addAll(lst);
+    findUser.setUserRoles(lst);
+    userValidator.validate(user, bindingResult);
+    if (bindingResult.hasErrors()) {
+      return "user/addUser";
+    }
     userService.updateUser(findUser);
     return "redirect:/admin/list-user";
 

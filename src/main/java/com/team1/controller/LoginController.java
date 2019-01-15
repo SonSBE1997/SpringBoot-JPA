@@ -11,6 +11,10 @@ package com.team1.controller;
 
 import com.team1.entity.User;
 import com.team1.service.impl.UserServiceImpl;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,9 +50,21 @@ public class LoginController {
    * @return
    */
   @GetMapping
-  public String login(HttpSession session) {
+  public String login(HttpSession session, HttpServletRequest request,
+      ModelMap model) {
     if (session.getAttribute("userLogin") != null) {
       return "redirect:/admin";
+    }
+    Cookie[] cookies = request.getCookies();
+    if (cookies != null) {
+      for (Cookie cookie : cookies) {
+        if ("email".equals(cookie.getName())) {
+          model.addAttribute("email", cookie.getValue());
+        }
+        if ("password".equals(cookie.getName())) {
+          model.addAttribute("password", cookie.getValue());
+        }
+      }
     }
     return "login";
   }
@@ -65,15 +81,21 @@ public class LoginController {
    */
   @PostMapping
   public RedirectView handleLogin(@ModelAttribute User user, ModelMap model,
-      RedirectAttributes attributes) {
+      RedirectAttributes attributes, HttpServletResponse response) {
     User userLogin = userService.findUserByEmailAndPassword(user.getEmail(),
         user.getPassword());
 
     if (userLogin == null) {
-      attributes.addFlashAttribute("mess", "username or password incorrect");
+      attributes.addFlashAttribute("mess", "Email or password incorrect");
       return new RedirectView("/admin/login");
     }
 
+    Cookie cookieEmail = new Cookie("email", userLogin.getEmail());
+    Cookie cookiePassword = new Cookie("password", userLogin.getPassword());
+    cookieEmail.setMaxAge(24 * 60 * 60);
+    cookiePassword.setMaxAge(24 * 60 * 60);
+    response.addCookie(cookieEmail);
+    response.addCookie(cookiePassword);
     model.addAttribute("userLogin", userLogin);
     return new RedirectView("/admin");
   }
