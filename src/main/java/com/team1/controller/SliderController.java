@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.team1.entity.Slider;
 import com.team1.service.SliderService;
@@ -130,4 +131,21 @@ public class SliderController {
     sliderService.update(slider);
     return "redirect:/list-slider";
   }
+
+  /**
+   * Author: ntmduyen
+   * Created date: Jan 15, 2019
+   * Created time: 8:16:19 AM
+   * Description: TODO - .
+   * @param name
+   * @param modelMap
+   * @return
+   */
+  @PostMapping("/list-slider")
+  public String filterByName(@RequestParam String name, ModelMap modelMap) {
+    List<Slider> listSlider = sliderService.filterByName(name);
+    modelMap.addAttribute("listSlider", listSlider);
+    return "listSlider";
+  }
+
 }
