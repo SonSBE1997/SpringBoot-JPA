@@ -139,7 +139,7 @@ public class UserController {
     findUser.setMobile(user.getMobile());
     findUser.setPassword(user.getPassword());
     if (bindingResult.hasErrors()) {
-      return "user/addUser";
+      return "user/editUser";
     }
     userService.updateUser(findUser);
     return "redirect:/admin/list-user";

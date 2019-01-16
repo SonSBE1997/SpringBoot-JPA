@@ -54,12 +54,11 @@
 								th:text="${userRole.role.name}"></span></td>
 							<td><span th:each="userRole: ${user.userRoles}"
 								th:text="${userRole.createdDate}"></span></td>
-							<td><a th:href="@{|/admin/detail-user/${user.userId}|}"
-								onclick="return confirm('Are you sure detail ?')"> Detail</a>| <a
+							<td><a th:href="@{|/admin/detail-user/${user.userId}|}"> Detail</a>| <a
 								th:href="@{|/admin/delete-user/${user.userId}|}"
 								onclick="return confirm('Are you sure delete ?')"> Delete</a>| <a
 								th:href="@{|/admin/edit-user/${user.userId}|}"
-								onclick="return confirm('Are you sure edit ?')"> Edit</a></td>
+								> Edit</a></td>
 
 						</tr>
 					</tbody>
@@ -74,29 +73,29 @@
 	<th:block th:insert="/import_script.html :: import"></th:block>
 	<script type="text/javascript">
 	$(document).ready(function(){
-		$('detail-user').on('click',function(){
-			var path='detail';
-			var id=$(this).attr('id';)
-			$post(path,{
-				'userId' :id
-			},funcition(res){
-				location.reload();
+// 		$('detail-user').on('click',function(){
+// 			var path='detail';
+// 			var id=$(this).attr('id';)
+// 			$post(path,{
+// 				'userId' :id
+// 			},funcition(res){
+// 				location.reload();
 			
-		});
+// 		});
 			
-		$('.edit-user').on('click', function() {
-			/*<![CDATA[*/
-			var path = /*[[@{/}]]*/'edit';
-			/*]]>*/
+// 		$('.edit-user').on('click', function() {
+// 			/*<![CDATA[*/
+// 			var path = /*[[@{/}]]*/'edit';
+// 			/*]]>*/
 
-			var id = $(this).attr('id');
+// 			var id = $(this).attr('id');
 
-			$.post(path, {
-				'userId' : id
-			}, function(res) {
-				location.reload();
-			});
-		});
+// 			$.post(path, {
+// 				'userId' : id
+// 			}, function(res) {
+// 				location.reload();
+// 			});
+// 		});
 		
 		$('.delete-user').on('click', function() {
 			/*<![CDATA[*/
