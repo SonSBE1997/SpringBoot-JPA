@@ -15,6 +15,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,9 +28,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.team1.entity.Role;
+
 import com.team1.entity.User;
-import com.team1.entity.UserRole;
 import com.team1.repository.UserRepository;
 import com.team1.service.UserService;
 
@@ -130,22 +130,14 @@ public class UserController {
   }
 
   @PostMapping(value = "/admin/edit-user")
-  public String editUser(ModelMap model, @ModelAttribute("user") User user,
-      BindingResult bindingResult,
+  public String editUser(ModelMap model,
+      @ModelAttribute("user") @Valid User user, BindingResult bindingResult,
       @RequestParam(value = "role", required = false) List<String> lstRole) {
     User findUser = userService.findUser(user.getUserId());
     findUser.setEmail(user.getEmail());
     findUser.setFullName(user.getFullName());
     findUser.setMobile(user.getMobile());
     findUser.setPassword(user.getPassword());
-    List<UserRole> lst = findUser.getUserRoles();
-    UserRole ur = lst.get(0);
-    Role r = ur.getRole();
-    r.setName(String.join(",", lstRole).trim());
-    ur.setRole(r);
-    ur.setUser(findUser);
-    lst.add(ur);
-    findUser.setUserRoles(lst);
     if (bindingResult.hasErrors()) {
       return "user/addUser";
     }
