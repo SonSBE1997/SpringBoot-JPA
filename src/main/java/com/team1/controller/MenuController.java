@@ -44,8 +44,8 @@ public class MenuController {
   public String showByPaging(@PathVariable int page, ModelMap model) {
     model.addAttribute("menu", new Menu());
     int pageSize = 2;
-    List<Menu> listNews = menuService.getAllByPaging(page, pageSize);
-    model.addAttribute("list", listNews);
+    List<Menu> listMenu = menuService.getAllByPaging(page, pageSize);
+    model.addAttribute("list", listMenu);
     model.addAttribute("current", page);
     long total = menuService.countAll();
     int maxPage = (int) Math.ceil(((double) total) / pageSize);
@@ -136,12 +136,19 @@ public class MenuController {
    * @param menu
    * @return
    */
-  @PostMapping(value = "/admin/menu")
-  public String handleSearchMenu(ModelMap map,
-      @ModelAttribute("menu") Menu menu) {
-    map.addAttribute("menu", new Menu());
-    List<Menu> listMenu = menuService.findNameContaining(menu.getName());
-    map.addAttribute("list", listMenu);
-    return "/menu/viewMenu";
+  
+  @GetMapping("admin/menu/filter/{filter}/{page}")
+  public String handleSearchMenu(@PathVariable int page,
+      @PathVariable String filter, ModelMap model) {
+    model.addAttribute("menu", new Menu());
+    int pageSize = 1;
+    List<Menu> listMenu = menuService.filterByPaging(page, pageSize, filter);
+    model.addAttribute("list", listMenu);
+    model.addAttribute("current", page);
+    long total = menuService.filterCount(filter);
+    int maxPage = (int) Math.ceil(((double) total) / pageSize);
+    model.addAttribute("total", maxPage);
+    model.addAttribute("searchStr", filter);
+    return "menu/viewMenu";
   }
 }

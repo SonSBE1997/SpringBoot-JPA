@@ -1,12 +1,4 @@
 
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -39,12 +31,12 @@
 							<div class="form-group"
 								style="float: right; margin-right: -600px">
 								<input style="width: 350px" class="form-control "
-										 type="text" placeholder="Search"
+										th:value="${searchStr}" id="iSearch"  type="text" placeholder="Search"
 									aria-label="Search">
 							</div>
-							<button style="margin-right: -680px"
+							<button type="submit" id="btn-search" style="margin-right: -680px"
 								class="btn btn-primary pull-right">Search</button>
-						
+					
 					</div>
 				</div>
 				<div class="table-responsive">
@@ -151,7 +143,7 @@
 
 						<div class="form-group">
 							<textarea class="form-control" type="textarea" id="desc"
-								th:field="*{description}" placeholder="Description"
+								th:field="*{description}" placeholder="Description" required
 								maxlength="140" rows="7"></textarea>
 						</div>
 						<div class="modal-footer ">
@@ -199,6 +191,17 @@
 					return true;
 				}
 			});
+			
+			$('#btn-search').off('click').on('click', function(e) {
+				e.preventDefault();
+				var searchStr = $('#iSearch');
+				if (searchStr.val() == "") {
+					window.location.href = "/admin/menu/1";
+					return;
+				}
+				window.location.href = "/admin/menu/filter/" + searchStr.val() + "/1";
+			});
+			
 		});
 	</script>
 </body>

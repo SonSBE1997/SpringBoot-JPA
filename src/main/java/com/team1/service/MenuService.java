@@ -161,7 +161,7 @@ public class MenuService {
       String charSequence) {
     charSequence = "%" + charSequence + "%";
     Query query = entityManager.createQuery("from Menu  where name like :name");
-    query.setParameter("filter1", charSequence);
+    query.setParameter("name", charSequence);
     query.setFirstResult((page - 1) * pageSize);
     query.setMaxResults(pageSize);
     List<Menu> listMenu = new ArrayList<Menu>();
@@ -180,8 +180,8 @@ public class MenuService {
   public long filterCount(String charSequence) {
     charSequence = "%" + charSequence + "%";
     Query query = entityManager
-        .createQuery("select count(news_id) from Menu  where name like :name");
-    query.setParameter("filter1", charSequence);
+        .createQuery("select count(menu_id) from Menu  where name like :name");
+    query.setParameter("name", charSequence);
     long result = 0;
     try {
       result = (Long) query.getSingleResult();
