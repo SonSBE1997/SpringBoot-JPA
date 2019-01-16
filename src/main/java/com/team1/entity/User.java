@@ -21,6 +21,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 /*
  * @author Sanero.
@@ -35,12 +39,22 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
 	private int userId;
+	@Email
+	@NotEmpty
+	@Column(unique = true)
 	private String email;
+	@Size(min = 15)
+	@Size(max = 30)
 	private String password;
 	@Column(name = "status")
 	private String status;
+	@Size(min = 10)
+	@Size(max = 40)
 	@Column(name = "full_name")
 	private String fullName;
+	@Pattern(regexp="(^$|[0-9]{10})")
+	@Size(min = 10)
+	@Size(max = 11)
 	private String mobile;
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<UserRole> userRoles;

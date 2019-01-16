@@ -44,12 +44,13 @@ public class Team1SpringBootJpaApplication extends WebSecurityConfigurerAdapter 
 				.formLogin().loginPage("/login").defaultSuccessUrl("/").failureUrl("/login?e=error").permitAll()
 				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").and()
 				.exceptionHandling().accessDeniedPage("/login?e=deny");
+				http.rememberMe().key("abc").tokenValiditySeconds(5000);
 
 	}
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/css/**", "/image/**", "/fonts/**", "/js/**","/common/**");
+		web.ignoring().antMatchers("/static/admin/**", "/image/**", "/fonts/**", "/js/**","/common/**");
 	}
 
 }

@@ -10,11 +10,11 @@
 package com.team1.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,13 +27,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.team1.entity.Role;
 import com.team1.entity.User;
 import com.team1.entity.UserRole;
 import com.team1.repository.UserRepository;
 import com.team1.service.UserService;
-import com.team1.validator.UserValidator;
 
 /*
  * @author Sanero.
@@ -47,8 +45,6 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	@Autowired
-	UserValidator userValidator;
-	@Autowired
 	UserRepository userRepository;
 
 	@GetMapping(value = "/")
@@ -57,10 +53,12 @@ public class UserController {
 	}
 
 	@GetMapping(value = "/login")
-	public String login(ModelMap model, @RequestParam(name = "e", required = false) String error) {
+	public String login(ModelMap model, @RequestParam(name = "e", required = false) String error,HttpServletRequest request) {
 		if (error != null) {
 			model.addAttribute("e", error);
 		}
+		HttpSession session = request.getSession();
+		session.setMaxInactiveInterval(6000);
 		return "user/login";
 	}
 
@@ -101,8 +99,7 @@ public class UserController {
 	}
 
 	@PostMapping(value = "/admin/add-user")
-	public String addUser(ModelMap model, @ModelAttribute("user") User user, BindingResult bindingResult) {
-		userValidator.validate(user, bindingResult);
+	public String addUser(ModelMap model, @ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			return "user/addUser";
 		}
@@ -149,7 +146,6 @@ public class UserController {
 		ur.setUser(findUser);
 		lst.add(ur);
 		findUser.setUserRoles(lst);
-		userValidator.validate(user, bindingResult);
 		if (bindingResult.hasErrors()) {
 			return "user/addUser";
 		}

@@ -1,72 +1,103 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8" />
-<title>Insert title here</title>
-<link
-	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css" />
-<script
-	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+<title>List news</title>
+<th:block th:insert="/import_head.html :: import"></th:block>
+<style type="text/css">
+.search-area {
+	display: inline-block;
+}
+</style>
 </head>
-<body xmlns:th="http://www.thymeleaf.org">
+<body>
+	<!-- wrapper -->
+	<div id="wrapper">
+		<!-- Navigation -->
+		<th:block th:insert="navigation.html :: navigation"></th:block>
 
-	<div class="container">
-		<form th:action="@{/logout}" method="post">
-			<input type="submit" value="Dang Xuat" />
-		</form>
-		<p th:text="${'Welcome to ' + name}"></p>
-		<form th:action="@{/admin/search}" th:object="${email}">
-			<input type="text" name="email" id="email" /> <input type="submit"
-				value="Search" />
-		</form>
-		<h3>
-			<a th:href="@{/admin/add-user}">Create User</a>
-		</h3>
-		<table class="table">
-			<thead class="table table-bordered">
-				<tr class="bg-danger">
-					<th><input type="checkbox" th:id="selectAllUsers" />SelectAllUsers</th>
-					<th>ID</th>
-					<th>Email</th>
-					<th>Mobile</th>
-					<th>FullName</th>
-					<th>Status</th>
-					<th>Role</th>
-					<th>Chon</th>
+		<!-- Content -->
+		<div id="page-wrapper">
+			<div class="row">
+				<form th:action="@{/login}" method="post">
+					<input type="submit" value="Logout" />
+				</form>
+				<form th:action="@{/admin/search}" th:object="${email}"
+					style="margin-top: 25px">
+					<input type="text" name="email" id="email" /> <input type="submit"
+						value="Search" />
+				</form>
+				<table class="table" style="margin-top: 15px">
+					<thead class="table table-bordered">
+						<tr class="bg-danger">
+							<th><input type="checkbox" th:id="selectAllUsers" />SelectAllUsers</th>
+							<th>ID</th>
+							<th>Email</th>
+							<th>Mobile</th>
+							<th>FullName</th>
+							<th>Status</th>
+							<th>Role</th>
+							<th>CreatedDate</th>
+							<th>Chon</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="user : ${list}">
+							<td><input hidden="hidden" name="id"
+								th:value="${user.userId}" /> <input type="checkbox"
+								th:id="'selected'+${user.userId}" class="checkboxUser" /></td>
+							<td th:text="${user.userId}"></td>
+							<td th:text="${user.email}"></td>
+							<td th:text="${user.mobile}"></td>
+							<td th:text="${user.fullName}"></td>
+							<td th:text="${user.status}"></td>
+							<td><span th:each="userRole: ${user.userRoles}"
+								th:text="${userRole.role.name}"></span></td>
+							<td><span th:each="userRole: ${user.userRoles}"
+								th:text="${userRole.createdDate}"></span></td>
+							<td><a th:href="@{|/admin/detail-user/${user.userId}|}"
+								onclick="return confirm('Are you sure detail ?')"> Detail</a>| <a
+								th:href="@{|/admin/delete-user/${user.userId}|}"
+								onclick="return confirm('Are you sure delete ?')"> Delete</a>| <a
+								th:href="@{|/admin/edit-user/${user.userId}|}"
+								onclick="return confirm('Are you sure edit ?')"> Edit</a></td>
 
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="user : ${list}">
-					<td><input hidden="hidden" name="id" th:value="${user.userId}" />
-						<input type="checkbox" th:id="'selected'+${user.userId}"
-						class="checkboxUser" /></td>
-					<td th:text="${user.userId}"></td>
-					<td th:text="${user.email}"></td>
-					<td th:text="${user.mobile}"></td>
-					<td th:text="${user.fullName}"></td>
-					<td th:text="${user.status}"></td>
-					<td>
-						<span th:each="userRole: ${user.userRoles}"
-							th:text="${userRole.role.name}"></span>
-					</td>
-					<td><a th:href="@{|/admin/detail-user/${user.userId}|}"> Detail</a>|
-						<a th:href="@{|/admin/delete-user/${user.userId}|}" onclick="return confirm('Are you sure delete ?')"> Delete</a>| <a
-						th:href="@{|/admin/edit-user/${user.userId}|}"> Edit</a></td>
-
-				</tr>
-			</tbody>
-		</table>
-<button th:id="deleteSelected" class="btn btn-primary ">Delete All</button>
+						</tr>
+					</tbody>
+				</table>
+				<button th:id="deleteSelected" class="btn btn-primary ">Delete
+					All</button>
+			</div>
+		</div>
 	</div>
+
+
+	<th:block th:insert="/import_script.html :: import"></th:block>
 	<script type="text/javascript">
+	$(document).ready(function(){
+		$('detail-user').on('click',function(){
+			var path='detail';
+			var id=$(this).attr('id';)
+			$post(path,{
+				'userId' :id
+			},funcition(res){
+				location.reload();
+			
+		});
+	});
+	$(document).ready(function() {
+		$('.edit-user').on('click', function() {
+			/*<![CDATA[*/
+			var path = /*[[@{/}]]*/'edit';
+			/*]]>*/
+
+			var id = $(this).attr('id');
+
+			$.post(path, {
+				'userId' : id
+			}, function(res) {
+				location.reload();
+			});
+		});
 		$(document).ready(function() {
 			$('.delete-user').on('click', function() {
 				/*<![CDATA[*/
