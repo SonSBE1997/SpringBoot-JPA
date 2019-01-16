@@ -38,13 +38,7 @@
 					<td th:utext="${user.email}"></td>
 					<td th:utext="${user.fullName}"></td>
 					<td th:utext="${user.mobile}"></td>
-					<td class="glyphicon glyphicon-trash"><a
-						th:href="@{|/delete-user/${user.userId}|}"> Delete</a></td>
-					<td class="glyphicon glyphicon-pencil"><a
-						th:href="@{|/edit-user/${user.userId}|}"> Edit</a></td>
-					<td th:each="userRole: ${user.userRoles}">
-						<a th:text="${'RoleId' + userRole.role.roleId}"></a>
-					</td>
+					
 				</tr>
 			</tbody>
 		</table>

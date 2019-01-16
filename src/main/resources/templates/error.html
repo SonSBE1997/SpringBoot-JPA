@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Error page</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+<style>
+.mb-10 {
+	margin-top: 13%;
+}
+
+#btn-home {
+	margin-top: 1%;
+}
+</style>
+</head>
+<body xmlns:th="http://www.thymeleaf.org">
+	<div class="container text-center mb-10">
+		<h1 class="text-danger text-uppercase">
+			&#9785; <span th:text="${status}"></span>
+		</h1>
+
+		<h1>Something went wrong!</h1>
+		<h2>We have come back soon. We apologize for the inconvenience :(</h2>
+		<a id="btn-home" th:href="@{/}" class="btn btn-primary"><span><i
+				class="fas fa-home"></i></span> Go Home</a>
+	</div>
+	<!-- jQuery library -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>

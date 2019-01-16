@@ -1,27 +1,70 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Add news</title>
+<th:block th:insert="/import_head.html :: import"></th:block>
+<style>
+label.title {
+	margin-top: 0.5%;
+}
+
+.mb5 {
+	margin-bottom: 2% !important;
+}
+</style>
 </head>
 <body>
-	<h1 style="margin-left: 4%">ADD ROLE</h1>
-	<form th:action="@{/add-role}" method="post" th:object="${role}">
-		<table>
-			<tr>
-				<td>Name: </td>
-				<td><input type="text" th:field="*{name}" /></td>
-			</tr>
-			<tr>
-				<td>Description: </td>
-				<td><input type="text" th:field="*{desc}" /></td>
-			</tr>
+	<!-- wrapper -->
+	<div id="wrapper">
+		<!-- Navigation -->
+		<th:block th:insert="navigation.html :: navigation"></th:block>
 
-			<tr>
-				<td></td>
-				<td><input type="submit" value="OK" /><input type="reset" name="Reset" style="margin-left: 5px;"/></td>
-			</tr>
-		</table>
-	</form>
+		<!-- Content -->
+		<div id="page-wrapper">
+			<div class="row">
+				<h2 class="text-center text-danger">Add Role</h2>
+
+				<div class="align-center">
+					<span style="margin-left: 220px; color: red" th:text="${val}"></span>
+					<form th:action="@{/admin/Role/add-role}" method="post" th:object="${role}">
+						<div class="form-group">
+							<label class="col-sm-2 control-label title">Name: </label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" placeholder="Role Name"
+									required="required" th:field="*{name}" />
+								<p style="color: red" class="mb5">
+<!-- 									<span th:if="${#fields.hasErrors('url')}" th:errors="*{url}">..</span> -->
+								</p>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label title">Description: </label>
+							<div class="col-sm-10">
+								<textarea class="form-control" rows="3" th:field="*{desc}"></textarea>
+								<p style="color: red" class="mb5">
+<!-- 									<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">..</span> -->
+								</p>
+							</div>
+						</div>
+						
+						<div class="clearfix"></div>
+
+						<div class="form-group">
+							<div class="col-md-offset-2 col-md-10">
+								<a th:href="@{/admin/Role/list-role}" class="btn btn-default">Cancel</a>
+								<input type="submit" value="Create" class="btn btn-primary" />
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- /#page-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+
+	<th:block th:insert="/import_script.html :: import"></th:block>
 </body>
 </html>

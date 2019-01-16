@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<th:block th:insert="/import_head.html :: import"></th:block>
+</head>
+<body>
+	<!-- wrapper -->
+	<div id="wrapper">
+		<!-- Navigation -->
+		<th:block th:insert="navigation.html :: navigation"></th:block>
+
+		<!-- Content -->
+		<div id="page-wrapper">
+			<div class="row">
+				<form th:action="@{/list-slider}" method="post">
+					Filter Name: <input style="width: 150px; margin-bottom: 10px;"
+						type="text" name="name" />
+				</form>
+				<table border="1">
+					<tr>
+						<th>Slider_ID</th>
+						<th>Name</th>
+						<th>Content</th>
+						<th>ImgUrl</th>
+			
+						<th>Detail</th>
+						<th>Delete</th>
+						<th>Edit</th>
+					</tr>
+					<tr th:each="slider : ${listSlider}">
+						<td th:utext="${slider.slider_id}"></td>
+						<td th:utext="${slider.name}"></td>
+						<td th:utext="${slider.content}"></td>
+						<td th:utext="${slider.imgUrl}"></td>
+			
+						<td><a th:href="@{'/admin/detail-slider/' + ${slider.slider_id}}">
+								Detail</a></td>
+						<td><a th:href="@{'/admin/delete-slider/'+ ${slider.slider_id}}">
+								Delete</a></td>
+						<td><a th:href="@{'/admin/update-slider/'+ ${slider.slider_id}}">
+								Edit</a></td>
+					</tr>
+				</table>
+				<a th:href="@{/admin/add-slider}">ADD SLIDER</a>
+			</div>
+		</div>
+		<!-- /#page-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+	<th:block th:insert="/import_script.html :: import"></th:block>
+</body>
+</html>

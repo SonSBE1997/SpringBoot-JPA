@@ -83,6 +83,8 @@ public class NewsController {
     long total = newsService.countAll();
     int maxPage = (int) Math.ceil(((double) total) / pageSize);
     model.addAttribute("total", maxPage);
+    if (page > maxPage)
+      return "redirect:/admin/news/1";
     return "news/showpaging";
   }
 

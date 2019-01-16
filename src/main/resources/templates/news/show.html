@@ -66,9 +66,30 @@
 									th:href="@{/admin/news/detail/} + ${news.newsId}">Detail</a> <a
 									class="btn btn-warning"
 									th:href="@{/admin/news/edit/} + ${news.newsId}">Edit</a> <a
-									class="btn btn-danger btn-delete"
-									th:attr="data-id=${news.newsId}">Delete</a></td>
+									class="btn btn-danger" data-toggle="modal"
+									th:attr="data-target='#delete'+${news.newsId}">Delete</a></td>
 							</tr>
+
+							<!-- Modal -->
+							<div th:id="'delete' + ${news.newsId}" class="modal fade"
+								role="dialog">
+								<div class="modal-dialog">
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title">Do u sure delete this record?</h4>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-danger btn-delete"
+												th:attr="data-id=${news.newsId}" data-dismiss="modal">Yes</button>
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal">No</button>
+										</div>
+									</div>
+
+								</div>
+							</div>
 						</th:block>
 					</tbody>
 				</table>
@@ -82,74 +103,84 @@
 	<!-- Import Footer -->
 	<th:block th:insert="/import_script.html :: import"></th:block>
 	<script type="text/javascript">
-		$(document).ready(function(){
-			$('.btn-hot').off('click').on('click', function(e) {
-				e.preventDefault();
-				var btn = $(this);
-				var id = btn.data('id');
-				$.ajax({
-					url : "/admin/news/changeHot",
-					data : {
-						id : id
-					},
-					type : "POST",
-					success : function(response) {
-						console.log(response);
-						$('#hot' + id).text(response);
-					}
-				});
-			});
-
-			$('.btn-status')
-					.off('click')
-					.on(
-							'click',
-							function(e) {
+		$(document)
+				.ready(
+						function() {
+							$('.btn-hot').off('click').on('click', function(e) {
 								e.preventDefault();
 								var btn = $(this);
 								var id = btn.data('id');
-								var text = $(this).text();
-								if (text == "chua phe duyet") {
-									var result = confirm("Ban co chac phe duyet ban tin nay khong?");
-									if (result) {
+								$.ajax({
+									url : "/admin/news/changeHot",
+									data : {
+										id : id
+									},
+									type : "POST",
+									success : function(response) {
+										console.log(response);
+										$('#hot' + id).text(response);
+									}
+								});
+							});
+
+							$('.btn-status')
+									.off('click')
+									.on(
+											'click',
+											function(e) {
+												e.preventDefault();
+												var btn = $(this);
+												var id = btn.data('id');
+												var text = $(this).text();
+												if (text == "chua phe duyet") {
+													var result = confirm("Ban co chac phe duyet ban tin nay khong?");
+													if (result) {
+														$
+																.ajax({
+																	url : "/admin/news/approve",
+																	data : {
+																		id : id
+																	},
+																	type : "POST",
+																	success : function(
+																			response) {
+																		console
+																				.log(response);
+																		$(
+																				'#approver'
+																						+ id)
+																				.text(
+																						response);
+																		$(
+																				'#status'
+																						+ id)
+																				.text(
+																						"da phe duyet");
+																	}
+																});
+													}
+												}
+											});
+
+							$('.btn-delete').off('click').on('click',
+									function(e) {
+										e.preventDefault();
+										var btn = $(this);
+										var id = btn.data('id');
 										$.ajax({
-											url : "/admin/news/approve",
+											url : "/admin/news/delete",
 											data : {
 												id : id
 											},
 											type : "POST",
 											success : function(response) {
-												console.log(response);
-												$('#approver' + id).text(response);
-												$('#status' + id).text(
-														"da phe duyet");
+												if (response == "success") {
+													$('#row' + id).remove();
+												}
 											}
 										});
-									}
-								}
-							});
-
-			$('.btn-delete').off('click').on('click', function(e) {
-				e.preventDefault();
-				var btn = $(this);
-				var id = btn.data('id');
-				var result = confirm("Ban co chac xoa ban tin nay khong?");
-				if (result) {
-					$.ajax({
-						url : "/admin/news/delete",
-						data : {
-							id : id
-						},
-						type : "POST",
-						success : function(response) {
-							if (response == "success") {
-								$('#row' + id).remove();
-							}
-						}
-					});
-				}
-			});
-		});
+									});
+						});
 	</script>
 </body>
 </html>
