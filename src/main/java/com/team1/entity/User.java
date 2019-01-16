@@ -30,29 +30,69 @@ import javax.persistence.Table;
 @Entity(name = "user")
 @Table(name = "user")
 public class User implements Serializable {
+
   private static final long serialVersionUID = 1L;
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "user_id")
   private int userId;
-
-  @Column(name = "full_name", length = 50)
-  private String fullName;
-
-  @Column(name = "email", length = 50)
   private String email;
-
-  @Column(name = "mobile", length = 11)
-  private String mobile;
-
-  @Column(name = "password", length = 255)
   private String password;
-
-  @Column(name = "status", length = 50)
+  @Column(name = "status")
   private String status;
-
+  @Column(name = "full_name")
+  private String fullName;
+  private String mobile;
   @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
   private List<UserRole> userRoles;
+
+  public int getUserId() {
+    return userId;
+  }
+
+  public void setUserId(int userId) {
+    this.userId = userId;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public String getFullName() {
+    return fullName;
+  }
+
+  public void setFullName(String fullName) {
+    this.fullName = fullName;
+  }
+
+  public String getMobile() {
+    return mobile;
+  }
+
+  public void setMobile(String mobile) {
+    this.mobile = mobile;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
 
   public List<UserRole> getUserRoles() {
     return userRoles;
@@ -60,172 +100,5 @@ public class User implements Serializable {
 
   public void setUserRoles(List<UserRole> userRoles) {
     this.userRoles = userRoles;
-  }
-
-  /*
-   * Author: Sanero.
-   * Created date: Jan 10, 2019
-   * Created time: 2:45:50 PM
-   * @return the id
-   */
-  public int getUserId() {
-    return userId;
-  }
-
-  /*
-   * Author: Sanero.
-   * Created date: Jan 10, 2019
-   * Created time: 2:45:50 PM
-   * @param id the id to set
-   */
-  public void setUserId(int id) {
-    this.userId = id;
-  }
-
-  /*
-   * Author: Sanero.
-   * Created date: Jan 10, 2019
-   * Created time: 2:45:50 PM
-   * @return the name
-   */
-  public String getFullName() {
-    return fullName;
-  }
-
-  /*
-   * Author: Sanero.
-   * Created date: Jan 10, 2019
-   * Created time: 2:45:50 PM
-   * @param name the name to set
-   */
-  public void setFullName(String name) {
-    this.fullName = name;
-  }
-
-  /*
-   * Author: Sanero.
-   * Created date: Jan 10, 2019
-   * Created time: 2:45:50 PM
-   * @return the email
-   */
-  public String getEmail() {
-    return email;
-  }
-
-  /*
-   * Author: Sanero.
-   * Created date: Jan 10, 2019
-   * Created time: 2:45:50 PM
-   * @param email the email to set
-   */
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  /*
-   * Author: Sanero.
-   * Created date: Jan 10, 2019
-   * Created time: 2:45:50 PM
-   * @return the mobile
-   */
-  public String getMobile() {
-    return mobile;
-  }
-
-  /*
-   * Author: Sanero.
-   * Created date: Jan 10, 2019
-   * Created time: 2:45:50 PM
-   * @param mobile the mobile to set
-   */
-  public void setMobile(String mobile) {
-    this.mobile = mobile;
-  }
-
-  /*
-   * Author: Sanero.
-   * Created date: Jan 10, 2019
-   * Created time: 2:45:50 PM
-   * @return the password
-   */
-  public String getPassword() {
-    return password;
-  }
-
-  /*
-   * Author: Sanero.
-   * Created date: Jan 10, 2019
-   * Created time: 2:45:50 PM
-   * @param password the password to set
-   */
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
-  /*
-   * Author: Sanero.
-   * Created date: Jan 10, 2019
-   * Created time: 2:45:50 PM
-   * @return the status
-   */
-  public String getStatus() {
-    return status;
-  }
-
-  /*
-   * Author: Sanero.
-   * Created date: Jan 10, 2019
-   * Created time: 2:45:50 PM
-   * @param status the status to set
-   */
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-  /**
-   * Author: Sanero.
-   * Created date: Jan 10, 2019
-   * Created time: 2:46:41 PM
-   * Description: - .
-   */
-  public User() {
-    super();
-    // TODO Auto-generated constructor stub
-  }
-
-  /**
-   * Author: Sanero.
-   * Created date: Jan 10, 2019
-   * Created time: 2:46:44 PM
-   * Description: - .
-   * @param id - user id.
-   * @param name - user name.
-   * @param email - user email.
-   * @param mobile - user phone number.
-   * @param password - user password.
-   * @param status - user status.
-   */
-  public User(int id, String name, String email, String mobile, String password,
-      String status) {
-    super();
-    this.userId = id;
-    this.fullName = name;
-    this.email = email;
-    this.mobile = mobile;
-    this.password = password;
-    this.status = status;
-  }
-
-  /* (non-Javadoc)
-   * @see java.lang.Object#toString()
-   * Author: Sanero.
-   * Created date: Jan 10, 2019
-   * Created time: 2:46:46 PM
-   */
-  @Override
-  public String toString() {
-    return "User [id=" + userId + ", name=" + fullName + ", email=" + email
-        + ", mobile=" + mobile + ", password=" + password + ", status=" + status
-        + "]";
   }
 }

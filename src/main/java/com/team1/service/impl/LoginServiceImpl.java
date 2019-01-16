@@ -1,13 +1,8 @@
 package com.team1.service.impl;
 
-import com.team1.entity.User;
-import com.team1.repository.UserRepository;
-import com.team1.service.UserService;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,19 +11,22 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.team1.entity.User;
+import com.team1.repository.UserRepository;
+import com.team1.service.UserService;
+
 @Service
 @Transactional
 public class LoginServiceImpl implements UserDetailsService {
-  Logger logger = LoggerFactory.getLogger(LoginServiceImpl.class);
   @Autowired
   UserRepository userRepository;
   @Autowired
   UserService userService;
 
   @Override
-  public UserDetails loadUserByUsername(String email)
+  public UserDetails loadUserByUsername(String username)
       throws UsernameNotFoundException {
-    User user = userRepository.findByEmail(email);
+    User user = userRepository.findByEmail(username);
     if (user == null) {
       throw new UsernameNotFoundException("not user");
     }
@@ -43,8 +41,7 @@ public class LoginServiceImpl implements UserDetailsService {
     }
 
     UserDetails details = new org.springframework.security.core.userdetails.User(
-        email, user.getPassword(), authorities);
-
+        username, user.getPassword(), authorities);
     return details;
   }
 }

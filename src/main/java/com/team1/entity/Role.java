@@ -19,13 +19,12 @@ public class Role implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="role_id")
 	private int roleId;
-	private String name="ROLE_USER";
+	private String name;
 	@Column(name="description")
 	private String desc;
 	@OneToMany(mappedBy="role",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	private List<UserRole> userRoles;
-	/*@OneToMany(mappedBy="role")
-	private List<MenuRole> menuRoles;*/
+	
 	public int getRoleId() {
 		return roleId;
 	}
@@ -50,11 +49,6 @@ public class Role implements Serializable {
 	public void setUserRoles(List<UserRole> userRoles) {
 		this.userRoles = userRoles;
 	}
-	/*public List<MenuRole> getMenuRoles() {
-		return menuRoles;
-	}
-	public void setMenuRoles(List<MenuRole> menuRoles) {
-		this.menuRoles = menuRoles;
-	}*/
+	
 	
 }

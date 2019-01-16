@@ -9,17 +9,9 @@
 
 package com.team1.controller;
 
-import com.team1.entity.Role;
-import com.team1.entity.User;
-import com.team1.entity.UserRole;
-import com.team1.repository.UserRepository;
-import com.team1.service.UserService;
-import com.team1.validator.UserValidator;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -33,6 +25,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.team1.entity.Role;
+import com.team1.entity.User;
+import com.team1.entity.UserRole;
+import com.team1.repository.UserRepository;
+import com.team1.service.UserService;
+import com.team1.validator.UserValidator;
+
 /*
  * @author Sanero.
  * Created date: Jan 11, 2019
@@ -41,7 +40,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 public class UserController {
-  Logger logger = LoggerFactory.getLogger(UserController.class);
   @Autowired
   UserService userService;
   @Autowired
@@ -49,15 +47,11 @@ public class UserController {
   @Autowired
   UserRepository userRepository;
 
-  /**
-   * Author: Sanero.
-   * Created date: Jan 14, 2019
-   * Created time: 2:59:17 PM
-   * Description: TODO - .
-   * @param model - model map.
-   * @param error handle error.
-   * @return
-   */
+  @GetMapping(value = "/")
+  public String login() {
+    return "index";
+  }
+
   @GetMapping(value = "/login")
   public String login(ModelMap model,
       @RequestParam(name = "e", required = false) String error) {
@@ -67,14 +61,6 @@ public class UserController {
     return "user/login";
   }
 
-  /**
-   * Author: Sanero.
-   * Created date: Jan 14, 2019
-   * Created time: 2:59:34 PM
-   * Description: TODO - .
-   * @param model - model map.
-   * @return
-   */
   @GetMapping(value = "/admin/list-user")
   public String listUserRole(Model model) {
     Authentication authentication = SecurityContextHolder.getContext()
@@ -91,15 +77,6 @@ public class UserController {
     return "user/detailUser";
   }
 
-  /**
-   * Author: Sanero.
-   * Created date: Jan 14, 2019
-   * Created time: 2:59:42 PM
-   * Description: TODO - .
-   * @param model - model map.
-   * @param email - email.
-   * @return
-   */
   @GetMapping(value = "/admin/search")
   public String detailUserRole(Model model,
       @RequestParam(value = "email", required = false) String email) {
@@ -108,15 +85,6 @@ public class UserController {
     return "user/searchUser";
   }
 
-  /**
-   * Author: Sanero.
-   * Created date: Jan 14, 2019
-   * Created time: 2:59:57 PM
-   * Description: TODO - .
-   * @param model - model map.
-   * @param id - id.
-   * @return
-   */
   @GetMapping(value = "/admin/delete-user/{id}")
   public String deleteUser(Model model, @PathVariable("id") int id) {
     userService.deleteUser(id);
@@ -131,16 +99,6 @@ public class UserController {
     return "user/addUser";
   }
 
-  /**
-   * Author: Sanero.
-   * Created date: Jan 14, 2019
-   * Created time: 3:00:11 PM
-   * Description: TODO - .
-   * @param model - model map.
-   * @param user - user map.
-   * @param bindingResult - binding result.
-   * @return
-   */
   @PostMapping(value = "/admin/add-user")
   public String addUser(ModelMap model, @ModelAttribute("user") User user,
       BindingResult bindingResult) {
@@ -148,25 +106,18 @@ public class UserController {
     if (bindingResult.hasErrors()) {
       return "user/addUser";
     }
-    user.setStatus("Thanh cong");
+
     userService.addUser(user);
-    if (user.getStatus().equals("That Bại")) {
-      model.addAttribute("Msg", "Email đã tồn tại");
-      return "user/addUser";
+    if (user.getStatus() != null) {
+      if (user.getStatus().equals("That Bại")) {
+        model.addAttribute("Msg", "Email đã tồn tại");
+        return "user/addUser";
+      }
     }
     return "redirect:/admin/list-user";
 
   }
 
-  /**
-   * Author: Sanero.
-   * Created date: Jan 14, 2019
-   * Created time: 3:00:40 PM
-   * Description: TODO - .
-   * @param model - model map.
-   * @param id - user id.
-   * @return
-   */
   @GetMapping(value = "/admin/edit-user/{id}")
   public String editUser(ModelMap model, @PathVariable("id") String id) {
     model.addAttribute("user", userService.findUser(Integer.parseInt(id)));
@@ -182,21 +133,10 @@ public class UserController {
     return "user/editUser";
   }
 
-  /**
-   * Author: Sanero.
-   * Created date: Jan 14, 2019
-   * Created time: 3:01:15 PM
-   * Description: TODO - .
-   * @param model - model map.
-   * @param user user.
-   * @param bindingResult - binding result.
-   * @param lstRole - lstRole.
-   * @return
-   */
   @PostMapping(value = "/admin/edit-user")
   public String editUser(ModelMap model, @ModelAttribute("user") User user,
       BindingResult bindingResult,
-      @RequestParam(value = "userRoles", required = false) List<String> lstRole) {
+      @RequestParam(value = "role", required = false) List<String> lstRole) {
     User findUser = userService.findUser(user.getUserId());
     findUser.setEmail(user.getEmail());
     findUser.setFullName(user.getFullName());
