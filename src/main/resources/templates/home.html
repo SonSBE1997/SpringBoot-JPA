@@ -24,7 +24,7 @@
 							0909.343.048</b>
 					</div>
 					<div class="col-md-1 phone-contact">
-						<a class="phone-contact-content" th:href="@{/login}">Login</a>
+						<a class="phone-contact-content" th:href="@{/admin/login}">Login</a>
 					</div>
 				</div>
 			</div>
@@ -172,10 +172,17 @@
 	</div>
 	<footer>
 		<p>KHAI GIẢNG: THÁNG 07/2014 VÀ THÁNG 01/2015</p>
-		<img th:src="@{/user/img/go-to-top.png}" alt="">
+		<img id="scroll-to-top" th:src="@{/user/img/go-to-top.png}" alt="">
 	</footer>
 	<script th:src="@{/user/js/jquery-3.3.1.min.js}"></script>
 	<script th:src="@{/user/js/custom.js}"></script>
+	<script type="text/javascript">
+		$('#scroll-to-top').on('click', function() {
+			$("html, body").animate({
+				scrollTop : 0
+			}, 1000);
+		});
+	</script>
 </body>
 
 </html>

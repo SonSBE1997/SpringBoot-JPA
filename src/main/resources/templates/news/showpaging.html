@@ -26,7 +26,7 @@
 					</div>
 
 					<div
-						class="col-md-10 col-sm-10 col-xs-12 form-group pull-right top_search">
+						class="col-md-3 col-sm-3 col-xs-5 form-group pull-right top_search">
 						<div class="input-group">
 							<input type="text" class="form-control" name="searchString"
 								th:value="${searchStr}" id="iSearch" placeholder="Search">
@@ -40,7 +40,6 @@
 					<thead>
 						<tr>
 							<th class="text-center">Title</th>
-							<th class="text-center">Description</th>
 							<th class="text-center">Is Hot</th>
 							<th class="text-center">User</th>
 							<th class="text-center">Status</th>
@@ -51,19 +50,19 @@
 					<tbody>
 						<th:block th:each="news : ${listNews}">
 							<tr th:id="'row' + ${news.newsId}">
-								<td th:text="${news.title}"></td>
-								<td th:text="${news.description}"></td>
-								<td><a th:text="${news.hot}? 'hot news' : 'normal'"
+								<td th:text="${news.title}" class="col-md-4 col-sm-4"></td>
+								<td class="col-md-1 col-sm-1"><a
+									th:text="${news.hot}? 'hot news' : 'normal'"
 									th:id="hot + ${news.newsId}" th:attr="data-id=${news.newsId}"
 									class="btn-hot"></a></td>
-								<td th:text="${news.user.fullName}"></td>
-								<td><a th:text="${news.status}"
+								<td th:text="${news.user.fullName}" class="col-md-2 col-sm-2"></td>
+								<td class="col-md-1 col-sm-1"><a th:text="${news.status}"
 									th:id="status + ${news.newsId}"
 									th:attr="data-id=${news.newsId}" class="btn-status"></a></td>
-								<td
+								<td class="col-md-2 col-sm-2"
 									th:text="${news.approver!= null}? ${news.approver.fullName} : ''"
 									th:id="approver + ${news.newsId}"></td>
-								<td style="width: 20%" class="text-center"><a
+								<td style="width: 20%" class="col-md-3 col-sm-3 text-center"><a
 									class="btn btn-info"
 									th:href="@{/admin/news/detail/} + ${news.newsId}">Detail</a> <a
 									class="btn btn-warning"
@@ -99,81 +98,83 @@
 	<!-- Import Footer -->
 	<th:block th:insert="/import_script.html :: import"></th:block>
 	<script type="text/javascript">
-		$('.btn-hot').off('click').on('click', function(e) {
-			e.preventDefault();
-			var btn = $(this);
-			var id = btn.data('id');
-			$.ajax({
-				url : "/admin/news/changeHot",
-				data : {
-					id : id
-				},
-				type : "POST",
-				success : function(response) {
-					console.log(response);
-					$('#hot' + id).text(response);
-				}
-			});
-		});
-
-		$('.btn-status')
-				.off('click')
-				.on(
-						'click',
-						function(e) {
-							e.preventDefault();
-							var btn = $(this);
-							var id = btn.data('id');
-							var text = $(this).text();
-							if (text == "chua phe duyet") {
-								var result = confirm("Ban co chac phe duyet ban tin nay khong?");
-								if (result) {
-									$.ajax({
-										url : "/admin/news/approve",
-										data : {
-											id : id
-										},
-										type : "POST",
-										success : function(response) {
-											console.log(response);
-											$('#approver' + id).text(response);
-											$('#status' + id).text(
-													"da phe duyet");
-										}
-									});
-								}
-							}
-						});
-
-		$('.btn-delete').off('click').on('click', function(e) {
-			e.preventDefault();
-			var btn = $(this);
-			var id = btn.data('id');
-			var result = confirm("Ban co chac xoa ban tin nay khong?");
-			if (result) {
+		$(document).ready(function(){
+			$('.btn-hot').off('click').on('click', function(e) {
+				e.preventDefault();
+				var btn = $(this);
+				var id = btn.data('id');
 				$.ajax({
-					url : "/admin/news/delete",
+					url : "/admin/news/changeHot",
 					data : {
 						id : id
 					},
 					type : "POST",
 					success : function(response) {
-						if (response == "success") {
-							$('#row' + id).remove();
-						}
+						console.log(response);
+						$('#hot' + id).text(response);
 					}
 				});
-			}
-		});
+			});
 
-		$('#btn-search').off('click').on('click', function(e) {
-			e.preventDefault();
-			var searchStr = $('#iSearch').val();
-			if (searchStr == "") {
-				window.location.href = "/admin/news/1";
-				return;
-			}
-			window.location.href = "/admin/news/filter/" + searchStr + "/1";
+			$('.btn-status')
+					.off('click')
+					.on(
+							'click',
+							function(e) {
+								e.preventDefault();
+								var btn = $(this);
+								var id = btn.data('id');
+								var text = $(this).text();
+								if (text == "chua phe duyet") {
+									var result = confirm("Ban co chac phe duyet ban tin nay khong?");
+									if (result) {
+										$.ajax({
+											url : "/admin/news/approve",
+											data : {
+												id : id
+											},
+											type : "POST",
+											success : function(response) {
+												console.log(response);
+												$('#approver' + id).text(response);
+												$('#status' + id).text(
+														"da phe duyet");
+											}
+										});
+									}
+								}
+							});
+
+			$('.btn-delete').off('click').on('click', function(e) {
+				e.preventDefault();
+				var btn = $(this);
+				var id = btn.data('id');
+				var result = confirm("Ban co chac xoa ban tin nay khong?");
+				if (result) {
+					$.ajax({
+						url : "/admin/news/delete",
+						data : {
+							id : id
+						},
+						type : "POST",
+						success : function(response) {
+							if (response == "success") {
+								$('#row' + id).remove();
+							}
+						}
+					});
+				}
+			});
+
+			$('#btn-search').off('click').on('click', function(e) {
+				e.preventDefault();
+				var searchStr = $('#iSearch').val();
+				if (searchStr == "") {
+					window.location.href = "/admin/news/1";
+					return;
+				}
+				window.location.href = "/admin/news/filter/" + searchStr + "/1";
+			});
 		});
 	</script>
 </body>
