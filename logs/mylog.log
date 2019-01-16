@@ -2564,3 +2564,447 @@ Consider the following:
 2019-01-16 13:13:39 [http-nio-80-exec-1] INFO  o.a.c.c.C.[Tomcat-2].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2019-01-16 13:13:39 [http-nio-80-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2019-01-16 13:13:39 [http-nio-80-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+2019-01-16 13:29:39 [Thread-22] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-01-16 13:29:39 [Thread-22] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-01-16 13:29:39 [Thread-22] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2019-01-16 13:29:39 [Thread-22] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+2019-01-16 13:29:39 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - Starting Team1SpringBootJpaApplication on DESKTOP-PGKHSCB with PID 13136 (E:\workspace\backend\sts-workspace\Team1-SpringBoot-JPA\target\classes started by User in E:\workspace\backend\sts-workspace\Team1-SpringBoot-JPA)
+2019-01-16 13:29:39 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - No active profile set, falling back to default profiles: default
+2019-01-16 13:29:40 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-01-16 13:29:40 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17ms. Found 5 repository interfaces.
+2019-01-16 13:29:40 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$84b51f99] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-01-16 13:29:40 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2019-01-16 13:29:40 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-01-16 13:29:40 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.13
+2019-01-16 13:29:40 [restartedMain] INFO  o.a.c.c.C.[Tomcat-2].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-01-16 13:29:40 [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 352 ms
+2019-01-16 13:29:40 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Starting...
+2019-01-16 13:29:40 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Start completed.
+2019-01-16 13:29:40 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-01-16 13:29:40 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-01-16 13:29:40 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000038: Composite-id class does not override equals(): com.team1.entity.FkUserRole
+2019-01-16 13:29:40 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000039: Composite-id class does not override hashCode(): com.team1.entity.FkUserRole
+2019-01-16 13:29:40 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-01-16 13:29:40 [restartedMain] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-01-16 13:29:40 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/css/**'], []
+2019-01-16 13:29:40 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/image/**'], []
+2019-01-16 13:29:40 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/fonts/**'], []
+2019-01-16 13:29:40 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/js/**'], []
+2019-01-16 13:29:40 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/common/**'], []
+2019-01-16 13:29:40 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/user/**'], []
+2019-01-16 13:29:40 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@19b1abe3, org.springframework.security.web.context.SecurityContextPersistenceFilter@59d8ff9e, org.springframework.security.web.header.HeaderWriterFilter@667b8d45, org.springframework.security.web.authentication.logout.LogoutFilter@189c7f90, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@60eb9f6b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@55c26add, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6fe9d485, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5cf81099, org.springframework.security.web.session.SessionManagementFilter@7120c44c, org.springframework.security.web.access.ExceptionTranslationFilter@24551860, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@26f0c389]
+2019-01-16 13:29:40 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-01-16 13:29:40 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2019-01-16 13:29:40 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-01-16 13:29:40 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2019-01-16 13:29:40 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - Started Team1SpringBootJpaApplication in 0.841 seconds (JVM running for 6415.195)
+2019-01-16 13:29:40 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-01-16 13:29:51 [Thread-28] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-01-16 13:29:51 [Thread-28] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-01-16 13:29:51 [Thread-28] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown initiated...
+2019-01-16 13:29:51 [Thread-28] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown completed.
+2019-01-16 13:29:52 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - Starting Team1SpringBootJpaApplication on DESKTOP-PGKHSCB with PID 13136 (E:\workspace\backend\sts-workspace\Team1-SpringBoot-JPA\target\classes started by User in E:\workspace\backend\sts-workspace\Team1-SpringBoot-JPA)
+2019-01-16 13:29:52 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - No active profile set, falling back to default profiles: default
+2019-01-16 13:29:52 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-01-16 13:29:52 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17ms. Found 5 repository interfaces.
+2019-01-16 13:29:52 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$84b51f99] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-01-16 13:29:52 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2019-01-16 13:29:52 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-01-16 13:29:52 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.13
+2019-01-16 13:29:52 [restartedMain] INFO  o.a.c.c.C.[Tomcat-2].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-01-16 13:29:52 [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 388 ms
+2019-01-16 13:29:52 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Starting...
+2019-01-16 13:29:52 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Start completed.
+2019-01-16 13:29:52 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-01-16 13:29:52 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-01-16 13:29:52 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000038: Composite-id class does not override equals(): com.team1.entity.FkUserRole
+2019-01-16 13:29:52 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000039: Composite-id class does not override hashCode(): com.team1.entity.FkUserRole
+2019-01-16 13:29:52 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-01-16 13:29:52 [restartedMain] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-01-16 13:29:52 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/css/**'], []
+2019-01-16 13:29:52 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/image/**'], []
+2019-01-16 13:29:52 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/fonts/**'], []
+2019-01-16 13:29:52 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/js/**'], []
+2019-01-16 13:29:52 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/common/**'], []
+2019-01-16 13:29:52 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/user/**'], []
+2019-01-16 13:29:52 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3ce77055, org.springframework.security.web.context.SecurityContextPersistenceFilter@33b2b346, org.springframework.security.web.header.HeaderWriterFilter@42f00a12, org.springframework.security.web.authentication.logout.LogoutFilter@47708c35, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5605b436, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@657bb554, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@27999373, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@63c47328, org.springframework.security.web.session.SessionManagementFilter@5dcbab7, org.springframework.security.web.access.ExceptionTranslationFilter@7024c77b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@346527ad]
+2019-01-16 13:29:52 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-01-16 13:29:52 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2019-01-16 13:29:52 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-01-16 13:29:52 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2019-01-16 13:29:52 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - Started Team1SpringBootJpaApplication in 0.935 seconds (JVM running for 6427.316)
+2019-01-16 13:29:52 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-01-16 13:30:13 [Thread-34] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-01-16 13:30:13 [Thread-34] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-01-16 13:30:13 [Thread-34] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown initiated...
+2019-01-16 13:30:13 [Thread-34] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown completed.
+2019-01-16 13:30:13 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - Starting Team1SpringBootJpaApplication on DESKTOP-PGKHSCB with PID 13136 (E:\workspace\backend\sts-workspace\Team1-SpringBoot-JPA\target\classes started by User in E:\workspace\backend\sts-workspace\Team1-SpringBoot-JPA)
+2019-01-16 13:30:13 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - No active profile set, falling back to default profiles: default
+2019-01-16 13:30:13 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-01-16 13:30:13 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17ms. Found 5 repository interfaces.
+2019-01-16 13:30:13 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$84b51f99] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-01-16 13:30:13 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2019-01-16 13:30:13 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-01-16 13:30:13 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.13
+2019-01-16 13:30:13 [restartedMain] INFO  o.a.c.c.C.[Tomcat-2].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-01-16 13:30:13 [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 352 ms
+2019-01-16 13:30:13 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Starting...
+2019-01-16 13:30:13 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Start completed.
+2019-01-16 13:30:13 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-01-16 13:30:13 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-01-16 13:30:13 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000038: Composite-id class does not override equals(): com.team1.entity.FkUserRole
+2019-01-16 13:30:13 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000039: Composite-id class does not override hashCode(): com.team1.entity.FkUserRole
+2019-01-16 13:30:13 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-01-16 13:30:13 [restartedMain] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-01-16 13:30:14 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/css/**'], []
+2019-01-16 13:30:14 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/image/**'], []
+2019-01-16 13:30:14 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/fonts/**'], []
+2019-01-16 13:30:14 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/js/**'], []
+2019-01-16 13:30:14 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/common/**'], []
+2019-01-16 13:30:14 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/user/**'], []
+2019-01-16 13:30:14 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7ddcfe63, org.springframework.security.web.context.SecurityContextPersistenceFilter@460b5381, org.springframework.security.web.header.HeaderWriterFilter@215799da, org.springframework.security.web.authentication.logout.LogoutFilter@6c3d6fa6, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@da38640, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@21fbf6a1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3cff320d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@16ea836e, org.springframework.security.web.session.SessionManagementFilter@5d51a87c, org.springframework.security.web.access.ExceptionTranslationFilter@6c0172cb, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@344ac784]
+2019-01-16 13:30:14 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-01-16 13:30:14 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2019-01-16 13:30:14 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-01-16 13:30:14 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2019-01-16 13:30:14 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - Started Team1SpringBootJpaApplication in 0.977 seconds (JVM running for 6448.738)
+2019-01-16 13:30:14 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-01-16 13:30:16 [Thread-40] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-01-16 13:30:16 [Thread-40] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-01-16 13:30:16 [Thread-40] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Shutdown initiated...
+2019-01-16 13:30:16 [Thread-40] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Shutdown completed.
+2019-01-16 13:30:17 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - Starting Team1SpringBootJpaApplication on DESKTOP-PGKHSCB with PID 13136 (E:\workspace\backend\sts-workspace\Team1-SpringBoot-JPA\target\classes started by User in E:\workspace\backend\sts-workspace\Team1-SpringBoot-JPA)
+2019-01-16 13:30:17 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - No active profile set, falling back to default profiles: default
+2019-01-16 13:30:17 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-01-16 13:30:17 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17ms. Found 5 repository interfaces.
+2019-01-16 13:30:17 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$84b51f99] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-01-16 13:30:17 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2019-01-16 13:30:17 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-01-16 13:30:17 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.13
+2019-01-16 13:30:17 [restartedMain] INFO  o.a.c.c.C.[Tomcat-2].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-01-16 13:30:17 [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 326 ms
+2019-01-16 13:30:17 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-7 - Starting...
+2019-01-16 13:30:17 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-7 - Start completed.
+2019-01-16 13:30:17 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-01-16 13:30:17 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-01-16 13:30:17 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000038: Composite-id class does not override equals(): com.team1.entity.FkUserRole
+2019-01-16 13:30:17 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000039: Composite-id class does not override hashCode(): com.team1.entity.FkUserRole
+2019-01-16 13:30:17 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-01-16 13:30:17 [restartedMain] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-01-16 13:30:17 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/css/**'], []
+2019-01-16 13:30:17 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/image/**'], []
+2019-01-16 13:30:17 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/fonts/**'], []
+2019-01-16 13:30:17 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/js/**'], []
+2019-01-16 13:30:17 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/common/**'], []
+2019-01-16 13:30:17 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/user/**'], []
+2019-01-16 13:30:17 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@17dcf850, org.springframework.security.web.context.SecurityContextPersistenceFilter@36ba3c49, org.springframework.security.web.header.HeaderWriterFilter@4b9bbd76, org.springframework.security.web.authentication.logout.LogoutFilter@60cdde52, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@9d991d8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@681e5cc0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7e782cb8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@76a5ec78, org.springframework.security.web.session.SessionManagementFilter@58d8ce73, org.springframework.security.web.access.ExceptionTranslationFilter@3a9c8cc2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5d169d78]
+2019-01-16 13:30:18 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-01-16 13:30:18 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2019-01-16 13:30:18 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-01-16 13:30:18 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2019-01-16 13:30:18 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - Started Team1SpringBootJpaApplication in 0.921 seconds (JVM running for 6452.631)
+2019-01-16 13:30:18 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-01-16 13:30:28 [http-nio-80-exec-1] INFO  o.a.c.c.C.[Tomcat-2].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-01-16 13:30:28 [http-nio-80-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-01-16 13:30:28 [http-nio-80-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 7 ms
+2019-01-16 13:32:10 [Thread-46] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-01-16 13:32:10 [Thread-46] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-01-16 13:32:10 [Thread-46] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-7 - Shutdown initiated...
+2019-01-16 13:32:10 [Thread-46] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-7 - Shutdown completed.
+2019-01-16 13:32:10 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - Starting Team1SpringBootJpaApplication on DESKTOP-PGKHSCB with PID 13136 (E:\workspace\backend\sts-workspace\Team1-SpringBoot-JPA\target\classes started by User in E:\workspace\backend\sts-workspace\Team1-SpringBoot-JPA)
+2019-01-16 13:32:10 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - No active profile set, falling back to default profiles: default
+2019-01-16 13:32:11 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-01-16 13:32:11 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19ms. Found 5 repository interfaces.
+2019-01-16 13:32:11 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$84b51f99] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-01-16 13:32:11 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2019-01-16 13:32:11 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-01-16 13:32:11 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.13
+2019-01-16 13:32:11 [restartedMain] INFO  o.a.c.c.C.[Tomcat-2].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-01-16 13:32:11 [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 338 ms
+2019-01-16 13:32:11 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-8 - Starting...
+2019-01-16 13:32:11 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-8 - Start completed.
+2019-01-16 13:32:11 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-01-16 13:32:11 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-01-16 13:32:11 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000038: Composite-id class does not override equals(): com.team1.entity.FkUserRole
+2019-01-16 13:32:11 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000039: Composite-id class does not override hashCode(): com.team1.entity.FkUserRole
+2019-01-16 13:32:11 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-01-16 13:32:11 [restartedMain] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-01-16 13:32:11 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/css/**'], []
+2019-01-16 13:32:11 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/image/**'], []
+2019-01-16 13:32:11 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/fonts/**'], []
+2019-01-16 13:32:11 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/js/**'], []
+2019-01-16 13:32:11 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/common/**'], []
+2019-01-16 13:32:11 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/user/**'], []
+2019-01-16 13:32:11 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@549eaf2e, org.springframework.security.web.context.SecurityContextPersistenceFilter@39f69e40, org.springframework.security.web.header.HeaderWriterFilter@7715e68d, org.springframework.security.web.authentication.logout.LogoutFilter@12a80eaa, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@69471801, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@32fee777, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6a875e2b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@22dcd40e, org.springframework.security.web.session.SessionManagementFilter@56c5c24b, org.springframework.security.web.access.ExceptionTranslationFilter@49684d64, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@758ea50f]
+2019-01-16 13:32:11 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-01-16 13:32:11 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2019-01-16 13:32:11 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-01-16 13:32:11 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2019-01-16 13:32:11 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - Started Team1SpringBootJpaApplication in 0.831 seconds (JVM running for 6566.187)
+2019-01-16 13:32:11 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-01-16 13:32:17 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2019-01-16 13:32:17 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-01-16 13:32:17 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-01-16 13:32:17 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-8 - Shutdown initiated...
+2019-01-16 13:32:17 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-8 - Shutdown completed.
+2019-01-16 13:32:28 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - Starting Team1SpringBootJpaApplication on DESKTOP-PGKHSCB with PID 13816 (E:\workspace\backend\sts-workspace\Team1-SpringBoot-JPA\target\classes started by User in E:\workspace\backend\sts-workspace\Team1-SpringBoot-JPA)
+2019-01-16 13:32:28 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - No active profile set, falling back to default profiles: default
+2019-01-16 13:32:28 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-01-16 13:32:28 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-01-16 13:32:29 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-01-16 13:32:29 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 83ms. Found 5 repository interfaces.
+2019-01-16 13:32:29 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$8be7fbe8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-01-16 13:32:30 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2019-01-16 13:32:30 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-01-16 13:32:30 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.13
+2019-01-16 13:32:30 [restartedMain] INFO  o.a.c.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_191\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jdk1.8.0_191/bin/../jre/bin/server;C:/Program Files/Java/jdk1.8.0_191/bin/../jre/bin;C:/Program Files/Java/jdk1.8.0_191/bin/../jre/lib/amd64;C:\Program Files\Java\jdk1.8.0_191\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\nodejs\;C:\Program Files\Java\jdk1.8.0_191\jre\bin;C:\Users\User.DESKTOP-PGKHSCB\AppData\Local\Microsoft\WindowsApps;C:\Users\User.DESKTOP-PGKHSCB\AppData\Local\Programs\Git\cmd;C:\Users\User.DESKTOP-PGKHSCB\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\User.DESKTOP-PGKHSCB\AppData\Roaming\npm;E:\sts-4.1.0.RELEASE;;.]
+2019-01-16 13:32:30 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-01-16 13:32:30 [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1711 ms
+2019-01-16 13:32:30 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-01-16 13:32:31 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-01-16 13:32:31 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-01-16 13:32:31 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.7.Final}
+2019-01-16 13:32:31 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-01-16 13:32:31 [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-01-16 13:32:31 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-01-16 13:32:31 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000038: Composite-id class does not override equals(): com.team1.entity.FkUserRole
+2019-01-16 13:32:31 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000039: Composite-id class does not override hashCode(): com.team1.entity.FkUserRole
+2019-01-16 13:32:32 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-01-16 13:32:32 [restartedMain] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-01-16 13:32:32 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/css/**'], []
+2019-01-16 13:32:32 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/image/**'], []
+2019-01-16 13:32:32 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/fonts/**'], []
+2019-01-16 13:32:32 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/js/**'], []
+2019-01-16 13:32:32 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/common/**'], []
+2019-01-16 13:32:32 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/user/**'], []
+2019-01-16 13:32:32 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@794902d4, org.springframework.security.web.context.SecurityContextPersistenceFilter@827f74c, org.springframework.security.web.header.HeaderWriterFilter@5aa40be0, org.springframework.security.web.authentication.logout.LogoutFilter@71d9c9ae, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@299132f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4f2cf111, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2ca744cc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4057f71c, org.springframework.security.web.session.SessionManagementFilter@5add8297, org.springframework.security.web.access.ExceptionTranslationFilter@6119b30a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@773cbd85]
+2019-01-16 13:32:33 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-01-16 13:32:33 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2019-01-16 13:32:33 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-01-16 13:32:33 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2019-01-16 13:32:33 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - Started Team1SpringBootJpaApplication in 5.509 seconds (JVM running for 6.296)
+2019-01-16 13:32:36 [http-nio-80-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-01-16 13:32:36 [http-nio-80-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-01-16 13:32:36 [http-nio-80-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 10 ms
+2019-01-16 13:34:14 [http-nio-80-exec-1] WARN  o.s.s.c.bcrypt.BCryptPasswordEncoder - Encoded password does not look like BCrypt
+2019-01-16 13:34:31 [Thread-6] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-01-16 13:34:31 [Thread-6] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-01-16 13:34:31 [Thread-6] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-01-16 13:34:31 [Thread-6] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-01-16 13:34:31 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - Starting Team1SpringBootJpaApplication on DESKTOP-PGKHSCB with PID 13816 (E:\workspace\backend\sts-workspace\Team1-SpringBoot-JPA\target\classes started by User in E:\workspace\backend\sts-workspace\Team1-SpringBoot-JPA)
+2019-01-16 13:34:31 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - No active profile set, falling back to default profiles: default
+2019-01-16 13:34:32 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-01-16 13:34:32 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 24ms. Found 5 repository interfaces.
+2019-01-16 13:34:32 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$8be7fbe8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-01-16 13:34:32 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2019-01-16 13:34:32 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-01-16 13:34:32 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.13
+2019-01-16 13:34:32 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-01-16 13:34:32 [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 510 ms
+2019-01-16 13:34:32 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2019-01-16 13:34:32 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2019-01-16 13:34:32 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-01-16 13:34:32 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-01-16 13:34:32 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000038: Composite-id class does not override equals(): com.team1.entity.FkUserRole
+2019-01-16 13:34:32 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000039: Composite-id class does not override hashCode(): com.team1.entity.FkUserRole
+2019-01-16 13:34:32 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-01-16 13:34:32 [restartedMain] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-01-16 13:34:32 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/css/**'], []
+2019-01-16 13:34:32 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/image/**'], []
+2019-01-16 13:34:32 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/fonts/**'], []
+2019-01-16 13:34:32 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/js/**'], []
+2019-01-16 13:34:32 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/common/**'], []
+2019-01-16 13:34:32 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/user/**'], []
+2019-01-16 13:34:32 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3dd27ff3, org.springframework.security.web.context.SecurityContextPersistenceFilter@7eb988, org.springframework.security.web.header.HeaderWriterFilter@7a7edc32, org.springframework.security.web.authentication.logout.LogoutFilter@2274e9c4, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@350fa8c8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6ad6c74, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@abebfdf, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1dbb52b0, org.springframework.security.web.session.SessionManagementFilter@63096d69, org.springframework.security.web.access.ExceptionTranslationFilter@121298f3, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@65d8e821]
+2019-01-16 13:34:32 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-01-16 13:34:33 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2019-01-16 13:34:33 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-01-16 13:34:33 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2019-01-16 13:34:33 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - Started Team1SpringBootJpaApplication in 1.221 seconds (JVM running for 125.832)
+2019-01-16 13:34:33 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-01-16 13:34:38 [http-nio-80-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-01-16 13:34:38 [http-nio-80-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-01-16 13:34:38 [http-nio-80-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+2019-01-16 13:37:38 [Thread-10] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-01-16 13:37:38 [Thread-10] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-01-16 13:37:38 [Thread-10] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2019-01-16 13:37:38 [Thread-10] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2019-01-16 13:38:22 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - Starting Team1SpringBootJpaApplication on DESKTOP-PGKHSCB with PID 8076 (E:\workspace\backend\sts-workspace\Team1-SpringBoot-JPA\target\classes started by User in E:\workspace\backend\sts-workspace\Team1-SpringBoot-JPA)
+2019-01-16 13:38:22 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - No active profile set, falling back to default profiles: default
+2019-01-16 13:38:22 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-01-16 13:38:22 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-01-16 13:38:23 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-01-16 13:38:23 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 59ms. Found 5 repository interfaces.
+2019-01-16 13:38:23 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$548a095e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-01-16 13:38:23 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2019-01-16 13:38:23 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-01-16 13:38:23 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.13
+2019-01-16 13:38:23 [restartedMain] INFO  o.a.c.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_191\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jdk1.8.0_191/bin/../jre/bin/server;C:/Program Files/Java/jdk1.8.0_191/bin/../jre/bin;C:/Program Files/Java/jdk1.8.0_191/bin/../jre/lib/amd64;C:\Program Files\Java\jdk1.8.0_191\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\nodejs\;C:\Program Files\Java\jdk1.8.0_191\jre\bin;C:\Users\User.DESKTOP-PGKHSCB\AppData\Local\Microsoft\WindowsApps;C:\Users\User.DESKTOP-PGKHSCB\AppData\Local\Programs\Git\cmd;C:\Users\User.DESKTOP-PGKHSCB\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\User.DESKTOP-PGKHSCB\AppData\Roaming\npm;E:\sts-4.1.0.RELEASE;;.]
+2019-01-16 13:38:24 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-01-16 13:38:24 [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1415 ms
+2019-01-16 13:38:24 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-01-16 13:38:24 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-01-16 13:38:24 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-01-16 13:38:24 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.7.Final}
+2019-01-16 13:38:24 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-01-16 13:38:24 [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-01-16 13:38:24 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-01-16 13:38:25 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000038: Composite-id class does not override equals(): com.team1.entity.FkUserRole
+2019-01-16 13:38:25 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000039: Composite-id class does not override hashCode(): com.team1.entity.FkUserRole
+2019-01-16 13:38:25 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-01-16 13:38:25 [restartedMain] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-01-16 13:38:26 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/css/**'], []
+2019-01-16 13:38:26 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/image/**'], []
+2019-01-16 13:38:26 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/fonts/**'], []
+2019-01-16 13:38:26 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/js/**'], []
+2019-01-16 13:38:26 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/common/**'], []
+2019-01-16 13:38:26 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/user/**'], []
+2019-01-16 13:38:26 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@76a64f6e, org.springframework.security.web.context.SecurityContextPersistenceFilter@7d47b08c, org.springframework.security.web.header.HeaderWriterFilter@21e21383, org.springframework.security.web.authentication.logout.LogoutFilter@6c06aef0, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6de5b4e7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@16c1b473, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@554f1b4a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@36a48fd1, org.springframework.security.web.session.SessionManagementFilter@5b5bf247, org.springframework.security.web.access.ExceptionTranslationFilter@a264a8a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@71c6dc95]
+2019-01-16 13:38:26 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-01-16 13:38:26 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2019-01-16 13:38:26 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-01-16 13:38:26 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2019-01-16 13:38:26 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - Started Team1SpringBootJpaApplication in 4.424 seconds (JVM running for 5.025)
+2019-01-16 13:38:37 [http-nio-80-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-01-16 13:38:37 [http-nio-80-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-01-16 13:38:37 [http-nio-80-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+2019-01-16 13:38:44 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2019-01-16 13:38:44 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-01-16 13:38:44 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-01-16 13:38:44 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-01-16 13:38:44 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-01-16 13:38:48 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - Starting Team1SpringBootJpaApplication on DESKTOP-PGKHSCB with PID 10432 (E:\workspace\backend\sts-workspace\Team1-SpringBoot-JPA\target\classes started by User in E:\workspace\backend\sts-workspace\Team1-SpringBoot-JPA)
+2019-01-16 13:38:48 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - No active profile set, falling back to default profiles: default
+2019-01-16 13:38:48 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-01-16 13:38:48 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-01-16 13:38:48 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-01-16 13:38:48 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 80ms. Found 5 repository interfaces.
+2019-01-16 13:38:49 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$abcdcf89] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-01-16 13:38:49 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2019-01-16 13:38:49 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-01-16 13:38:49 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.13
+2019-01-16 13:38:49 [restartedMain] INFO  o.a.c.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_191\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jdk1.8.0_191/bin/../jre/bin/server;C:/Program Files/Java/jdk1.8.0_191/bin/../jre/bin;C:/Program Files/Java/jdk1.8.0_191/bin/../jre/lib/amd64;C:\Program Files\Java\jdk1.8.0_191\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\nodejs\;C:\Program Files\Java\jdk1.8.0_191\jre\bin;C:\Users\User.DESKTOP-PGKHSCB\AppData\Local\Microsoft\WindowsApps;C:\Users\User.DESKTOP-PGKHSCB\AppData\Local\Programs\Git\cmd;C:\Users\User.DESKTOP-PGKHSCB\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\User.DESKTOP-PGKHSCB\AppData\Roaming\npm;E:\sts-4.1.0.RELEASE;;.]
+2019-01-16 13:38:49 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-01-16 13:38:49 [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1695 ms
+2019-01-16 13:38:50 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-01-16 13:38:50 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-01-16 13:38:50 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-01-16 13:38:50 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.7.Final}
+2019-01-16 13:38:50 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-01-16 13:38:50 [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-01-16 13:38:50 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-01-16 13:38:51 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000038: Composite-id class does not override equals(): com.team1.entity.FkUserRole
+2019-01-16 13:38:51 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000039: Composite-id class does not override hashCode(): com.team1.entity.FkUserRole
+2019-01-16 13:38:51 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-01-16 13:38:51 [restartedMain] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-01-16 13:38:52 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/css/**'], []
+2019-01-16 13:38:52 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/image/**'], []
+2019-01-16 13:38:52 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/fonts/**'], []
+2019-01-16 13:38:52 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/js/**'], []
+2019-01-16 13:38:52 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/common/**'], []
+2019-01-16 13:38:52 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/user/**'], []
+2019-01-16 13:38:52 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@41d00d0d, org.springframework.security.web.context.SecurityContextPersistenceFilter@53fd3caa, org.springframework.security.web.header.HeaderWriterFilter@6ec3cc1c, org.springframework.security.web.authentication.logout.LogoutFilter@1c54652d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@687860b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@b725390, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6cc233b6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5ab7ae08, org.springframework.security.web.session.SessionManagementFilter@35508dc9, org.springframework.security.web.access.ExceptionTranslationFilter@e449a08, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@16a9d821]
+2019-01-16 13:38:52 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-01-16 13:38:52 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2019-01-16 13:38:53 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-01-16 13:38:53 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2019-01-16 13:38:53 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - Started Team1SpringBootJpaApplication in 5.363 seconds (JVM running for 6.177)
+2019-01-16 13:39:11 [http-nio-80-exec-3] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-01-16 13:39:11 [http-nio-80-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-01-16 13:39:11 [http-nio-80-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 8 ms
+2019-01-16 13:41:39 [Thread-6] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-01-16 13:41:39 [Thread-6] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-01-16 13:41:39 [Thread-6] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-01-16 13:41:39 [Thread-6] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-01-16 13:41:39 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - Starting Team1SpringBootJpaApplication on DESKTOP-PGKHSCB with PID 10432 (E:\workspace\backend\sts-workspace\Team1-SpringBoot-JPA\target\classes started by User in E:\workspace\backend\sts-workspace\Team1-SpringBoot-JPA)
+2019-01-16 13:41:39 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - No active profile set, falling back to default profiles: default
+2019-01-16 13:41:39 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-01-16 13:41:39 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 30ms. Found 5 repository interfaces.
+2019-01-16 13:41:39 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$abcdcf89] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-01-16 13:41:40 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2019-01-16 13:41:40 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-01-16 13:41:40 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.13
+2019-01-16 13:41:40 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-01-16 13:41:40 [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 554 ms
+2019-01-16 13:41:40 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2019-01-16 13:41:40 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2019-01-16 13:41:40 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-01-16 13:41:40 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-01-16 13:41:40 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000038: Composite-id class does not override equals(): com.team1.entity.FkUserRole
+2019-01-16 13:41:40 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000039: Composite-id class does not override hashCode(): com.team1.entity.FkUserRole
+2019-01-16 13:41:40 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-01-16 13:41:40 [restartedMain] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-01-16 13:41:40 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/css/**'], []
+2019-01-16 13:41:40 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/image/**'], []
+2019-01-16 13:41:40 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/fonts/**'], []
+2019-01-16 13:41:40 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/js/**'], []
+2019-01-16 13:41:40 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/common/**'], []
+2019-01-16 13:41:40 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/user/**'], []
+2019-01-16 13:41:40 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3076c01b, org.springframework.security.web.context.SecurityContextPersistenceFilter@4615c19e, org.springframework.security.web.header.HeaderWriterFilter@6c08fb36, org.springframework.security.web.authentication.logout.LogoutFilter@3e6be661, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4c5d922, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@73bf81f1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@584515fb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5bd80481, org.springframework.security.web.session.SessionManagementFilter@fcd20a2, org.springframework.security.web.access.ExceptionTranslationFilter@35a017ea, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@77e1ba56]
+2019-01-16 13:41:40 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-01-16 13:41:40 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2019-01-16 13:41:40 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-01-16 13:41:40 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2019-01-16 13:41:40 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - Started Team1SpringBootJpaApplication in 1.289 seconds (JVM running for 173.834)
+2019-01-16 13:41:40 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-01-16 13:42:40 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - Starting Team1SpringBootJpaApplication on DESKTOP-PGKHSCB with PID 9436 (E:\workspace\backend\sts-workspace\Team1-SpringBoot-JPA\target\classes started by User in E:\workspace\backend\sts-workspace\Team1-SpringBoot-JPA)
+2019-01-16 13:42:40 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - No active profile set, falling back to default profiles: default
+2019-01-16 13:42:40 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-01-16 13:42:40 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-01-16 13:42:41 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-01-16 13:42:41 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 62ms. Found 5 repository interfaces.
+2019-01-16 13:42:41 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$b88f33fe] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-01-16 13:42:42 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2019-01-16 13:42:42 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-01-16 13:42:42 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.13
+2019-01-16 13:42:42 [restartedMain] INFO  o.a.c.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_191\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jdk1.8.0_191/bin/../jre/bin/server;C:/Program Files/Java/jdk1.8.0_191/bin/../jre/bin;C:/Program Files/Java/jdk1.8.0_191/bin/../jre/lib/amd64;C:\Program Files\Java\jdk1.8.0_191\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\nodejs\;C:\Program Files\Java\jdk1.8.0_191\jre\bin;C:\Users\User.DESKTOP-PGKHSCB\AppData\Local\Microsoft\WindowsApps;C:\Users\User.DESKTOP-PGKHSCB\AppData\Local\Programs\Git\cmd;C:\Users\User.DESKTOP-PGKHSCB\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\User.DESKTOP-PGKHSCB\AppData\Roaming\npm;E:\sts-4.1.0.RELEASE;;.]
+2019-01-16 13:42:42 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-01-16 13:42:42 [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1696 ms
+2019-01-16 13:42:42 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-01-16 13:42:43 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-01-16 13:42:43 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-01-16 13:42:43 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.7.Final}
+2019-01-16 13:42:43 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-01-16 13:42:43 [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-01-16 13:42:43 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-01-16 13:42:43 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000038: Composite-id class does not override equals(): com.team1.entity.FkUserRole
+2019-01-16 13:42:43 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000039: Composite-id class does not override hashCode(): com.team1.entity.FkUserRole
+2019-01-16 13:42:43 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-01-16 13:42:44 [restartedMain] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-01-16 13:42:44 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/css/**'], []
+2019-01-16 13:42:44 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/image/**'], []
+2019-01-16 13:42:44 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/fonts/**'], []
+2019-01-16 13:42:44 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/js/**'], []
+2019-01-16 13:42:44 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/common/**'], []
+2019-01-16 13:42:44 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/user/**'], []
+2019-01-16 13:42:44 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@21b6b984, org.springframework.security.web.context.SecurityContextPersistenceFilter@75de2edd, org.springframework.security.web.header.HeaderWriterFilter@6b6817a9, org.springframework.security.web.authentication.logout.LogoutFilter@224b4624, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6175f899, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@331a956f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@b38efe3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6f492c1b, org.springframework.security.web.session.SessionManagementFilter@4ab9dba5, org.springframework.security.web.access.ExceptionTranslationFilter@705e4293, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@a59172a]
+2019-01-16 13:42:44 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-01-16 13:42:44 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2019-01-16 13:42:45 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-01-16 13:42:45 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2019-01-16 13:42:45 [restartedMain] INFO  c.t.Team1SpringBootJpaApplication - Started Team1SpringBootJpaApplication in 4.815 seconds (JVM running for 5.459)
+2019-01-16 13:42:49 [http-nio-80-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-01-16 13:42:49 [http-nio-80-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-01-16 13:42:49 [http-nio-80-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 11 ms
