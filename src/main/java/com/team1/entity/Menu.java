@@ -1,10 +1,14 @@
 package com.team1.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /*
  * @author Hung.
@@ -25,6 +29,9 @@ public class Menu {
   private String controller;
   @Column(length = 50)
   private String action;
+  
+  @OneToMany(mappedBy = "menu", cascade=CascadeType.ALL)
+  private List<MenuRole> menuRole;
 
   public Menu() {
 
