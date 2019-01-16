@@ -68,7 +68,7 @@ label.title {
 						<div class="form-group">
 							<label class="col-sm-2 control-label title">Description</label>
 							<div class="col-sm-10">
-								<textarea class="form-control" rows="3"
+								<textarea class="form-control" rows="5" id="description"
 									th:field="*{description}" th:text="${news.description}"
 									placeholder="description"></textarea>
 								<p style="color: red" class="mb5">
@@ -81,8 +81,8 @@ label.title {
 						<div class="form-group">
 							<label class="col-sm-2 control-label title">Content</label>
 							<div class="col-sm-10">
-								<textarea class="form-control" rows="10" name="content"
-									th:field="*{content}" th:text="${news.content}"></textarea>
+								<textarea class="form-control" rows="20" name="content"
+									th:field="*{content}" th:text="${news.content}" id="content"></textarea>
 								<p style="color: red" class="mb5">
 									<span th:if="${#fields.hasErrors('content')}"
 										th:errors="*{content}">..</span>
@@ -116,5 +116,10 @@ label.title {
 	<!-- /#wrapper -->
 
 	<th:block th:insert="/import_script.html :: import"></th:block>
+	<script th:src="@{/ckeditor/ckeditor.js}"></script>
+	<script type="text/javascript">
+		CKEDITOR.replace('content');
+		CKEDITOR.replace('description');
+	</script>
 </body>
 </html>

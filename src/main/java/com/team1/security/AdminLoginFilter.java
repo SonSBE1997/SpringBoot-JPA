@@ -22,6 +22,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.team1.entity.User;
+
 /*
  * @author Sanero.
  * Created date: Jan 10, 2019
@@ -65,6 +67,8 @@ public class AdminLoginFilter implements Filter {
       chain.doFilter(req, res);
       return;
     }
+    User userLogin = (User) session.getAttribute("userLogin");
+    req.setAttribute("userLogin", userLogin.getFullName());
     chain.doFilter(req, res);
   }
 

@@ -41,7 +41,7 @@ public class News {
   @Column(name = "title")
   private String title;
 
-  @Column(name = "description", length = 50)
+  @Column(name = "description")
   private String description;
 
   @Column(name = "content")

@@ -60,12 +60,12 @@ public class Team1SpringBootJpaApplication
         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
         .logoutSuccessUrl("/login").and().exceptionHandling()
         .accessDeniedPage("/login?e=deny");
-
+    http.rememberMe().key("abc").tokenValiditySeconds(5000);
   }
 
   @Override
   public void configure(WebSecurity web) throws Exception {
-    web.ignoring().antMatchers("/css/**", "/image/**", "/fonts/**", "/js/**",
-        "/common/**", "/user/**");
+    web.ignoring().antMatchers("/static/admin/**", "/image/**", "/fonts/**",
+        "/js/**", "/common/**", "/user/**");
   }
 }

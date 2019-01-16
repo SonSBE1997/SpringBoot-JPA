@@ -33,40 +33,35 @@ label.title {
 						<input type="hidden" th:field="*{slider_id}" />
 
 
-						<table>
-							<div class="form-group">
-								<label class="col-sm-1 control-label title">Name: </label>
-								<div class="col-sm-11">
-									<input style="width: 300px" type="text"
-										class="form-control mb5" th:field="*{name}" />
-								</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label title">Name: </label>
+							<div class="col-sm-11">
+								<input style="width: 300px" type="text" required="required"
+									class="form-control mb5" th:field="*{name}" />
 							</div>
-							<div class="form-group">
-								<label class="col-sm-1 control-label title">Content: </label>
-								<div class="col-sm-11">
-									<input style="width: 300px" type="text"
-										class="form-control mb5" th:field="*{content}" />
-								</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label title">Content: </label>
+							<div class="col-sm-11">
+								<input style="width: 300px" type="text" required="required"
+									class="form-control mb5" th:field="*{content}" />
 							</div>
-							<div class="form-group">
-								<label class="col-sm-1 control-label title">imgUrl: </label>
-								<div class="col-sm-11">
-									<input style="width: 300px" type="text"
-										class="form-control mb5" th:field="*{imgUrl}" />
-								</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label title">imgUrl: </label>
+							<div class="col-sm-11">
+								<input style="width: 300px" type="text" required="required"
+									class="form-control mb5" th:field="*{imgUrl}" />
 							</div>
-							<div class="form-group">
-								<label class="col-sm-1 control-label title"> </label>
-								<div class="col-sm-11">
-									<input type="submit" value="OK" class="btn btn-primary" /> 
-									<a th:href="@{/admin/list-slider}" class="btn btn-default">Cancel</a> 
-	
-								</div>
-							</div>
-						</table>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label title"> </label>
+							<div class="col-sm-11">
+								<input type="submit" value="OK" class="btn btn-primary" /> <a
+									th:href="@{/admin/list-slider}" class="btn btn-default">Cancel</a>
 
-
-
+							</div>
+						</div>
 					</form>
 				</div>
 			</div>

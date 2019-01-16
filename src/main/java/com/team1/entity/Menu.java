@@ -97,5 +97,4 @@ public class Menu {
   public void setAction(String function) {
     this.action = function;
   }
-
 }
