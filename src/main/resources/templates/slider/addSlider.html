@@ -30,13 +30,13 @@ label.title {
 						<div class="form-group">
 							<label class="col-sm-1 control-label title">Name: </label>
 							<div class="col-sm-11">
-								<input style="width: 300px" class="form-control mb5" type="text" th:field="*{name}" /> <span></span>
+								<input style="width: 300px" class="form-control mb5" type="text" th:field="*{name}" required="required"/> <span></span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-1 control-label title">Content: </label>
 							<div class="col-sm-11">
-								<input style="width: 300px" class="form-control mb5" type="text" th:field="*{content}" />
+								<input style="width: 300px" class="form-control mb5" type="text" th:field="*{content}" required="required"/>
 								<span></span>
 							</div>
 
@@ -44,7 +44,7 @@ label.title {
 						<div class="form-group">
 							<label class="col-sm-1 control-label title">ImgUrl: </label>
 							<div class="col-sm-11">
-								<input style="width: 300px" class="form-control mb5" type="text" th:field="*{imgUrl}" />
+								<input style="width: 300px" class="form-control mb5" type="text" th:field="*{imgUrl}" required="required"/>
 								<span></span>
 							</div>
 
