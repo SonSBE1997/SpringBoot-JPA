@@ -14,8 +14,8 @@
 				</div>
 				<form th:action="@{/admin/menu/edit}" method="post">
 					<div class="modal-body">
-						<input name="id" type="text" required th:value="${Menu.menu_id}"
-							hidden>
+						<b class="error" style="color: red" id="note"></b> <input
+							name="id" type="text" required th:value="${Menu.menu_id}" hidden>
 						<div class="form-group">
 							Name<input class="form-control " name="name" id="iname" required
 								type="text" th:value="${Menu.name}">
@@ -34,8 +34,8 @@
 						</div>
 					</div>
 					<div class="modal-footer ">
-						<button type="submit" class="btn btn-warning btn-lg"
-							id="btn-update<%=i %>" style="width: 40%;">
+						<button type="submit" class="btn btn-warning btn-lg" id="editBtn"
+							style="width: 40%;">
 							<span class="glyphicon glyphicon-ok-sign"></span> Update
 						</button>
 						<button type="button" class="btn btn-default btn-lg"

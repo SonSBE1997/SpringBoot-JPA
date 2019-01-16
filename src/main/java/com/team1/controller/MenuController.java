@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team1.entity.Menu;
 import com.team1.service.MenuService;
@@ -75,10 +76,15 @@ public class MenuController {
    * @return
    */
   @GetMapping(value = "/admin/menu/delete/{id}")
-  public String handleDeleteMenu(ModelMap map, @PathVariable("id") int id) {
-    menuService.deleteMenuByID(id);
-  
-    return "redirect:/admin/menu/1";
+  public String handleDeleteMenu(ModelMap map, @PathVariable("id") int id,RedirectAttributes attributes) {
+    try {
+      menuService.deleteMenuByID(id);
+      return "redirect:/admin/menu/1";
+    } catch (Exception e) {
+      attributes.addFlashAttribute("err", "Can't not delete!");
+      return "redirect:/admin/menu/1";
+    }
+    
   }
 
   /**
