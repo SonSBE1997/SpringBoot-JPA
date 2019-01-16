@@ -1,27 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Detail news</title>
+<th:block th:insert="/import_head.html :: import"></th:block>
+<style>
+label.title {
+	margin-top: 0.5%;
+}
+.mb5 {
+	margin-bottom: 1% !important;
+}
+</style>
 </head>
-<body xmlns:th="http://www.thymeleaf.org">
-<!-- 	<h3 th:text="${role.roleId}"></h3><br/> -->
-<!-- 	<h3 th:text="${role.name}"></h3><br/> -->
-<!-- 	<h3 th:text="${role.desc}"></h3><br/> -->
+<body>
+	<!-- wrapper -->
+	<div id="wrapper">
+		<!-- Navigation -->
+		<th:block th:insert="navigation.html :: navigation"></th:block>
+
+		<!-- Content -->
+		<div id="page-wrapper">
+			<div class="row">
+				<h2 class="text-center text-danger">News Information</h2>
+				<div >
+					<div class="form-group">
+							<label class="col-sm-2 control-label title">RoleId:</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control mb5" th:field="*{role.roleId}"
+									placeholder="" th:value="${role.roleId}" readonly="readonly"/>
+							</div>
+						</div>
+			
+						<div class="form-group">
+							<label class="col-sm-2 control-label title">Name:</label>
+							<div class="col-sm-10">
+								<textarea class="form-control mb5" rows="3" th:field="*{role.name}"
+									th:text="${role.name}" readonly="readonly"></textarea>
+							</div>
+						</div>
+			
+						<div class="form-group">
+							<label class="col-sm-2 control-label title">Description:</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control mb5" th:field="*{role.desc}"
+									placeholder="" th:value="${role.desc}" readonly="readonly"/>
+							</div>
+						</div>
+					<div class="button-group clearfix">
+						<a style="margin-left: 220px;" th:href="@{/admin/Role/list-role}" class="btn btn-default">Back to list</a>
+						<a th:href="@{/admin/Role/update-role/} + ${role.roleId}"
+							class="btn btn-warning">Edit</a> <a
+							class="btn btn-danger btn-delete" th:attr="data-id=${role.roleId}">Delete</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /#page-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
 	
-	<table border="1">
-		<tr>
-			<td>Id: </td>
-			<td th:text="${role.roleId}"></td>
-		</tr>
-		<tr>
-			<td>Name: </td>
-			<td th:text="${role.name}"></td>
-		</tr>
-		<tr>
-			<td>Description: </td>
-			<td th:text="${role.desc}"></td>
-		</tr>
-	</table>
+	<th:block th:insert="/import_script.html :: import"></th:block>
+	<script type="text/javascript">
+		$('.btn-delete').off('click').on('click', function(e) {
+			e.preventDefault();
+			var btn = $(this);
+			var id = btn.data('id');
+			var result = confirm("Ban co chac xoa ban tin nay khong?");
+			if (result) {
+				$.ajax({
+					url : "/admin/news/delete",
+					data : {
+						id : id
+					},
+					type : "POST",
+					success : function(response) {
+						if (response == "success") {
+							window.location.href = '/admin/news';
+						}
+					}
+				});
+			}
+		});
+	</script>
 </body>
 </html>

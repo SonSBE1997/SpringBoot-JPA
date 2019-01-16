@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<th:block th:insert="/import_head.html :: import"></th:block>
+</head>
+<body>
+	<div id="wrapper">
+		<!-- Navigation -->
+		<th:block th:insert="navigation.html :: navigation"></th:block>
+
+		<!-- Content -->
+		<div id="page-wrapper">
+			<div class="row">
+				<h1 style="margin-left: 4%">ADD SLIDER</h1>
+				<form th:action="@{/admin/add-slider}" method="post" th:object="${slider}">
+					<table>
+						<tr>
+							<td>Name: </td>
+							<td><input type="text" th:field="*{name}" /></td>
+						</tr>
+						<tr>
+							<td>Content: </td>
+							<td><input type="text" th:field="*{content}" /></td>
+						</tr>
+						<tr>
+							<td>ImgUrl: </td>
+							<td><input type="text" th:field="*{imgUrl}" /></td>
+						</tr>
+			
+						<tr>
+							<td></td>
+							<td><input type="submit" value="OK" /><input type="reset" name="Reset" style="margin-left: 5px;"/></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+		<!-- /#page-wrapper -->
+	</div>
+	<th:block th:insert="/import_script.html :: import"></th:block>
+</body>
+</html>

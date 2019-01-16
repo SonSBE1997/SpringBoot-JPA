@@ -1,0 +1,198 @@
+body{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+/* --------------------------------HEADER STYLE*/
+
+/* ------------navbar */
+header .nav-wrapper {
+    padding-bottom: 10px;
+    border-bottom: 1px solid blue;
+}
+
+header .row {
+    padding: 0 25%;
+}
+
+header .logo {
+    height: 50px;
+    width: 100px;
+    margin: 0 5px;
+}
+
+header .phone-contact {
+    height: 50px;
+    position: relative;
+}
+
+header .phone-contact .phone-contact-content {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+}
+
+/* ------------slide banner style */
+
+header .banner {
+    text-align: center;
+    background-color: rgba(245, 245, 245, 1);
+}
+
+header .banner .banner-wrapper {
+    position: relative;
+}
+
+header .banner .banner-wrapper .slide-banner img {
+    width: 100%;
+}
+
+
+/* -----------form style */
+
+header .register-form {
+    width: 314px;
+    padding: 15px;
+    right: 5%;
+    bottom: 10px;
+    position: absolute;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #fff;
+    border-top: 10px solid rgba(148, 187, 64, 1);
+}
+
+header .register-form h6 {
+    font-weight: bold;
+    color:  rgba(222, 151, 22, 1);
+}
+
+header .sub-title-form {
+    font-size: 13px;
+}
+
+header input, header select, header button {
+    margin-top: 5px;
+}
+
+header #submitButton {
+    width: 100%;
+    height: 50px;
+    background-color: rgba(148, 187, 64, 1);
+    font-size: 21px;
+    font-weight: bold;
+    color: #fff;
+}
+
+header #submitButton:hover {
+    color: #fff;
+}
+
+header #submitButton:active {
+    background-color: rgba(85, 107, 37, 1);
+}
+
+/* --------------------------------------CONTENT STYLE */
+
+
+/* -------- common */
+
+.content-wrapper .title {
+    margin: 0;
+    padding: 50px 0;
+    font-weight: bold;
+    color: rgba(148, 187, 64, 1);
+    font-size: calc(12px + 0.8vw);
+}
+
+
+.content-wrapper .sub-title {
+    padding: 0 20px;
+    font-weight: bold;
+    color: rgba(148, 187, 64, 1);
+}
+
+/* ------------section 1 */
+
+.content-wrapper .section1 {
+    padding: 0 15%;
+    text-align: center;
+}
+
+.content-wrapper .section1 img {
+    width: 230px;
+    height: 150px;
+}
+
+.content-wrapper .section1 button {
+    width: 150px;
+    margin-bottom: 20px;
+    background-color: rgba(148, 187, 64, 1);
+    color: #fff;
+    font-weight: bold;
+}
+
+.content-wrapper .section1 button:active {
+    background-color: rgba(85, 107, 37, 1);
+}
+
+/* -----------section 2 */
+
+.content-wrapper .section2 {
+    padding: 0 12%;
+    text-align: center;
+    background-color: rgba(228, 228, 228, 1);
+    padding-bottom: 50px;
+}
+
+.content-wrapper img {
+    padding-bottom: 10px;
+}
+
+/* -----------section 3 */
+
+.content-wrapper .section3 {
+    padding: 0 12%;
+    text-align: center;
+    background-image: url(../img/benefit-2-bg.jpg);
+}
+
+.content-wrapper .section3 .title, .content-wrapper .section3 .sub-title {
+    color: #fff;
+}
+
+/* -----------section 4 */
+
+.content-wrapper .section4 {
+    padding: 0 12%;
+    text-align: center;
+    padding-bottom: 100px;
+}
+
+.content-wrapper .section4 img {
+    width: 320px;
+    height: 250px;
+}
+
+/* --------------------------------FOOTER STYLE*/
+
+footer p {
+    width: 100%;
+    margin: 0;
+    line-height: 50px;
+    text-align: center;
+    background-color: rgba(148, 187, 64, 1);
+    color: #000;
+    font-weight: bold;
+    position: fixed;
+    bottom: 0;
+}
+
+footer img {
+    height: 50px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}

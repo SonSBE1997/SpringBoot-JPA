@@ -18,10 +18,12 @@
 <body xmlns:th="http://www.thymeleaf.org">
 
 	<div class="container">
+		<br/>
 		<form th:action="@{/logout}" method="post">
 			<input type="submit" value="Dang Xuat" />
 		</form>
-		<p th:text="${'Welcome to ' + name}"></p>
+		<br/>
+<!-- 		<p th:text="${'Welcome to ' + name}"></p> -->
 		<form th:action="@{/admin/search}" th:object="${email}">
 			<input type="text" name="email" id="email" /> <input type="submit"
 				value="Search" />
