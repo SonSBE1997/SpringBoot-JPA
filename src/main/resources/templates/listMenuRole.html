@@ -51,8 +51,8 @@
 					</thead>
 					<tbody style="text-align: center">
 							<tr th:each="menuRole : ${list}">
-								<td th:text="${menuRole.role.roleId}"></td>
-								<td th:text="${menuRole.menu.menu_id}"></td>
+								<td th:text="${menuRole.role.name}"></td>
+								<td th:text="${menuRole.menu.name}"></td>
 								<td th:text="${menuRole.status}"></td>
 							</tr>
 					</tbody>

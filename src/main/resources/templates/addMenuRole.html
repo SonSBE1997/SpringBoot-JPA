@@ -25,46 +25,52 @@ label.title {
 				<h2 class="text-center text-danger">Add MenuRole</h2>
 
 				<div class="align-center">
-<!-- 					<span style="margin-left: 220px; color: red" th:text="${val}"></span> -->
+					<!-- 					<span style="margin-left: 220px; color: red" th:text="${val}"></span> -->
 					<span style="margin-left: 222px; color: red" th:text="${mess}"></span>
-					<form th:action="@{/admin/menuRole/add-menuRole}" method="post" th:object="${menuRole}">
+					<form th:action="@{/admin/menuRole/add-menuRole}" method="post"
+						th:object="${menuRole}">
 						<div class="form-group">
 							<label class="col-sm-2 control-label title">Status: </label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" placeholder="Status"
 									required="required" th:field="*{status}" />
 								<p style="color: red" class="mb5">
-<!-- 									<span th:if="${#fields.hasErrors('url')}" th:errors="*{url}">..</span> -->
+									<!-- 									<span th:if="${#fields.hasErrors('url')}" th:errors="*{url}">..</span> -->
 								</p>
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label class="col-sm-2 control-label title">Menu_Id: </label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" placeholder="Menu_id"
-									required="required" th:field="*{menu}" />
-								<p style="color: red" class="mb5">
-								</p>
+								<select name="menuId" class="form-control">
+									<th:block th:each="menu :${menus}">
+										<option th:value="${menu.menu_id}" th:text="${menu.name}"></option>
+									</th:block>
+								</select>
+								<p style="color: red" class="mb5"></p>
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label class="col-sm-2 control-label title">Role_Id: </label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" placeholder="Role_id"
-									required="required" th:field="*{role}" />
-								<p style="color: red" class="mb5">
-								</p>
+								<select name="roleId" class="form-control">
+									<th:block th:each="role :${roles}">
+										<option th:value="${role.roleId}" th:text="${role.name}"></option>
+									</th:block>
+								</select>
+								<p style="color: red" class="mb5"></p>
 							</div>
 						</div>
-						
+
 						<div class="clearfix"></div>
 
 						<div class="form-group">
 							<div class="col-md-offset-2 col-md-10">
-								<a th:href="@{/admin/menuRole/list-menuRole}" class="btn btn-default">Cancel</a>
-								<input type="submit" value="Create" class="btn btn-primary" />
+								<a th:href="@{/admin/menuRole/list-menuRole}"
+									class="btn btn-default">Cancel</a> <input type="submit"
+									value="Create" class="btn btn-primary" />
 							</div>
 						</div>
 					</form>
