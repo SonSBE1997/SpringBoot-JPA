@@ -12,7 +12,7 @@ label.title {
 	margin-bottom: 2% !important;
 }
 
-.icheck{
+.icheck {
 	transform: scale(1.5);
 }
 </style>
@@ -42,10 +42,12 @@ label.title {
 							</div>
 						</div>
 
+
 						<div class="form-group">
 							<label class="col-sm-2 control-label title">Title</label>
 							<div class="col-sm-10">
-								<textarea class="form-control" rows="3" th:field="*{title}"></textarea>
+								<input type="text" class="form-control"
+									placeholder="title" th:field="*{title}" />
 								<p style="color: red" class="mb5">
 									<span th:if="${#fields.hasErrors('title')}"
 										th:errors="*{title}">..</span>
@@ -56,8 +58,7 @@ label.title {
 						<div class="form-group">
 							<label class="col-sm-2 control-label title">Description</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control"
-									placeholder="description" th:field="*{description}" />
+								<textarea class="form-control" rows="3" th:field="*{description}" placeholder="description"></textarea>
 								<p style="color: red" class="mb5">
 									<span th:if="${#fields.hasErrors('description')}"
 										th:errors="*{description}">..</span>
@@ -79,7 +80,7 @@ label.title {
 						<div class="form-group">
 							<label class="col-sm-2 control-label title">Is Hot</label>
 							<div class="col-sm-10">
-								<input type="checkbox" th:field="*{hot}" class="icheck"/>
+								<input type="checkbox" th:field="*{hot}" class="icheck" />
 							</div>
 						</div>
 
