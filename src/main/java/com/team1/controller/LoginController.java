@@ -54,7 +54,7 @@ public class LoginController {
   public String login(HttpSession session, HttpServletRequest request,
       ModelMap model) {
     if (session.getAttribute("userLogin") != null) {
-      return "redirect:/admin";
+      return "redirect:/admin/";
     }
     Cookie[] cookies = request.getCookies();
     if (cookies != null) {

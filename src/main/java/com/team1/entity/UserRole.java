@@ -11,13 +11,17 @@ import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "user_role")
 @IdClass(FkIdUser.class)
 public class UserRole {
+
   private String status;
   @Column(name = "created_at")
+  @Temporal(TemporalType.DATE)
   private Date createdDate;
   @Column(name = "updated_at")
   private Date updatedDate;

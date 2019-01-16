@@ -19,7 +19,7 @@ public class Role implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="role_id")
 	private int roleId;
-	private String name;
+	private String name="ROLE_ADMIN";
 	@Column(name="description")
 	private String desc;
 	@OneToMany(mappedBy="role",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
