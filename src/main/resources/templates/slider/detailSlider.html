@@ -6,41 +6,55 @@
 <th:block th:insert="/import_head.html :: import"></th:block>
 </head>
 <body>
-<!-- 	<h3 th:text="${role.roleId}"></h3><br/> -->
-<!-- 	<h3 th:text="${role.name}"></h3><br/> -->
-<!-- 	<h3 th:text="${role.desc}"></h3><br/> -->
-	
+	<!-- 	<h3 th:text="${role.roleId}"></h3><br/> -->
+	<!-- 	<h3 th:text="${role.name}"></h3><br/> -->
+	<!-- 	<h3 th:text="${role.desc}"></h3><br/> -->
+
 	<div id="wrapper">
 		<!-- Navigation -->
 		<th:block th:insert="navigation.html :: navigation"></th:block>
 
 		<!-- Content -->
 		<div id="page-wrapper">
-			<div class="row">
-				<table border="1">
-					<tr>
-						<td>Id: </td>
-						<td th:text="${slider.slider_id}"></td>
-					</tr>
-					<tr>
-						<td>Name: </td>
-						<td th:text="${slider.name}"></td>
-					</tr>
-					<tr>
-						<td>Content: </td>
-						<td th:text="${slider.content}"></td>
-					</tr>
-					<tr>
-						<td>UrlIMG: </td>
-						<td th:text="${slider.imgUrl}"></td>
-					</tr>
-				</table>
+			<div style="margin-left:400px" class="row">
+
+				<div class="form-group">
+					<label class="col-sm-1 control-label title">Id: </label>
+					<div class="col-sm-11">
+						<p style="width:400px" class="form-control" th:text="${slider.slider_id}"></p>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-1 control-label title">Name: </label>
+						<div class="col-sm-11">
+							<p style="width:400px" class="form-control" th:text="${slider.name}"></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-1 control-label title">Content: </label>
+						<div class="col-sm-11">
+							<p style="width:400px" class="form-control" th:text="${slider.content}"></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-1 control-label title">UrlIMG: </label>
+						<div class="col-sm-11">
+							<p style="width:400px" class="form-control" th:text="${slider.imgUrl}"></p>
+						</div>
+					</div>
+					<div class="button-group clearfix">
+						<a th:href="@{/admin/list-slider}" class="btn btn-default">Back to list</a>
+						<a th:href="@{/admin/update-slider/} + ${slider.slider_id}"
+							class="btn btn-warning">Edit</a>
+							
+					</div>
+				</div>
 			</div>
 		</div>
 		<!-- /#page-wrapper -->
 
 	</div>
-	
+
 	<th:block th:insert="/import_script.html :: import"></th:block>
 </body>
 </html>

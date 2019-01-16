@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <th:block th:insert="/import_head.html :: import"></th:block>
+<style>
+label.title {
+	margin-top: 0.5%;
+}
+.mb5 {
+	margin-bottom: 1% !important;
+}
+
+</style>
+
 </head>
 <body>
 	<div id="wrapper">
@@ -11,29 +21,44 @@
 		<th:block th:insert="navigation.html :: navigation"></th:block>
 
 		<!-- Content -->
-		<div id="page-wrapper">
-			<div class="row">
-				<h1 style="margin-left: 4%">ADD SLIDER</h1>
-				<form th:action="@{/admin/add-slider}" method="post" th:object="${slider}">
-					<table>
-						<tr>
-							<td>Name: </td>
-							<td><input type="text" th:field="*{name}" /></td>
-						</tr>
-						<tr>
-							<td>Content: </td>
-							<td><input type="text" th:field="*{content}" /></td>
-						</tr>
-						<tr>
-							<td>ImgUrl: </td>
-							<td><input type="text" th:field="*{imgUrl}" /></td>
-						</tr>
-			
-						<tr>
-							<td></td>
-							<td><input type="submit" value="OK" /><input type="reset" name="Reset" style="margin-left: 5px;"/></td>
-						</tr>
-					</table>
+		<div  id="page-wrapper">
+			<div style="margin-left: 100px" class="row">
+				<h2 style="margin-left: 150px" class="text-danger">ADD SLIDER</h2>
+				<form th:action="@{/admin/add-slider}" method="post"
+					th:object="${slider}">
+					<div class="form-group">
+						<div class="form-group">
+							<label class="col-sm-1 control-label title">Name: </label>
+							<div class="col-sm-11">
+								<input style="width: 300px" class="form-control mb5" type="text" th:field="*{name}" /> <span></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label title">Content: </label>
+							<div class="col-sm-11">
+								<input style="width: 300px" class="form-control mb5" type="text" th:field="*{content}" />
+								<span></span>
+							</div>
+
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label title">ImgUrl: </label>
+							<div class="col-sm-11">
+								<input style="width: 300px" class="form-control mb5" type="text" th:field="*{imgUrl}" />
+								<span></span>
+							</div>
+
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-1 control-label title"></label>
+							<div class="col-sm-11 mb5">
+								<input type="submit" value="OK" class="btn btn-primary" /> <input
+									type="reset" name="Reset" class="btn btn-primary" />
+							</div>
+
+						</div>
+					</div>
 				</form>
 			</div>
 		</div>
