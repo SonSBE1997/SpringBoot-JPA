@@ -17,5 +17,5 @@ import com.team1.entity.Menu;
  */
 public interface MenuRepository extends JpaRepository<Menu, Integer>{
   @Query("select m from Menu m where m.name like %:name%")
-  List<Menu> findByNameContaining(@Param("name") String Name);
+  List<Menu> findByNameContaining(@Param("name") String name);
 }

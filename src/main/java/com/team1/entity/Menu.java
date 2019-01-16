@@ -1,5 +1,6 @@
 package com.team1.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,13 +17,13 @@ public class Menu {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private int menu_id;
-
+  @Column(length = 50)
   private String name;
-
+  @Column(length = 50)
   private String description;
-
+  @Column(length = 50)
   private String controller;
-
+  @Column(length = 50)
   private String action;
 
   public Menu() {
