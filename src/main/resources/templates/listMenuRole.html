@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>List news</title>
+<th:block th:insert="/import_head.html :: import"></th:block>
+<style type="text/css">
+.search-area {
+	display: inline-block;
+}
+</style>
+</head>
+<body>
+	<!-- wrapper -->
+	<div id="wrapper">
+		<!-- Navigation -->
+		<th:block th:insert="navigation.html :: navigation"></th:block>
+
+		<!-- Content -->
+		<div id="page-wrapper">
+			<div class="row">
+				<h2 class="text-center text-danger">List MenuRoles</h2>
+				<div>
+					<div class="col-md-2 col-sm-2 col-xs-12 form-group">
+						<a class="btn btn-primary" th:href="@{/admin/menuRole/add-menuRole}">Add
+							MenuRole</a>
+					</div>
+
+					<div
+						class="col-md-10 col-sm-10 col-xs-12 form-group pull-right top_search">
+						<div class="input-group">
+<!-- 							<form th:action="@{/admin/Role/list-role}" method="post"> -->
+<!-- 								<input type="text" name="name" class="form-control" name="searchString" -->
+<!-- 									placeholder="Search"> <span class="input-group-btn"> -->
+<!-- 									<button type="submit" class="btn btn-default">Search</button> -->
+<!-- 								</span> -->
+<!-- 							</form> -->
+							<form th:action="@{/admin/menuRole/list-menuRole}" method="post" style="margin-left: 600px;">
+								Search: <input style="width: 345px; margin-bottom: 10px; height: 33px; border-radius: 5px; border-style: ridge;" 
+								placeholder=" Filter By Status" type="text" name = "status" />
+							</form>
+						</div>
+					</div>
+				</div>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th class="text-center">Role_Id: </th>
+							<th class="text-center">Menu_Id: </th>
+							<th class="text-center">Status: </th>
+						</tr>
+					</thead>
+					<tbody style="text-align: center">
+							<tr th:each="menuRole : ${list}">
+								<td th:text="${menuRole.role.name}"></td>
+								<td th:text="${menuRole.menu.name}"></td>
+								<td th:text="${menuRole.status}"></td>
+							</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- /#page-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- Import Footer -->
+	<th:block th:insert="/import_script.html :: import"></th:block>
+	<script type="text/javascript">
+		$('.btn-delete').off('click').on('click', function(e) {
+			e.preventDefault();
+			var btn = $(this);
+			var id = btn.data('id');
+			var result = confirm("Do u sure delete this record?");
+			if (result) {
+				window.location.href="/admin/Role/delete-role/" + id;
+			}
+		});
+	</script>
+</body>
+</html>
