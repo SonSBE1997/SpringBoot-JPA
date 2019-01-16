@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -26,6 +27,32 @@ public class MenuController {
   @Autowired
   MenuService menuService;
 
+
+
+  
+  
+  /**
+   * Author: Hung.
+   * Created date: Jan 16, 2019
+   * Created time: 10:35:15 AM
+   * Description: TODO - .
+   * @param page
+   * @param model
+   * @return
+   */
+  @GetMapping(value ="/admin/menu/{page}")
+  public String showByPaging(@PathVariable int page, ModelMap model) {
+    model.addAttribute("menu", new Menu());
+    int pageSize = 2;
+    List<Menu> listNews = menuService.getAllByPaging(page, pageSize);
+    model.addAttribute("list", listNews);
+    model.addAttribute("current", page);
+    long total = menuService.countAll();
+    int maxPage = (int) Math.ceil(((double) total) / pageSize);
+    model.addAttribute("total", maxPage);
+    return "menu/viewMenu";
+  }
+  
   /**
    * Author: Hung.
    * Created date: Jan 14, 2019
@@ -34,14 +61,13 @@ public class MenuController {
    * @param map
    * @return
    */
-  @GetMapping(value = "/menu")
+  @GetMapping(value = "/admin/menu")
   public String getAllUser(ModelMap map) {
     map.addAttribute("menu", new Menu());
     List<Menu> menu = menuService.getListAllMenu();
     map.addAttribute("list", menu);
-    return "/user/viewMenu";
+    return "menu/viewMenu";
   }
-  
 
   /**
    * Author: Hung.
@@ -52,12 +78,13 @@ public class MenuController {
    * @param id
    * @return
    */
-  @GetMapping(value = "/menu/delete/{id}")
+  @GetMapping(value = "/admin/menu/delete/{id}")
   public String handleDeleteMenu(ModelMap map, @PathVariable("id") int id) {
     menuService.deleteMenuByID(id);
-    return "redirect:/menu";
-  }
   
+    return "redirect:/admin/menu/1";
+  }
+
   /**
    * Author: Hung.
    * Created date: Jan 14, 2019
@@ -67,13 +94,14 @@ public class MenuController {
    * @param menu
    * @return
    */
-  @PostMapping(value = "/menu/add")
-  public String handleAddMenu(ModelMap map,@ModelAttribute("menuEdit") Menu menu) {
+  @PostMapping(value = "/admin/menu/add")
+  public String handleAddMenu(ModelMap map,
+      @ModelAttribute("menuEdit") Menu menu) {
     menuService.insertMenu(menu);
-    return "redirect:/menu";
+   
+    return "redirect:/admin/menu/1";
   }
-  
-  
+
   /**
    * Author: Hung.
    * Created date: Jan 14, 2019
@@ -83,7 +111,7 @@ public class MenuController {
    * @param menu
    * @return
    */
-  @PostMapping(value = "/menu/edit")
+  @PostMapping(value = "/admin/menu/edit")
   public String handleEditMenu(HttpServletRequest request, Menu menu) {
     int id = Integer.parseInt(request.getParameter("id"));
     String name = request.getParameter("name");
@@ -96,10 +124,9 @@ public class MenuController {
     menu.setDescription(desc);
     menu.setAction(function);
     menuService.updateMenu(menu);
-    return "redirect:/menu";
+    return "redirect:/admin/menu/1";
   }
-  
-  
+
   /**
    * Author: Hung.
    * Created date: Jan 14, 2019
@@ -109,11 +136,12 @@ public class MenuController {
    * @param menu
    * @return
    */
-  @PostMapping(value = "/menu")
-  public String handleSearchMenu(ModelMap map,@ModelAttribute("menu") Menu menu) {
+  @PostMapping(value = "/admin/menu")
+  public String handleSearchMenu(ModelMap map,
+      @ModelAttribute("menu") Menu menu) {
     map.addAttribute("menu", new Menu());
     List<Menu> listMenu = menuService.findNameContaining(menu.getName());
     map.addAttribute("list", listMenu);
-    return "/user/viewMenu";
+    return "/menu/viewMenu";
   }
 }

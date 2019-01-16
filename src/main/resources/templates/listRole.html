@@ -77,70 +77,13 @@
 	<!-- Import Footer -->
 	<th:block th:insert="/import_script.html :: import"></th:block>
 	<script type="text/javascript">
-		$('.btn-hot').off('click').on('click', function(e) {
-			e.preventDefault();
-			var btn = $(this);
-			var id = btn.data('id');
-			$.ajax({
-				url : "/admin/news/changeHot",
-				data : {
-					id : id
-				},
-				type : "POST",
-				success : function(response) {
-					console.log(response);
-					$('#hot' + id).text(response);
-				}
-			});
-		});
-
-		$('.btn-status')
-				.off('click')
-				.on(
-						'click',
-						function(e) {
-							e.preventDefault();
-							var btn = $(this);
-							var id = btn.data('id');
-							var text = $(this).text();
-							if (text == "chua phe duyet") {
-								var result = confirm("Ban co chac phe duyet ban tin nay khong?");
-								if (result) {
-									$.ajax({
-										url : "/admin/news/approve",
-										data : {
-											id : id
-										},
-										type : "POST",
-										success : function(response) {
-											console.log(response);
-											$('#approver' + id).text(response);
-											$('#status' + id).text(
-													"da phe duyet");
-										}
-									});
-								}
-							}
-						});
-
 		$('.btn-delete').off('click').on('click', function(e) {
 			e.preventDefault();
 			var btn = $(this);
 			var id = btn.data('id');
-			var result = confirm("Ban co chac xoa ban tin nay khong?");
+			var result = confirm("Do u sure delete this record?");
 			if (result) {
-				$.ajax({
-					url : "/admin/news/delete",
-					data : {
-						id : id
-					},
-					type : "POST",
-					success : function(response) {
-						if (response == "success") {
-							$('#row' + id).remove();
-						}
-					}
-				});
+				window.location.href="/admin/Role/delete-role/" + id;
 			}
 		});
 	</script>

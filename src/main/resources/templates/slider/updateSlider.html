@@ -4,6 +4,19 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <th:block th:insert="/import_head.html :: import"></th:block>
+<style>
+label.title {
+	margin-top: 0.5%;
+}
+
+.mb5 {
+	margin-bottom: 2% !important;
+}
+
+.icheck {
+	transform: scale(1.5);
+}
+</style>
 </head>
 <body>
 	<div id="wrapper">
@@ -13,35 +26,56 @@
 		<!-- Content -->
 		<div id="page-wrapper">
 			<div class="row">
-				<h1 style="margin-left: 4%">UPDATE ROLE</h1>
-				<form th:action="@{/admin/update-slider}" method="post" th:object="${slider}">
-					<input type="hidden" th:field="*{slider_id}" />
-					<table>
-						<tr>
-							<td>Name: </td>
-							<td><input type="text" th:field="*{name}" /></td>
-						</tr>
-						<tr>
-							<td>Content: </td>
-							<td><input type="text" th:field="*{content}" /></td>
-						</tr>
-						<tr>
-							<td>imgUrl: </td>
-							<td><input type="text" th:field="*{imgUrl}" /></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td><input type="submit" value="OK" /><input type="reset" name="Reset" style="margin-left: 5px;"/></td>
-						</tr>
-					</table>
-				</form>
+				<h2 class="text-center text-danger">UPDATE SLIDER</h2>
+				<div class="align-center">
+					<form th:action="@{/admin/update-slider}" method="post"
+						th:object="${slider}">
+						<input type="hidden" th:field="*{slider_id}" />
+
+
+						<table>
+							<div class="form-group">
+								<label class="col-sm-1 control-label title">Name: </label>
+								<div class="col-sm-11">
+									<input style="width: 300px" type="text"
+										class="form-control mb5" th:field="*{name}" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-1 control-label title">Content: </label>
+								<div class="col-sm-11">
+									<input style="width: 300px" type="text"
+										class="form-control mb5" th:field="*{content}" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-1 control-label title">imgUrl: </label>
+								<div class="col-sm-11">
+									<input style="width: 300px" type="text"
+										class="form-control mb5" th:field="*{imgUrl}" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-1 control-label title"> </label>
+								<div class="col-sm-11">
+									<input type="submit" value="OK" class="btn btn-primary" /> 
+									<a th:href="@{/admin/list-slider}" class="btn btn-default">Cancel</a> 
+	
+								</div>
+							</div>
+						</table>
+
+
+
+					</form>
+				</div>
 			</div>
 		</div>
 		<!-- /#page-wrapper -->
 
 	</div>
 	<!-- /#wrapper -->
-	
+
 	<th:block th:insert="/import_script.html :: import"></th:block>
 </body>
 </html>

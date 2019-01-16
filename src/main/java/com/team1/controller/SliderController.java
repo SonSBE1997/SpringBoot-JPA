@@ -84,7 +84,7 @@ public class SliderController {
   @PostMapping("/add-slider")
   public String insertSlider(@ModelAttribute Slider slider) {
     sliderService.insert(slider);
-    return "redirect:/list-slider";
+    return "redirect:/admin/list-slider";
   }
 
   /*
@@ -98,7 +98,7 @@ public class SliderController {
   @GetMapping("/delete-slider/{slider_id}")
   public String delete(@PathVariable String slider_id) {
     sliderService.delete(Integer.parseInt(slider_id));
-    return "redirect:/list-slider";
+    return "redirect:/admin/list-slider";
   }
 
   /*
@@ -129,7 +129,7 @@ public class SliderController {
   @PostMapping("/update-slider")
   public String updateSlider(@ModelAttribute Slider slider) {
     sliderService.update(slider);
-    return "redirect:/list-slider";
+    return "redirect:/admin/list-slider";
   }
 
   /**
@@ -145,7 +145,7 @@ public class SliderController {
   public String filterByName(@RequestParam String name, ModelMap modelMap) {
     List<Slider> listSlider = sliderService.filterByName(name);
     modelMap.addAttribute("listSlider", listSlider);
-    return "listSlider";
+    return "slider/listSlider";
   }
 
 }

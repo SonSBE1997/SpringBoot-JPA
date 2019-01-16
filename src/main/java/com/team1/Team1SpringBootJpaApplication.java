@@ -66,6 +66,6 @@ public class Team1SpringBootJpaApplication
   @Override
   public void configure(WebSecurity web) throws Exception {
     web.ignoring().antMatchers("/css/**", "/image/**", "/fonts/**", "/js/**",
-        "/common/**");
+        "/common/**", "/user/**");
   }
 }
